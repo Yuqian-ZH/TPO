@@ -1,0 +1,75 @@
+diff --git a/run.py b/run.py
+index 70cde50..4e640cf 100644
+--- a/run.py
++++ b/run.py
+@@ -52,8 +52,9 @@ def config() -> argparse.Namespace:
+                         help="Random seed for reproducibility.")
+     parser.add_argument("--max_tokens_response", type=int, default=2048,
+                         help="Max tokens to generate for each output sequence.")
+-    parser.add_argument("--max_tokens_all", type=int, default=8192,
+-                        help="Max tokens for the entire context during generation.")
++    parser.add_argument("--max_tokens_all", type=int, default=2048,
++                        help="Max output tokens per call, including loss, gradients, and updates. "
++                             "Prompt tokens plus this limit must fit the server context window.")
+     parser.add_argument("--max_iterations", type=int, default=5,
+                         help="Max number of test-time optimization iterations.")
+     parser.add_argument("--temperature", type=float, default=0.7,
+@@ -78,7 +79,7 @@ if __name__ == "__main__":
+         model_name,
+         base_url=f"http://{args.ip}:{args.port}/v1",
+         api_key="token-abc123",
+-        max_token=args.max_tokens_all,
++        max_tokens=args.max_tokens_all,
+     )
+ 
+     # Initialize reward model
+@@ -171,4 +172,4 @@ if __name__ == "__main__":
+     elapsed_time = end_time - start_time
+ 
+     print("$" * 100)
+-    print(f"ELAPSED TIME: {elapsed_time:.4f} SECONDS")
+\ No newline at end of file
++    print(f"ELAPSED TIME: {elapsed_time:.4f} SECONDS")
+diff --git a/textgrad-main/setup.py b/textgrad-main/setup.py
+index 5dfa404..bfe48fe 100644
+--- a/textgrad-main/setup.py
++++ b/textgrad-main/setup.py
+@@ -16,7 +16,7 @@ setup(
+         "Programming Language :: Python :: 3.9",
+     ],
+     license="MIT license",
+-    long_description=readme,
++    long_description="",
+     long_description_content_type="text/markdown",
+     url="https://github.com/zou-group/textgrad",
+     author="Zou Group",
+diff --git a/textgrad-main/textgrad/engine/openai.py b/textgrad-main/textgrad/engine/openai.py
+index 2634b32..1840b24 100644
+--- a/textgrad-main/textgrad/engine/openai.py
++++ b/textgrad-main/textgrad/engine/openai.py
+@@ -215,7 +215,7 @@ class VllmServer(EngineLM, CachedEngine):
+         is_multimodal: bool=False,
+         base_url: str=None,
+         api_key: str=None,
+-        max_tokens: int=8192,
++        max_tokens: int=2048,
+         **kwargs):
+         """
+         :param model_string:
+@@ -238,7 +238,9 @@ class VllmServer(EngineLM, CachedEngine):
+ 
+ 
+         self.model_string = model_string.replace("server-", "")
+-        self.max_tokens = max_tokens # max_tokens for the general vllm server for all forward passes, including loss(), grad() and step(); will override forward params by min() function
++        # Output cap for all calls, including loss(), grad(), and step().
++        # The server context window must also accommodate the prompt tokens.
++        self.max_tokens = max_tokens
+         self.is_multimodal = is_multimodal
+ 
+     @retry(wait=wait_random_exponential(min=1, max=5), stop=stop_after_attempt(5))
+@@ -337,4 +339,3 @@ class VllmServer(EngineLM, CachedEngine):
+         response_text = response.choices[0].message.content
+         # self._save_cache(cache_key, response_text)
+         return response_text
+-    
+\ No newline at end of file

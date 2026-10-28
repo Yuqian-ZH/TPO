@@ -1,0 +1,545 @@
+{
+ "feedback_id": "f_0c7e63ef",
+ "session_id": "s_305615ca",
+ "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+ "received_at": "2026-10-23T13:11:10.041+08:00",
+ "solution": {
+  "version": 0,
+  "routes": [
+   [
+    1,
+    4,
+    7,
+    2
+   ],
+   [
+    5,
+    3,
+    6,
+    8
+   ]
+  ]
+ },
+ "config": "A1B1C1",
+ "max_iterations": 3,
+ "session_modifications": [],
+ "accepted_modifications": [],
+ "status": "resolved",
+ "status_history": [
+  {
+   "status": "received",
+   "time": "2026-10-23T13:11:10.041+08:00"
+  },
+  {
+   "status": "processing",
+   "time": "2026-10-23T13:11:10.043+08:00",
+   "job": "process_feedback"
+  },
+  {
+   "status": "awaiting_reply",
+   "time": "2026-10-23T13:11:28.233+08:00",
+   "iteration": 1
+  },
+  {
+   "status": "resolved",
+   "time": "2026-10-23T13:11:28.240+08:00"
+  }
+ ],
+ "localization": {
+  "case_id": "f_0c7e63ef",
+  "run": 1,
+  "initial": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+    "target": "L[2]",
+    "aspect": "route_length",
+    "direction": "decrease",
+    "modification_type": "add_soft_constraint",
+    "confidence": "high",
+    "threshold": 180,
+    "corrected_value": null,
+    "evidence": {
+     "L[1]": 140,
+     "L[2]": 211
+    },
+    "critique_text": "User complaint: \"Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.\" It targets L[2] (route_length); current values: L[1] = 140, L[2] = 211. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 180."
+   },
+   "raw": {
+    "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly limits vehicle 2's route length to at most 180 km."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that vehicle 2's route length of 211 km is too much and sets a maximum limit of 180 km for it."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that vehicle 2's route length of 211 km is too much and sets a maximum limit of 180 km for it."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly limits vehicle 2's route length to at most 180 km."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requires that vehicle 2's route length be limited to at most 180 km."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "L[2]",
+     "majority_key_target": "L[2]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "L[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+     "target": "L[2]",
+     "aspect": "route_length",
+     "direction": "decrease",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": 180,
+     "corrected_value": null,
+     "evidence": {
+      "L[1]": 140,
+      "L[2]": 211
+     },
+     "critique_text": "User complaint: \"Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.\" It targets L[2] (route_length); current values: L[1] = 140, L[2] = 211. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 180."
+    },
+    "clarifying_question": null
+   }
+  },
+  "asked": false,
+  "question": null,
+  "answer": null,
+  "after_clarification": null,
+  "final": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+    "target": "L[2]",
+    "aspect": "route_length",
+    "direction": "decrease",
+    "modification_type": "add_soft_constraint",
+    "confidence": "high",
+    "threshold": 180,
+    "corrected_value": null,
+    "evidence": {
+     "L[1]": 140,
+     "L[2]": 211
+    },
+    "critique_text": "User complaint: \"Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.\" It targets L[2] (route_length); current values: L[1] = 140, L[2] = 211. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 180."
+   },
+   "raw": {
+    "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly limits vehicle 2's route length to at most 180 km."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that vehicle 2's route length of 211 km is too much and sets a maximum limit of 180 km for it."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that vehicle 2's route length of 211 km is too much and sets a maximum limit of 180 km for it."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly limits vehicle 2's route length to at most 180 km."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 180,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requires that vehicle 2's route length be limited to at most 180 km."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "L[2]",
+     "majority_key_target": "L[2]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "L[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+     "target": "L[2]",
+     "aspect": "route_length",
+     "direction": "decrease",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": 180,
+     "corrected_value": null,
+     "evidence": {
+      "L[1]": 140,
+      "L[2]": 211
+     },
+     "critique_text": "User complaint: \"Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.\" It targets L[2] (route_length); current values: L[1] = 140, L[2] = 211. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 180."
+    },
+    "clarifying_question": null
+   }
+  }
+ },
+ "critique": {
+  "source": "feedback_localization",
+  "text": "User complaint: \"Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.\" It targets L[2] (route_length); current values: L[1] = 140, L[2] = 211. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 180.",
+  "structured": {
+   "target": "L[2]",
+   "aspect": "route_length",
+   "direction": "decrease",
+   "modification_type": "add_soft_constraint",
+   "confidence": "high",
+   "threshold": 180,
+   "corrected_value": null,
+   "evidence": {
+    "L[1]": 140,
+    "L[2]": 211
+   }
+  },
+  "clarification": null
+ },
+ "trial": {
+  "t": 1,
+  "plan_version": 1,
+  "sol": {
+   "routes": [
+    [
+     1,
+     7,
+     2,
+     8
+    ],
+    [
+     4,
+     5,
+     3,
+     6
+    ]
+   ]
+  },
+  "mods": [
+   {
+    "op": "add_soft_constraint",
+    "target": "L[2]",
+    "sense": "<=",
+    "rhs": 180,
+    "penalty": 100,
+    "id": "tpo_1_1"
+   }
+  ],
+  "history": [
+   {
+    "t": 1,
+    "status": "committed",
+    "mods": [
+     {
+      "op": "add_soft_constraint",
+      "target": "L[2]",
+      "sense": "<=",
+      "rhs": 180,
+      "penalty": 100
+     }
+    ],
+    "feedback": "(awaiting the user's reply)",
+    "note": null,
+    "plan_lines": [
+     "- Vehicle 1: 0 -> 1 -> 7 -> 2 -> 8 -> 0 | length 207 | load 98 / 100 | stops 4",
+     "- Vehicle 2: 0 -> 4 -> 5 -> 3 -> 6 -> 0 | length 161 | load 91 / 100 | stops 4",
+     "- Arrival distances: A[1]=7, A[2]=90, A[3]=79, A[4]=42, A[5]=56, A[6]=114, A[7]=70, A[8]=163",
+     "- total distance 368, balance 46, makespan 207, load_balance 7, sum_arrival 621"
+    ]
+   }
+  ]
+ },
+ "last_feedback_text": "The new plan still doesn't fix my complaint: Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+ "iterations": [
+  {
+   "iteration": 1,
+   "trigger": "feedback",
+   "status": "committed",
+   "note": null,
+   "rationale": "The user requires vehicle 2's route to be at most 180 km. I add a soft constraint on L[2] with a high penalty to enforce this limit, as the current route is 211 km.",
+   "committed_modifications": [
+    {
+     "op": "add_soft_constraint",
+     "target": "L[2]",
+     "sense": "<=",
+     "rhs": 180,
+     "penalty": 100
+    }
+   ],
+   "feasibility": {
+    "iteration_status": "committed",
+    "solver_status": "optimal",
+    "feasible": true,
+    "feasible_on_confirmed_data": true,
+    "data_modifications_in_force": [],
+    "checked_by": "canon.is_feasible: two non-empty routes, every customer exactly once, capacity"
+   },
+   "time": "2026-10-23T13:11:28.232+08:00",
+   "input_version": 0,
+   "plan_version": 1,
+   "new_plan": true,
+   "changes": {
+    "moved": [
+     4,
+     8
+    ],
+    "added_edges": [
+     [
+      0,
+      4
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "removed_edges": [
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      6,
+      8
+     ]
+    ],
+    "reversed": []
+   }
+  }
+ ],
+ "replies": [
+  {
+   "iteration": 1,
+   "plan_version": 1,
+   "resolved": true,
+   "stop": false,
+   "comment": null,
+   "time": "2026-10-23T13:11:28.240+08:00"
+  }
+ ],
+ "usage": {
+  "llm_latency_s": 17.226,
+  "requests": 9,
+  "failed_requests": 0,
+  "prompt_tokens": 26318,
+  "completion_tokens": 742
+ },
+ "error": null
+}

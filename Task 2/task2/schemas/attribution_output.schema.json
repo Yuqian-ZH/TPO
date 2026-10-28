@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/attribution_output.schema.json",
+  "title": "Output of attribute()",
+  "type": "object",
+  "required": ["decision", "decision_text", "decision_description", "conclusion", "attribution_set", "perturbation",
+               "current_objective", "constraint_activity", "lp_relaxation"],
+  "properties": {
+    "decision": {"$ref": "decision.schema.json"},
+    "conclusion": {"enum": ["hard_constraint_forced", "objective_preferred"]},
+    "attribution_set": {"type": "object", "additionalProperties": false, "required": ["constraints", "variables"],
+                        "properties": {"constraints": {"type": "array", "items": {"type": "string", "pattern": "^[a-z_]+\\[[0-9,]+\\]$"}},
+                                       "variables": {"type": "array", "items": {"type": "string", "pattern": "^e\\[[0-9]+,[0-9]+\\]$"}}}},
+    "iis": {"type": "object", "required": ["constraints_by_category"]},
+    "objective_increase_if_forbidden": {"type": "number"},
+    "objective_increase_by_term": {"type": "object", "additionalProperties": {"type": "number"}},
+    "edges_only_in_current_plan": {"type": "array", "items": {"type": "object", "required": ["edge", "distance"]}},
+    "edges_only_in_alternative": {"type": "array", "items": {"type": "object", "required": ["edge", "distance"]}},
+    "lp_relaxation": {"type": "object"}
+  },
+  "allOf": [
+    {"if": {"properties": {"conclusion": {"const": "hard_constraint_forced"}}}, "then": {"required": ["iis"]}},
+    {"if": {"properties": {"conclusion": {"const": "objective_preferred"}}},
+     "then": {"required": ["objective_increase_if_forbidden", "objective_increase_by_term", "edges_only_in_current_plan",
+                           "edges_only_in_alternative", "alternative_solution"]}}
+  ]
+}

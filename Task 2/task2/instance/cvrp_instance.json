@@ -1,0 +1,202 @@
+{
+  "name": "task2_cvrp_v1",
+  "protocol": "task2_v1",
+  "description": "CVRP with 1 depot (node 0), 8 customers (nodes 1-8), 2 identical vehicles, no time windows.",
+  "objective": "Minimize total travel distance (sum of both route lengths). Each vehicle leaves the depot exactly once and returns to it, so both vehicles are used; every customer is served by exactly one vehicle; the demand served by a vehicle may not exceed its capacity.",
+  "distance": "c_ij = floor(euclidean(i, j) + 0.5): symmetric integers, so objective values are integers.",
+  "vehicles": 2,
+  "capacity": 100,
+  "depot": 0,
+  "nodes": [
+    {
+      "id": 0,
+      "x": 50,
+      "y": 50,
+      "demand": 0
+    },
+    {
+      "id": 1,
+      "x": 56,
+      "y": 46,
+      "demand": 52
+    },
+    {
+      "id": 2,
+      "x": 14,
+      "y": 26,
+      "demand": 24
+    },
+    {
+      "id": 3,
+      "x": 66,
+      "y": 29,
+      "demand": 49
+    },
+    {
+      "id": 4,
+      "x": 35,
+      "y": 11,
+      "demand": 12
+    },
+    {
+      "id": 5,
+      "x": 49,
+      "y": 13,
+      "demand": 14
+    },
+    {
+      "id": 6,
+      "x": 97,
+      "y": 46,
+      "demand": 16
+    },
+    {
+      "id": 7,
+      "x": 6,
+      "y": 8,
+      "demand": 11
+    },
+    {
+      "id": 8,
+      "x": 42,
+      "y": 93,
+      "demand": 11
+    }
+  ],
+  "total_demand": 189,
+  "distance_matrix": [
+    [
+      0,
+      7,
+      43,
+      26,
+      42,
+      37,
+      47,
+      61,
+      44
+    ],
+    [
+      7,
+      0,
+      47,
+      20,
+      41,
+      34,
+      41,
+      63,
+      49
+    ],
+    [
+      43,
+      47,
+      0,
+      52,
+      26,
+      37,
+      85,
+      20,
+      73
+    ],
+    [
+      26,
+      20,
+      52,
+      0,
+      36,
+      23,
+      35,
+      64,
+      68
+    ],
+    [
+      42,
+      41,
+      26,
+      36,
+      0,
+      14,
+      71,
+      29,
+      82
+    ],
+    [
+      37,
+      34,
+      37,
+      23,
+      14,
+      0,
+      58,
+      43,
+      80
+    ],
+    [
+      47,
+      41,
+      85,
+      35,
+      71,
+      58,
+      0,
+      99,
+      72
+    ],
+    [
+      61,
+      63,
+      20,
+      64,
+      29,
+      43,
+      99,
+      0,
+      92
+    ],
+    [
+      44,
+      49,
+      73,
+      68,
+      82,
+      80,
+      72,
+      92,
+      0
+    ]
+  ],
+  "conventions": {
+    "vehicle_label": "In the reference solution the route containing customer 1 is vehicle 1.",
+    "route_direction": "Each route runs so that its first customer has a smaller index than its last."
+  },
+  "generator": {
+    "script": "instance/generate_instance.py",
+    "seed": 20261022,
+    "candidate_index": 874,
+    "rejected_candidates": 873,
+    "rejected_by": {
+      "D2_precheck": 872,
+      "oracle_D1_D3_D4_D5": 1
+    },
+    "oracle_failures_by_goal": {
+      "D5": 1
+    },
+    "demand_draws": 37574,
+    "coordinate_range": [
+      0,
+      100
+    ],
+    "depot": [
+      50,
+      50
+    ],
+    "demand_range": [
+      10,
+      55
+    ],
+    "total_demand_range": [
+      170,
+      190
+    ]
+  }
+}

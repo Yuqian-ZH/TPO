@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/localization_sample.schema.json",
+  "title": "One LLM sample of the feedback-localization component",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["object_type", "vehicle", "customers", "aspect", "direction", "modification_type", "threshold",
+               "corrected_value", "ambiguous", "clarifying_question", "rationale"],
+  "properties": {
+    "object_type": {"enum": ["vehicle", "customer", "customer_pair", "global", "data"]},
+    "vehicle": {"type": ["integer", "null"]},
+    "customers": {"type": "array", "items": {"type": "integer"}, "maxItems": 2},
+    "aspect": {"enum": ["route_length", "load", "stops", "detour", "arrival", "distance_balance", "load_balance",
+                        "longest_route", "average_waiting", "adjacency", "same_vehicle", "separate_vehicles",
+                        "demand", "location", "capacity"]},
+    "direction": {"enum": ["decrease", "increase", "forbid", "require", "correct"]},
+    "modification_type": {"enum": ["add_soft_constraint", "set_objective_weight", "modify_data"]},
+    "threshold": {"type": ["number", "null"]},
+    "corrected_value": {"oneOf": [{"type": "null"}, {"type": "number"},
+                                  {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2}]},
+    "ambiguous": {"type": "boolean"},
+    "clarifying_question": {"type": ["string", "null"]},
+    "rationale": {"type": "string"}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Scenario from the 2026-10 audit (F2), in Task 2's case format. Not a Task 2 test case: it was written after the audit to exercise one rule of the service, so it is reported separately and never pooled with the test cases. Customer 4's order grows from 12 to 13 units: vehicle 1 then carries exactly 100 of 100 units, so the optimal routes do not change. The task4_v1 service judged 'something to show the user' by the routes alone, so it never showed the correction and rolled it back.",
+  "cases": [
+    {
+      "id": "AUD1",
+      "split": "audit",
+      "scenario": "Reference instance; the user reports a demand change that leaves the optimal routes unchanged.",
+      "model_modifications": [],
+      "solution": {"routes": [[1, 4, 7, 2], [5, 3, 6, 8]]},
+      "complaint": "Customer 4 has changed its order: it is 13 units now, not 12. Please update the plan's data.",
+      "clarity": "clear",
+      "complaint_object": "data",
+      "clarification_answer": "Customer 4's demand is 13 units, not 12.",
+      "checker": {"name": "feasible_under", "params": {"corrections": [{"op": "modify_data", "field": "demand[4]", "value": 13}]}},
+      "allowed_data_corrections": [{"op": "modify_data", "field": "demand[4]", "value": 13}],
+      "expected": "the correction demand[4] = 13 is in force after the complaint is resolved, and the routes are unchanged (vehicle 1 carries 100 of 100)"
+    }
+  ]
+}

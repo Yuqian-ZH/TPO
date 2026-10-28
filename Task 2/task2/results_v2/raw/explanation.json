@@ -1,0 +1,1993 @@
+{
+ "meta": {
+  "protocol": "task2_v2",
+  "part": "explanation",
+  "started": "2026-10-27T10:39:14+08:00",
+  "python": "3.12.8",
+  "machine": "arm64",
+  "cpu": "Apple M4 Pro",
+  "source_sha256": {
+   "cases/test_cases.json": "43b31ce63a556e1cc309daef31a4812238499ec2479112a0fd6b52860214ecea",
+   "components/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "components/attribution.py": "96428338b038ea3c37e152c31617fa48bb26ca5a3dd4e77b23f071aa632ea3a8",
+   "components/counterfactual.py": "3e65247c8afffe4b29edf565a7b33883822c49592b7ec21be0a9da3a14cce29e",
+   "components/llm_client.py": "795b1f8d2ac3fe2c4df85e79ff6c9be4926be5dff3bc0b474f11d7c9a8a5a00e",
+   "components/localization.py": "a111ee4a6b1459052e6164e72452989662c074354bd1ed719e5dbd15bb4a59cd",
+   "components/prompts/explain_system.txt": "bdc6ef0aae64a9729200a7776e04db060b6099765e5872c64403b59b125a94fe",
+   "components/prompts/explain_user.txt": "908d83213da41caa5f0ec922a3d4b71ccd19275686960e0697c9d49ba14f51a3",
+   "components/prompts/localize_system.txt": "0673f1e849db63efd8366c3c91d0e1aac32166ad497eaf8bdfb688c6accf7655",
+   "components/prompts/localize_user.txt": "6dc8a7300ac53ee82ce1507db69ceb6d8da510d8232607893ccb45e3da037423",
+   "components/state.py": "593d6026e56fa762acf324e7756196d8c82efbd2a2b9e42316ad875c5ff6c0f4",
+   "cvrp/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "cvrp/canon.py": "462df33b3fbd4e0029180cffd78b9b9ee76a3d0f0b7b6298812751ef660d2e77",
+   "cvrp/data.py": "d0681e54a2c93cf3e03d85cf07181c97c3b8828f41245e2a1a619aa4a59701af",
+   "cvrp/ids.py": "c0661e8c64ccc04a3927e6e49760c1c4c74b9a09330c219d584fa2651ec61f4e",
+   "cvrp/model.py": "d403ba2f147b191a10f4d30d8208b347172f400953a378a40c4a1493ed6d2da4",
+   "cvrp/oracle.py": "9649e2b9df264865a55c6c460e62c57dd7b22bbb0bfb249693bf5e5780974d43",
+   "cvrp/validate.py": "3211d0331249a4b33621599e0d077df375f001038b2d0b357dfd6ccffb524edb",
+   "instance/cvrp_instance.json": "1a9e58dc949b1ef8f8ef86953099594841b41091d31069fbf1d8998b5dd1cab6",
+   "tests/test_v2_attribution.py": "78b917d0a15769a4d9bb6166873853a35aca1cfd92f83b3f909a60cde53ad926",
+   "tests/test_v2_localization.py": "a77f3466c03f23371496d4989811b9294d6cdadc89f45e04b9c351b538aff36a",
+   "v2/__init__.py": "ac63df9265179bb9af168b7a1c201cf34102b276a9148e19ec990c07fae5b0ae",
+   "v2/attribution.py": "0c9b20a90613cbd216711ad12857f50362e22f932a2dd2a157e8f0fa272c29dc",
+   "v2/evaluate.py": "d5b1f0903ed2215fc1da31d1777f25cb555f143840565235db9a168e53feafd7",
+   "v2/freeze.py": "e0551c7558dfc1a16cf1ae5e57aaa885bd9ab91a1c4887f21ded96cdf7e876b5",
+   "v2/localization.py": "db0f591b11b369499daf47c87a8c3bc6cee2cbbde90f5ec7fbc3919362b8faa4",
+   "v2/prompts/explain_system.txt": "20f43b3f41804497c81d07f487ffade666c3e717267ac062106f5725e1dc2ef0",
+   "v2/timing.py": "a73b769ca1ac5e02b311aa00e46041a17d501f2731b05075cfffaa6b18c3c878"
+  },
+  "protocol_sha256": "ff39090fc58b6cc2162ff9d9ce0d050fcc59705f011526628cf7a94b129ca147",
+  "llm_model": "qwen3.8-max",
+  "frozen_at": "2026-10-27T00:07:58+08:00",
+  "finished": "2026-10-27T10:41:47+08:00"
+ },
+ "data": {
+  "T1": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "ADJ",
+     "i": 0,
+     "j": 8
+    },
+    "decision_text": "ADJ(0,8)",
+    "decision_description": "the depot and customer 8 are visited one right after the other (the direct leg e[0,8])",
+    "perturbation": {
+     "constraint": "FORBID_ADJ",
+     "ids": [
+      "perturbation[attr,FORBID_ADJ,0,8]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,2]",
+      "e[0,4]",
+      "e[0,5]",
+      "e[0,6]",
+      "e[0,7]",
+      "e[0,8]",
+      "e[1,4]",
+      "e[1,8]",
+      "e[2,8]",
+      "e[4,5]",
+      "e[4,7]",
+      "e[6,8]"
+     ]
+    },
+    "objective_increase_if_forbidden": 20,
+    "objective_increase_by_term": {
+     "distance": 20
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,2]",
+      "distance": 43
+     },
+     {
+      "edge": "e[0,5]",
+      "distance": 37
+     },
+     {
+      "edge": "e[0,8]",
+      "distance": 44
+     },
+     {
+      "edge": "e[1,4]",
+      "distance": 41
+     },
+     {
+      "edge": "e[4,7]",
+      "distance": 29
+     },
+     {
+      "edge": "e[6,8]",
+      "distance": 72
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,4]",
+      "distance": 42
+     },
+     {
+      "edge": "e[0,6]",
+      "distance": 47
+     },
+     {
+      "edge": "e[0,7]",
+      "distance": 61
+     },
+     {
+      "edge": "e[1,8]",
+      "distance": 49
+     },
+     {
+      "edge": "e[2,8]",
+      "distance": 73
+     },
+     {
+      "edge": "e[4,5]",
+      "distance": 14
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [
+     4,
+     8
+    ],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       8,
+       2,
+       7
+      ],
+      [
+       4,
+       5,
+       3,
+       6
+      ]
+     ]
+    },
+    "alternative_objective": 371,
+    "solver_objective": 371.0,
+    "alternative_reoriented": [
+     1
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[8]": 69.0
+     },
+     "reduced_costs": {
+      "x[1,0,8]": 0.0,
+      "x[1,8,0]": 0.0,
+      "x[2,0,8]": 0.0,
+      "x[2,8,0]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.1107
+   },
+   "explanations": [
+    {
+     "text": "The current plan includes the direct leg between the depot and customer 8, which is not forced by any hard constraint but is preferred to keep the total distance shorter. If this decision were dropped, the plan would still be feasible but the total distance would increase by 20 km, from 351 to 371. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[0,8], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with legs e[0,4], e[0,6], e[0,7], e[1,8], e[2,8], and e[4,5]. Therefore, visiting customer 8 directly from the depot saves distance compared to the rerouting required in the alternative.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan includes the direct leg between the depot and customer 8, which is not forced by any hard constraint but is preferred to keep the total distance shorter. If this decision were dropped, the plan would still be feasible but the total distance would increase by 20 km, from 351 to 371. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[0,8], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with legs e[0,4], e[0,6], e[0,7], e[1,8], e[2,8], and e[4,5]. Therefore, visiting customer 8 directly from the depot saves distance compared to the rerouting required in the alternative.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.747
+      }
+     ]
+    },
+    {
+     "text": "The current plan includes the direct leg between the depot and customer 8, represented as e[0,8]. This decision is not forced by any hard constraint, but it is preferred because it keeps the total route distance shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 20 km, rising from 351 to 371. In that alternative, the plan would no longer drive legs such as e[0,8], e[6,8], e[0,2], e[0,5], e[1,4], and e[4,7], and would instead use legs including e[1,8], e[2,8], e[0,4], e[0,6], e[0,7], and e[4,5]. Additionally, customers 4 and 8 would be served by the other vehicle in the alternative plan.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan includes the direct leg between the depot and customer 8, represented as e[0,8]. This decision is not forced by any hard constraint, but it is preferred because it keeps the total route distance shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 20 km, rising from 351 to 371. In that alternative, the plan would no longer drive legs such as e[0,8], e[6,8], e[0,2], e[0,5], e[1,4], and e[4,7], and would instead use legs including e[1,8], e[2,8], e[0,4], e[0,6], e[0,7], and e[4,5]. Additionally, customers 4 and 8 would be served by the other vehicle in the alternative plan.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.278
+      }
+     ]
+    },
+    {
+     "text": "The current plan includes the direct leg between the depot and customer 8, which is not forced by any hard constraint but keeps the total distance shorter. If this decision were dropped, the plan would still be feasible but the total distance would increase by 20 km, rising from 351 to 371. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs such as e[0,8] with a distance of 44, e[6,8] with a distance of 72, and e[0,2] with a distance of 43, which the alternative would not drive. Instead, the alternative would require new legs including e[1,8] with a distance of 49, e[2,8] with a distance of 73, and e[0,6] with a distance of 47. Therefore, visiting the depot and customer 8 one right after the other is preferred because it avoids these longer detours.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan includes the direct leg between the depot and customer 8, which is not forced by any hard constraint but keeps the total distance shorter. If this decision were dropped, the plan would still be feasible but the total distance would increase by 20 km, rising from 351 to 371. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs such as e[0,8] with a distance of 44, e[6,8] with a distance of 72, and e[0,2] with a distance of 43, which the alternative would not drive. Instead, the alternative would require new legs including e[1,8] with a distance of 49, e[2,8] with a distance of 73, and e[0,6] with a distance of 47. Therefore, visiting the depot and customer 8 one right after the other is preferred because it avoids these longer detours.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.912
+      }
+     ]
+    }
+   ]
+  },
+  "T2": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "SAME",
+     "i": 1,
+     "j": 2
+    },
+    "decision_text": "SAME(1,2)",
+    "decision_description": "customers 1 and 2 are served by the same vehicle",
+    "perturbation": {
+     "constraint": "FORCE_SEP",
+     "ids": [
+      "perturbation[attr,FORCE_SEP,1,2][1]",
+      "perturbation[attr,FORCE_SEP,1,2][2]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 3,
+     "k": 2,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,2,3]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 3,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,3]",
+      "e[0,5]",
+      "e[1,4]",
+      "e[1,5]",
+      "e[3,4]",
+      "e[3,5]",
+      "e[3,6]",
+      "e[5,6]"
+     ]
+    },
+    "objective_increase_if_forbidden": 18,
+    "objective_increase_by_term": {
+     "distance": 18
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,5]",
+      "distance": 37
+     },
+     {
+      "edge": "e[1,4]",
+      "distance": 41
+     },
+     {
+      "edge": "e[3,5]",
+      "distance": 23
+     },
+     {
+      "edge": "e[3,6]",
+      "distance": 35
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,3]",
+      "distance": 26
+     },
+     {
+      "edge": "e[1,5]",
+      "distance": 34
+     },
+     {
+      "edge": "e[3,4]",
+      "distance": 36
+     },
+     {
+      "edge": "e[5,6]",
+      "distance": 58
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [
+     2,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       5,
+       6,
+       8
+      ],
+      [
+       2,
+       7,
+       4,
+       3
+      ]
+     ]
+    },
+    "alternative_objective": 369,
+    "solver_objective": 369.0,
+    "alternative_reoriented": [
+     1,
+     2
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[1]": -5.0,
+      "visit[2]": 49.0
+     },
+     "reduced_costs": {
+      "y[1,1]": 0.0,
+      "y[1,2]": 0.0,
+      "y[2,1]": 0.0,
+      "y[2,2]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.1218
+   },
+   "explanations": [
+    {
+     "text": "The current plan assigns customers 1 and 2 to the same vehicle. This decision is not forced by any hard constraint, as both vehicles have enough capacity, with vehicle 1 carrying a load of 99 against a capacity of 100 and vehicle 2 carrying a load of 90 against a capacity of 100. However, keeping these two customers together is preferred because it keeps the total route distance shorter. If the decision were dropped so that they must be served by different vehicles, the alternative plan would be 18 km longer, raising the objective from 351 to 369. In that alternative, the plan would drop the direct legs e[0,5], e[1,4], e[3,5], and e[3,6] and instead drive the legs e[0,3], e[1,5], e[3,4], and e[5,6]. Additionally, customers 2, 4, 5, 6, 7, and 8 would be moved to the other vehicle in the alternative plan.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 1 and 2 to the same vehicle. This decision is not forced by any hard constraint, as both vehicles have enough capacity, with vehicle 1 carrying a load of 99 against a capacity of 100 and vehicle 2 carrying a load of 90 against a capacity of 100. However, keeping these two customers together is preferred because it keeps the total route distance shorter. If the decision were dropped so that they must be served by different vehicles, the alternative plan would be 18 km longer, raising the objective from 351 to 369. In that alternative, the plan would drop the direct legs e[0,5], e[1,4], e[3,5], and e[3,6] and instead drive the legs e[0,3], e[1,5], e[3,4], and e[5,6]. Additionally, customers 2, 4, 5, 6, 7, and 8 would be moved to the other vehicle in the alternative plan.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 5.313
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 1 and 2 to the same vehicle. This decision is not forced by any hard constraint, as both vehicles have enough capacity, with vehicle 1 carrying a load of 99 out of 100 and vehicle 2 carrying a load of 90 out of 100. However, keeping them together is preferred because it keeps the total route distance at 351 km. If the decision were dropped, the plan would increase in length by 18 km to reach an alternative objective of 369 km. In that alternative, the plan would no longer drive the direct legs e[0,5], e[1,4], e[3,5], and e[3,6], and would instead drive the legs e[0,3], e[1,5], e[3,4], and e[5,6]. Additionally, customers 2, 4, 5, 6, 7, and 8 would be served by the other vehicle in the alternative.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 1 and 2 to the same vehicle. This decision is not forced by any hard constraint, as both vehicles have enough capacity, with vehicle 1 carrying a load of 99 out of 100 and vehicle 2 carrying a load of 90 out of 100. However, keeping them together is preferred because it keeps the total route distance at 351 km. If the decision were dropped, the plan would increase in length by 18 km to reach an alternative objective of 369 km. In that alternative, the plan would no longer drive the direct legs e[0,5], e[1,4], e[3,5], and e[3,6], and would instead drive the legs e[0,3], e[1,5], e[3,4], and e[5,6]. Additionally, customers 2, 4, 5, 6, 7, and 8 would be served by the other vehicle in the alternative.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.784
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 1 and 2 to the same vehicle. This decision is not forced by any hard constraint, as both vehicles have enough remaining capacity, with vehicle 1 carrying a load of 99 out of 100 and vehicle 2 carrying a load of 90 out of 100. However, keeping them together is preferred because it keeps the total route distance at 351 km. If the decision were dropped, the plan would need to serve customers 2, 4, 5, 6, 7, and 8 on the other vehicle, increasing the total distance by 18 km to 369 km. To achieve that alternative, the plan would drop the direct legs e[0,5], e[1,4], e[3,5], and e[3,6] and instead drive the legs e[0,3], e[1,5], e[3,4], and e[5,6].",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 1 and 2 to the same vehicle. This decision is not forced by any hard constraint, as both vehicles have enough remaining capacity, with vehicle 1 carrying a load of 99 out of 100 and vehicle 2 carrying a load of 90 out of 100. However, keeping them together is preferred because it keeps the total route distance at 351 km. If the decision were dropped, the plan would need to serve customers 2, 4, 5, 6, 7, and 8 on the other vehicle, increasing the total distance by 18 km to 369 km. To achieve that alternative, the plan would drop the direct legs e[0,5], e[1,4], e[3,5], and e[3,6] and instead drive the legs e[0,3], e[1,5], e[3,4], and e[5,6].",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 5.807
+      }
+     ]
+    }
+   ]
+  },
+  "T3": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "ADJ",
+     "i": 3,
+     "j": 6
+    },
+    "decision_text": "ADJ(3,6)",
+    "decision_description": "customer 3 and customer 6 are visited one right after the other (the direct leg e[3,6])",
+    "perturbation": {
+     "constraint": "FORBID_ADJ",
+     "ids": [
+      "perturbation[attr,FORBID_ADJ,3,6]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,3]",
+      "e[0,5]",
+      "e[3,6]",
+      "e[5,6]"
+     ]
+    },
+    "objective_increase_if_forbidden": 12,
+    "objective_increase_by_term": {
+     "distance": 12
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,5]",
+      "distance": 37
+     },
+     {
+      "edge": "e[3,6]",
+      "distance": 35
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,3]",
+      "distance": 26
+     },
+     {
+      "edge": "e[5,6]",
+      "distance": 58
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       4,
+       7,
+       2
+      ],
+      [
+       3,
+       5,
+       6,
+       8
+      ]
+     ]
+    },
+    "alternative_objective": 363,
+    "solver_objective": 363.0,
+    "alternative_reoriented": [
+     2
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[3]": 21.0,
+      "visit[6]": 75.0
+     },
+     "reduced_costs": {
+      "x[1,3,6]": 0.0,
+      "x[1,6,3]": 0.0,
+      "x[2,3,6]": 0.0,
+      "x[2,6,3]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.0824
+   },
+   "explanations": [
+    {
+     "text": "The current plan visits customer 3 and customer 6 one right after the other, driving the direct leg e[3,6] with a distance of 35 km. This decision is not forced by any constraints, as vehicle 1 carries a load of 99 against a capacity of 100 and vehicle 2 carries a load of 90 against a capacity of 100, leaving enough slack for other arrangements. However, keeping this leg makes the overall route shorter. If the decision were dropped, the plan would replace the legs e[0,5] (distance 37) and e[3,6] (distance 35) with the legs e[0,3] (distance 26) and e[5,6] (distance 58). That alternative would increase the total distance by 12, raising the objective from 351 to 363, so the current plan prefers visiting customer 3 and customer 6 consecutively.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 3 and customer 6 one right after the other, driving the direct leg e[3,6] with a distance of 35 km. This decision is not forced by any constraints, as vehicle 1 carries a load of 99 against a capacity of 100 and vehicle 2 carries a load of 90 against a capacity of 100, leaving enough slack for other arrangements. However, keeping this leg makes the overall route shorter. If the decision were dropped, the plan would replace the legs e[0,5] (distance 37) and e[3,6] (distance 35) with the legs e[0,3] (distance 26) and e[5,6] (distance 58). That alternative would increase the total distance by 12, raising the objective from 351 to 363, so the current plan prefers visiting customer 3 and customer 6 consecutively.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.748
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 3 and customer 6 one right after the other, driving the direct leg e[3,6] with a distance of 35. This decision is not forced by any constraints, as vehicle 1 carries a load of 99 against a capacity of 100 and vehicle 2 carries a load of 90 against a capacity of 100, leaving enough slack for other arrangements. However, keeping this leg makes the overall route shorter. If the decision were dropped, the plan would replace the legs e[0,5] (distance 37) and e[3,6] (distance 35) with e[0,3] (distance 26) and e[5,6] (distance 58), increasing the total objective from 351 to 363. Therefore, visiting customer 3 and customer 6 consecutively is preferred because it avoids an extra 12 km of travel.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 3 and customer 6 one right after the other, driving the direct leg e[3,6] with a distance of 35. This decision is not forced by any constraints, as vehicle 1 carries a load of 99 against a capacity of 100 and vehicle 2 carries a load of 90 against a capacity of 100, leaving enough slack for other arrangements. However, keeping this leg makes the overall route shorter. If the decision were dropped, the plan would replace the legs e[0,5] (distance 37) and e[3,6] (distance 35) with e[0,3] (distance 26) and e[5,6] (distance 58), increasing the total objective from 351 to 363. Therefore, visiting customer 3 and customer 6 consecutively is preferred because it avoids an extra 12 km of travel.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.267
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 3 and customer 6 one right after the other, driving the direct leg e[3,6] with a distance of 35 km. This decision is not forced by any hard constraint, as vehicle 1 carries a load of 99 against a capacity of 100 and vehicle 2 carries a load of 90 against a capacity of 100, leaving enough slack to rearrange the routes. However, keeping this leg makes the overall plan shorter. If the decision were dropped, the plan would replace the legs e[0,5] (37 km) and e[3,6] (35 km) with the legs e[0,3] (26 km) and e[5,6] (58 km), increasing the total distance by 12 km from 351 to 363. No customers would be moved to the other vehicle in that alternative. Therefore, the plan prefers visiting customer 3 and customer 6 consecutively to minimize total travel distance.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 3 and customer 6 one right after the other, driving the direct leg e[3,6] with a distance of 35 km. This decision is not forced by any hard constraint, as vehicle 1 carries a load of 99 against a capacity of 100 and vehicle 2 carries a load of 90 against a capacity of 100, leaving enough slack to rearrange the routes. However, keeping this leg makes the overall plan shorter. If the decision were dropped, the plan would replace the legs e[0,5] (37 km) and e[3,6] (35 km) with the legs e[0,3] (26 km) and e[5,6] (58 km), increasing the total distance by 12 km from 351 to 363. No customers would be moved to the other vehicle in that alternative. Therefore, the plan prefers visiting customer 3 and customer 6 consecutively to minimize total travel distance.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.944
+      }
+     ]
+    }
+   ]
+  },
+  "T4": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "SEP",
+     "i": 1,
+     "j": 3
+    },
+    "decision_text": "SEP(1,3)",
+    "decision_description": "customers 1 and 3 are served by different vehicles",
+    "perturbation": {
+     "constraint": "FORCE_SAME",
+     "ids": [
+      "perturbation[attr,FORCE_SAME,1,3][1]",
+      "perturbation[attr,FORCE_SAME,1,3][2]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 2,
+     "k": 1,
+     "role": "anchor",
+     "ids": [],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 2,
+       "optimum": 351.0
+      }
+     ],
+     "dropped_for_iis": true
+    },
+    "current_objective": 351,
+    "conclusion": "hard_constraint_forced",
+    "attribution_set": {
+     "constraints": [
+      "cap[1]",
+      "cap[2]"
+     ],
+     "variables": []
+    },
+    "iis": {
+     "constraints_by_category": {
+      "business_specific": [
+       "cap[1]",
+       "cap[2]"
+      ],
+      "business_general": [
+       "visit[1]",
+       "visit[3]"
+      ],
+      "structural": [],
+      "convention": [],
+      "perturbation": [
+       "perturbation[attr,FORCE_SAME,1,3][2]"
+      ],
+      "soft": []
+     },
+     "var_lower_bounds": [],
+     "var_upper_bounds": [],
+     "note": "IIS is one irreducible infeasible subset; it need not be unique. Only business-specific constraints enter the attribution set; the anchor is a convention and never does."
+    },
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[1]": -5.0,
+      "visit[3]": 21.0
+     },
+     "reduced_costs": {
+      "y[1,1]": 0.0,
+      "y[1,3]": 0.0,
+      "y[2,1]": 0.0,
+      "y[2,3]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.0891
+   },
+   "explanations": [
+    {
+     "text": "The current plan assigns customers 1 and 3 to different vehicles, and this decision is forced by the capacity limits of both vehicles. If they were served by the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity of 100, leaving very little room for additional demand. Vehicle 2 carries a load of 90 against its capacity of 100. Because of these tight loads under constraints cap[1] and cap[2], combining customers 1 and 3 on one route would exceed the available capacity, so the plan must keep them on separate vehicles.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 1 and 3 to different vehicles, and this decision is forced by the capacity limits of both vehicles. If they were served by the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity of 100, leaving very little room for additional demand. Vehicle 2 carries a load of 90 against its capacity of 100. Because of these tight loads under constraints cap[1] and cap[2], combining customers 1 and 3 on one route would exceed the available capacity, so the plan must keep them on separate vehicles.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.161
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 1 and 3 to different vehicles, and this decision is strictly forced by the capacity constraints of both vehicles. If the plan were required to serve them together on the same vehicle, no feasible routing plan would exist at all. This infeasibility arises because vehicle 1 already carries a load of 99 against its capacity limit of 100, leaving almost no room for additional demand. Vehicle 2 carries a load of 90 against its own capacity limit of 100, which also prevents it from absorbing both customers together. Therefore, the capacity limits cap[1] and cap[2] make it impossible to combine customers 1 and 3 on a single route.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 1 and 3 to different vehicles, and this decision is strictly forced by the capacity constraints of both vehicles. If the plan were required to serve them together on the same vehicle, no feasible routing plan would exist at all. This infeasibility arises because vehicle 1 already carries a load of 99 against its capacity limit of 100, leaving almost no room for additional demand. Vehicle 2 carries a load of 90 against its own capacity limit of 100, which also prevents it from absorbing both customers together. Therefore, the capacity limits cap[1] and cap[2] make it impossible to combine customers 1 and 3 on a single route.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.918
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 1 and 3 to different vehicles, and this decision is forced by the capacity limits of both vehicles. If they were served by the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity limit of 100, leaving very little room for additional demand. Vehicle 2 carries a load of 90 against its capacity limit of 100. Because of these tight loads under constraints cap[1] and cap[2], combining customers 1 and 3 on a single vehicle would exceed the available capacity, so they must be split across the two vehicles.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 1 and 3 to different vehicles, and this decision is forced by the capacity limits of both vehicles. If they were served by the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity limit of 100, leaving very little room for additional demand. Vehicle 2 carries a load of 90 against its capacity limit of 100. Because of these tight loads under constraints cap[1] and cap[2], combining customers 1 and 3 on a single vehicle would exceed the available capacity, so they must be split across the two vehicles.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.947
+      }
+     ]
+    }
+   ]
+  },
+  "T5": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "ADJ",
+     "i": 4,
+     "j": 7
+    },
+    "decision_text": "ADJ(4,7)",
+    "decision_description": "customer 4 and customer 7 are visited one right after the other (the direct leg e[4,7])",
+    "perturbation": {
+     "constraint": "FORBID_ADJ",
+     "ids": [
+      "perturbation[attr,FORBID_ADJ,4,7]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,2]",
+      "e[0,7]",
+      "e[2,4]",
+      "e[4,7]"
+     ]
+    },
+    "objective_increase_if_forbidden": 15,
+    "objective_increase_by_term": {
+     "distance": 15
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,2]",
+      "distance": 43
+     },
+     {
+      "edge": "e[4,7]",
+      "distance": 29
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,7]",
+      "distance": 61
+     },
+     {
+      "edge": "e[2,4]",
+      "distance": 26
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       4,
+       2,
+       7
+      ],
+      [
+       5,
+       3,
+       6,
+       8
+      ]
+     ]
+    },
+    "alternative_objective": 366,
+    "solver_objective": 366.0,
+    "alternative_reoriented": [
+     2
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[4]": 3.0,
+      "visit[7]": 55.0
+     },
+     "reduced_costs": {
+      "x[1,4,7]": 0.0,
+      "x[1,7,4]": 0.0,
+      "x[2,4,7]": 0.0,
+      "x[2,7,4]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.1031
+   },
+   "explanations": [
+    {
+     "text": "The current plan visits customer 4 and customer 7 one right after the other, using the direct leg e[4,7] with a distance of 29 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 15 km, raising the objective from 351 to 366. Specifically, the alternative would replace the legs e[0,2] with distance 43 and e[4,7] with distance 29 by driving e[0,7] with distance 61 and e[2,4] with distance 26 instead. No customers would be moved to the other vehicle in that alternative.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 4 and customer 7 one right after the other, using the direct leg e[4,7] with a distance of 29 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 15 km, raising the objective from 351 to 366. Specifically, the alternative would replace the legs e[0,2] with distance 43 and e[4,7] with distance 29 by driving e[0,7] with distance 61 and e[2,4] with distance 26 instead. No customers would be moved to the other vehicle in that alternative.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 26.986
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 4 and customer 7 one right after the other, driving the direct leg e[4,7] with a distance of 29 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the objective would increase by 15 km, rising from 351 to 366. Specifically, the alternative would replace the legs e[0,2] with distance 43 and e[4,7] with distance 29 by the legs e[0,7] with distance 61 and e[2,4] with distance 26. No customers would be moved to the other vehicle in that alternative.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 4 and customer 7 one right after the other, driving the direct leg e[4,7] with a distance of 29 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the objective would increase by 15 km, rising from 351 to 366. Specifically, the alternative would replace the legs e[0,2] with distance 43 and e[4,7] with distance 29 by the legs e[0,7] with distance 61 and e[2,4] with distance 26. No customers would be moved to the other vehicle in that alternative.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.13
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 4 and customer 7 one right after the other, driving the direct leg e[4,7] with a distance of 29 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[0,2] with distance 43 and e[4,7] with distance 29 by the legs e[0,7] with distance 61 and e[2,4] with distance 26. That alternative would increase the total objective from 351 to 366, making the plan 15 km longer. No customers would be moved to another vehicle in that alternative. Therefore, the plan prefers this adjacency to minimize overall travel distance.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 4 and customer 7 one right after the other, driving the direct leg e[4,7] with a distance of 29 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[0,2] with distance 43 and e[4,7] with distance 29 by the legs e[0,7] with distance 61 and e[2,4] with distance 26. That alternative would increase the total objective from 351 to 366, making the plan 15 km longer. No customers would be moved to another vehicle in that alternative. Therefore, the plan prefers this adjacency to minimize overall travel distance.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.179
+      }
+     ]
+    }
+   ]
+  },
+  "T6": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "ADJ",
+     "i": 2,
+     "j": 7
+    },
+    "decision_text": "ADJ(2,7)",
+    "decision_description": "customer 2 and customer 7 are visited one right after the other (the direct leg e[2,7])",
+    "perturbation": {
+     "constraint": "FORBID_ADJ",
+     "ids": [
+      "perturbation[attr,FORBID_ADJ,2,7]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[1,4]",
+      "e[1,7]",
+      "e[2,4]",
+      "e[2,7]"
+     ]
+    },
+    "objective_increase_if_forbidden": 28,
+    "objective_increase_by_term": {
+     "distance": 28
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[1,4]",
+      "distance": 41
+     },
+     {
+      "edge": "e[2,7]",
+      "distance": 20
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[1,7]",
+      "distance": 63
+     },
+     {
+      "edge": "e[2,4]",
+      "distance": 26
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       7,
+       4,
+       2
+      ],
+      [
+       5,
+       3,
+       6,
+       8
+      ]
+     ]
+    },
+    "alternative_objective": 379,
+    "solver_objective": 379.0,
+    "alternative_reoriented": [
+     2
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[2]": 49.0,
+      "visit[7]": 55.0
+     },
+     "reduced_costs": {
+      "x[1,2,7]": 0.0,
+      "x[1,7,2]": 0.0,
+      "x[2,2,7]": 0.0,
+      "x[2,7,2]": -0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.1036
+   },
+   "explanations": [
+    {
+     "text": "The current plan visits customer 2 and customer 7 one right after the other, driving the direct leg e[2,7] with a distance of 20 km. This decision is not forced by any hard constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[1,4] (distance 41) and e[2,7] (distance 20) with the legs e[1,7] (distance 63) and e[2,4] (distance 26). That alternative would increase the total objective from 351 to 379, making the plan 28 km longer. No customers would be moved to another vehicle in that scenario. Therefore, the plan prefers this adjacency to minimize overall travel distance.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 2 and customer 7 one right after the other, driving the direct leg e[2,7] with a distance of 20 km. This decision is not forced by any hard constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[1,4] (distance 41) and e[2,7] (distance 20) with the legs e[1,7] (distance 63) and e[2,4] (distance 26). That alternative would increase the total objective from 351 to 379, making the plan 28 km longer. No customers would be moved to another vehicle in that scenario. Therefore, the plan prefers this adjacency to minimize overall travel distance.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.26
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 2 and customer 7 one right after the other, driving the direct leg e[2,7] with a distance of 20 km. This decision is not forced by any hard constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[1,4] (41 km) and e[2,7] (20 km) with the legs e[1,7] (63 km) and e[2,4] (26 km). That alternative would increase the total distance by 28 km, raising the objective from 351 to 379. No customers would be moved to the other vehicle in that alternative.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 2 and customer 7 one right after the other, driving the direct leg e[2,7] with a distance of 20 km. This decision is not forced by any hard constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[1,4] (41 km) and e[2,7] (20 km) with the legs e[1,7] (63 km) and e[2,4] (26 km). That alternative would increase the total distance by 28 km, raising the objective from 351 to 379. No customers would be moved to the other vehicle in that alternative.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.736
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 2 and customer 7 one right after the other, driving the direct leg e[2,7] with a distance of 20 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[1,4] at 41 km and e[2,7] at 20 km with the legs e[1,7] at 63 km and e[2,4] at 26 km. That alternative would increase the total distance by 28 km, raising the objective from 351 to 379. No customers would be moved to the other vehicle in that scenario.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 2 and customer 7 one right after the other, driving the direct leg e[2,7] with a distance of 20 km. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would replace the legs e[1,4] at 41 km and e[2,7] at 20 km with the legs e[1,7] at 63 km and e[2,4] at 26 km. That alternative would increase the total distance by 28 km, raising the objective from 351 to 379. No customers would be moved to the other vehicle in that scenario.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.586
+      }
+     ]
+    }
+   ]
+  },
+  "T7": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "SEP",
+     "i": 2,
+     "j": 6
+    },
+    "decision_text": "SEP(2,6)",
+    "decision_description": "customers 2 and 6 are served by different vehicles",
+    "perturbation": {
+     "constraint": "FORCE_SAME",
+     "ids": [
+      "perturbation[attr,FORCE_SAME,2,6][1]",
+      "perturbation[attr,FORCE_SAME,2,6][2]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,5]",
+      "e[0,6]",
+      "e[1,4]",
+      "e[1,5]",
+      "e[3,5]",
+      "e[3,7]",
+      "e[4,5]",
+      "e[4,7]",
+      "e[4,8]",
+      "e[6,8]"
+     ]
+    },
+    "objective_increase_if_forbidden": 39,
+    "objective_increase_by_term": {
+     "distance": 39
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,5]",
+      "distance": 37
+     },
+     {
+      "edge": "e[1,4]",
+      "distance": 41
+     },
+     {
+      "edge": "e[3,5]",
+      "distance": 23
+     },
+     {
+      "edge": "e[4,7]",
+      "distance": 29
+     },
+     {
+      "edge": "e[6,8]",
+      "distance": 72
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,6]",
+      "distance": 47
+     },
+     {
+      "edge": "e[1,5]",
+      "distance": 34
+     },
+     {
+      "edge": "e[3,7]",
+      "distance": 64
+     },
+     {
+      "edge": "e[4,5]",
+      "distance": 14
+     },
+     {
+      "edge": "e[4,8]",
+      "distance": 82
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [
+     2,
+     5,
+     7,
+     8
+    ],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       5,
+       4,
+       8
+      ],
+      [
+       2,
+       7,
+       3,
+       6
+      ]
+     ]
+    },
+    "alternative_objective": 390,
+    "solver_objective": 390.0,
+    "alternative_reoriented": [
+     1
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[2]": 49.0,
+      "visit[6]": 75.0
+     },
+     "reduced_costs": {
+      "y[1,2]": 0.0,
+      "y[1,6]": 0.0,
+      "y[2,2]": 0.0,
+      "y[2,6]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.0868
+   },
+   "explanations": [
+    {
+     "text": "The current plan assigns customers 2 and 6 to different vehicles. This decision is not forced by any hard constraint, but it keeps the total distance shorter. If the decision were dropped so that both customers shared a vehicle, the plan would still be feasible but the total distance would increase by 39 km, rising from 351 to 390. In that alternative, customers 2, 5, 7, and 8 would be served by the other vehicle. The current plan uses direct legs e[0,5] of 37 km, e[1,4] of 41 km, e[3,5] of 23 km, e[4,7] of 29 km, and e[6,8] of 72 km, which the alternative would replace with legs e[0,6] of 47 km, e[1,5] of 34 km, e[3,7] of 64 km, e[4,5] of 14 km, and e[4,8] of 82 km.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 6 to different vehicles. This decision is not forced by any hard constraint, but it keeps the total distance shorter. If the decision were dropped so that both customers shared a vehicle, the plan would still be feasible but the total distance would increase by 39 km, rising from 351 to 390. In that alternative, customers 2, 5, 7, and 8 would be served by the other vehicle. The current plan uses direct legs e[0,5] of 37 km, e[1,4] of 41 km, e[3,5] of 23 km, e[4,7] of 29 km, and e[6,8] of 72 km, which the alternative would replace with legs e[0,6] of 47 km, e[1,5] of 34 km, e[3,7] of 64 km, e[4,5] of 14 km, and e[4,8] of 82 km.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 5.195
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 2 and 6 to different vehicles. This decision is not forced by any hard constraint, but it keeps the total distance shorter. If the decision were dropped so that both customers shared a vehicle, the plan would still be feasible but the total distance would increase by 39 km, from 351 to 390. In that alternative, customers 2, 5, 7, and 8 would be served by the other vehicle instead. The current plan uses direct legs e[0,5] (37 km), e[1,4] (41 km), e[3,5] (23 km), e[4,7] (29 km), and e[6,8] (72 km), whereas the alternative would replace them with legs e[0,6] (47 km), e[1,5] (34 km), e[3,7] (64 km), e[4,5] (14 km), and e[4,8] (82 km).",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 6 to different vehicles. This decision is not forced by any hard constraint, but it keeps the total distance shorter. If the decision were dropped so that both customers shared a vehicle, the plan would still be feasible but the total distance would increase by 39 km, from 351 to 390. In that alternative, customers 2, 5, 7, and 8 would be served by the other vehicle instead. The current plan uses direct legs e[0,5] (37 km), e[1,4] (41 km), e[3,5] (23 km), e[4,7] (29 km), and e[6,8] (72 km), whereas the alternative would replace them with legs e[0,6] (47 km), e[1,5] (34 km), e[3,7] (64 km), e[4,5] (14 km), and e[4,8] (82 km).",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 5.033
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 2 and 6 to different vehicles. This decision is not forced by any hard constraint, but it keeps the total route distance shorter. If the decision were dropped so that both customers shared a vehicle, the plan would still be feasible but the total distance would increase by 39 km, from 351 to 390. In that alternative, customers 2, 5, 7, and 8 would be served by the other vehicle. The current plan uses direct legs e[0,5] of 37 km, e[1,4] of 41 km, e[3,5] of 23 km, e[4,7] of 29 km, and e[6,8] of 72 km, which the alternative would replace with legs e[0,6] of 47 km, e[1,5] of 34 km, e[3,7] of 64 km, e[4,5] of 14 km, and e[4,8] of 82 km.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 6 to different vehicles. This decision is not forced by any hard constraint, but it keeps the total route distance shorter. If the decision were dropped so that both customers shared a vehicle, the plan would still be feasible but the total distance would increase by 39 km, from 351 to 390. In that alternative, customers 2, 5, 7, and 8 would be served by the other vehicle. The current plan uses direct legs e[0,5] of 37 km, e[1,4] of 41 km, e[3,5] of 23 km, e[4,7] of 29 km, and e[6,8] of 72 km, which the alternative would replace with legs e[0,6] of 47 km, e[1,5] of 34 km, e[3,7] of 64 km, e[4,5] of 14 km, and e[4,8] of 82 km.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.84
+      }
+     ]
+    }
+   ]
+  },
+  "T8": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "SAME",
+     "i": 2,
+     "j": 7
+    },
+    "decision_text": "SAME(2,7)",
+    "decision_description": "customers 2 and 7 are served by the same vehicle",
+    "perturbation": {
+     "constraint": "FORCE_SEP",
+     "ids": [
+      "perturbation[attr,FORCE_SEP,2,7][1]",
+      "perturbation[attr,FORCE_SEP,2,7][2]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,5]",
+      "e[0,7]",
+      "e[1,4]",
+      "e[1,5]",
+      "e[2,3]",
+      "e[2,7]",
+      "e[3,5]",
+      "e[4,5]"
+     ]
+    },
+    "objective_increase_if_forbidden": 40,
+    "objective_increase_by_term": {
+     "distance": 40
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,5]",
+      "distance": 37
+     },
+     {
+      "edge": "e[1,4]",
+      "distance": 41
+     },
+     {
+      "edge": "e[2,7]",
+      "distance": 20
+     },
+     {
+      "edge": "e[3,5]",
+      "distance": 23
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,7]",
+      "distance": 61
+     },
+     {
+      "edge": "e[1,5]",
+      "distance": 34
+     },
+     {
+      "edge": "e[2,3]",
+      "distance": 52
+     },
+     {
+      "edge": "e[4,5]",
+      "distance": 14
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [
+     2,
+     5
+    ],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       5,
+       4,
+       7
+      ],
+      [
+       2,
+       3,
+       6,
+       8
+      ]
+     ]
+    },
+    "alternative_objective": 391,
+    "solver_objective": 391.0,
+    "alternative_reoriented": [
+     2
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[2]": 49.0,
+      "visit[7]": 55.0
+     },
+     "reduced_costs": {
+      "y[1,2]": 0.0,
+      "y[1,7]": 0.0,
+      "y[2,2]": 0.0,
+      "y[2,7]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.0803
+   },
+   "explanations": [
+    {
+     "text": "The current plan assigns customers 2 and 7 to the same vehicle. This decision is not forced by any hard constraint, but it keeps the total route distance shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 40 km, rising from 351 to 391. In that alternative, customers 2 and 5 would be served by the other vehicle instead. The current plan uses the direct legs e[0,5] (37 km), e[1,4] (41 km), e[2,7] (20 km), and e[3,5] (23 km), whereas the alternative would replace them with e[0,7] (61 km), e[1,5] (34 km), e[2,3] (52 km), and e[4,5] (14 km).",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 7 to the same vehicle. This decision is not forced by any hard constraint, but it keeps the total route distance shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 40 km, rising from 351 to 391. In that alternative, customers 2 and 5 would be served by the other vehicle instead. The current plan uses the direct legs e[0,5] (37 km), e[1,4] (41 km), e[2,7] (20 km), and e[3,5] (23 km), whereas the alternative would replace them with e[0,7] (61 km), e[1,5] (34 km), e[2,3] (52 km), and e[4,5] (14 km).",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.543
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 2 and 7 to the same vehicle. This decision is not forced by any hard constraint, but it keeps the total distance shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 40 km, rising from 351 to 391. In that alternative, customers 2 and 5 would be served by the other vehicle instead. The current plan uses the direct legs e[0,5] (37 km), e[1,4] (41 km), e[2,7] (20 km), and e[3,5] (23 km), whereas the alternative would replace them with e[0,7] (61 km), e[1,5] (34 km), e[2,3] (52 km), and e[4,5] (14 km).",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 7 to the same vehicle. This decision is not forced by any hard constraint, but it keeps the total distance shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 40 km, rising from 351 to 391. In that alternative, customers 2 and 5 would be served by the other vehicle instead. The current plan uses the direct legs e[0,5] (37 km), e[1,4] (41 km), e[2,7] (20 km), and e[3,5] (23 km), whereas the alternative would replace them with e[0,7] (61 km), e[1,5] (34 km), e[2,3] (52 km), and e[4,5] (14 km).",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.313
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 2 and 7 to the same vehicle. This decision is not forced by any hard constraint, but it keeps the total route distance shorter. If the decision were dropped so that customers 2 and 7 must be served by different vehicles, the plan would still be feasible but the total distance would increase by 40 km, from 351 to 391. In that alternative, the plan would no longer drive the legs e[0,5], e[1,4], e[2,7], and e[3,5], and would instead drive the legs e[0,7], e[1,5], e[2,3], and e[4,5]. Additionally, customers 2 and 5 would be moved to the other vehicle in the alternative plan.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 7 to the same vehicle. This decision is not forced by any hard constraint, but it keeps the total route distance shorter. If the decision were dropped so that customers 2 and 7 must be served by different vehicles, the plan would still be feasible but the total distance would increase by 40 km, from 351 to 391. In that alternative, the plan would no longer drive the legs e[0,5], e[1,4], e[2,7], and e[3,5], and would instead drive the legs e[0,7], e[1,5], e[2,3], and e[4,5]. Additionally, customers 2 and 5 would be moved to the other vehicle in the alternative plan.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.031
+      }
+     ]
+    }
+   ]
+  },
+  "T9": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "SEP",
+     "i": 2,
+     "j": 5
+    },
+    "decision_text": "SEP(2,5)",
+    "decision_description": "customers 2 and 5 are served by different vehicles",
+    "perturbation": {
+     "constraint": "FORCE_SAME",
+     "ids": [
+      "perturbation[attr,FORCE_SAME,2,5][1]",
+      "perturbation[attr,FORCE_SAME,2,5][2]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ],
+     "dropped_for_iis": true
+    },
+    "current_objective": 351,
+    "conclusion": "hard_constraint_forced",
+    "attribution_set": {
+     "constraints": [
+      "cap[1]",
+      "cap[2]"
+     ],
+     "variables": []
+    },
+    "iis": {
+     "constraints_by_category": {
+      "business_specific": [
+       "cap[1]",
+       "cap[2]"
+      ],
+      "business_general": [
+       "visit[1]",
+       "visit[2]",
+       "visit[3]",
+       "visit[4]",
+       "visit[5]",
+       "visit[6]",
+       "visit[7]",
+       "visit[8]"
+      ],
+      "structural": [],
+      "convention": [],
+      "perturbation": [
+       "perturbation[attr,FORCE_SAME,2,5][1]"
+      ],
+      "soft": []
+     },
+     "var_lower_bounds": [],
+     "var_upper_bounds": [],
+     "note": "IIS is one irreducible infeasible subset; it need not be unique. Only business-specific constraints enter the attribution set; the anchor is a convention and never does."
+    },
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 95,
+      "capacity": 100,
+      "slack": 5,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.463918,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[2]": 37.0,
+      "visit[5]": 13.0
+     },
+     "reduced_costs": {
+      "y[1,2]": 0.0,
+      "y[1,5]": 0.0,
+      "y[2,2]": 0.0,
+      "y[2,5]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.0731
+   },
+   "explanations": [
+    {
+     "text": "The current plan assigns customers 2 and 5 to different vehicles, and this decision is forced by the capacity constraints of both vehicles. If they were served by the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity limit of 100, while vehicle 2 carries a load of 95 against its capacity limit of 100. Because both vehicles are already nearly full under constraints cap[1] and cap[2], combining these two customers onto a single route would exceed the allowed capacity. Therefore, the plan must keep them on separate vehicles to remain feasible.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 5 to different vehicles, and this decision is forced by the capacity constraints of both vehicles. If they were served by the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity limit of 100, while vehicle 2 carries a load of 95 against its capacity limit of 100. Because both vehicles are already nearly full under constraints cap[1] and cap[2], combining these two customers onto a single route would exceed the allowed capacity. Therefore, the plan must keep them on separate vehicles to remain feasible.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.594
+      }
+     ]
+    },
+    {
+     "text": "The current plan assigns customers 2 and 5 to different vehicles, and this decision is forced by the capacity limits of both vehicles. If the plan were required to serve them with the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity limit of 100, while vehicle 2 carries a load of 95 against its capacity limit of 100. Because both vehicles are nearly full under constraints cap[1] and cap[2], combining these two customers onto a single route would exceed the available capacity. Therefore, separating customers 2 and 5 across the two vehicles is necessary to keep the plan feasible.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan assigns customers 2 and 5 to different vehicles, and this decision is forced by the capacity limits of both vehicles. If the plan were required to serve them with the same vehicle, no feasible plan would exist at all. Vehicle 1 currently carries a load of 99 against its capacity limit of 100, while vehicle 2 carries a load of 95 against its capacity limit of 100. Because both vehicles are nearly full under constraints cap[1] and cap[2], combining these two customers onto a single route would exceed the available capacity. Therefore, separating customers 2 and 5 across the two vehicles is necessary to keep the plan feasible.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.638
+      }
+     ]
+    },
+    {
+     "text": "The current plan serves customers 2 and 5 by different vehicles, and this decision is forced because no feasible plan exists if they are assigned to the same vehicle. The reason lies in the capacity limits of both vehicles, specifically constraints cap[1] and cap[2]. Vehicle 1 currently carries a load of 99 against its capacity of 100, while vehicle 2 carries a load of 95 against its capacity of 100. If customers 2 and 5 were combined onto one vehicle, neither vehicle would have enough remaining capacity to handle all required deliveries. Therefore, separating these two customers across the two vehicles is the only way to satisfy the capacity constraints.",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan serves customers 2 and 5 by different vehicles, and this decision is forced because no feasible plan exists if they are assigned to the same vehicle. The reason lies in the capacity limits of both vehicles, specifically constraints cap[1] and cap[2]. Vehicle 1 currently carries a load of 99 against its capacity of 100, while vehicle 2 carries a load of 95 against its capacity of 100. If customers 2 and 5 were combined onto one vehicle, neither vehicle would have enough remaining capacity to handle all required deliveries. Therefore, separating these two customers across the two vehicles is the only way to satisfy the capacity constraints.",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.975
+      }
+     ]
+    }
+   ]
+  },
+  "T10": {
+   "output": {
+    "protocol": "task2_v2",
+    "decision": {
+     "type": "ADJ",
+     "i": 6,
+     "j": 8
+    },
+    "decision_text": "ADJ(6,8)",
+    "decision_description": "customer 6 and customer 8 are visited one right after the other (the direct leg e[6,8])",
+    "perturbation": {
+     "constraint": "FORBID_ADJ",
+     "ids": [
+      "perturbation[attr,FORBID_ADJ,6,8]"
+     ]
+    },
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor",
+     "ids": [
+      "anchor[attr,MOVE,1,1]"
+     ],
+     "current_plan_optimal": true,
+     "tried": [
+      {
+       "anchor_customer": 1,
+       "optimum": 351.0
+      }
+     ]
+    },
+    "current_objective": 351,
+    "conclusion": "objective_preferred",
+    "attribution_set": {
+     "constraints": [],
+     "variables": [
+      "e[0,2]",
+      "e[0,4]",
+      "e[0,5]",
+      "e[0,6]",
+      "e[1,4]",
+      "e[1,7]",
+      "e[2,8]",
+      "e[4,5]",
+      "e[4,7]",
+      "e[6,8]"
+     ]
+    },
+    "objective_increase_if_forbidden": 17,
+    "objective_increase_by_term": {
+     "distance": 17
+    },
+    "edges_only_in_current_plan": [
+     {
+      "edge": "e[0,2]",
+      "distance": 43
+     },
+     {
+      "edge": "e[0,5]",
+      "distance": 37
+     },
+     {
+      "edge": "e[1,4]",
+      "distance": 41
+     },
+     {
+      "edge": "e[4,7]",
+      "distance": 29
+     },
+     {
+      "edge": "e[6,8]",
+      "distance": 72
+     }
+    ],
+    "edges_only_in_alternative": [
+     {
+      "edge": "e[0,4]",
+      "distance": 42
+     },
+     {
+      "edge": "e[0,6]",
+      "distance": 47
+     },
+     {
+      "edge": "e[1,7]",
+      "distance": 63
+     },
+     {
+      "edge": "e[2,8]",
+      "distance": 73
+     },
+     {
+      "edge": "e[4,5]",
+      "distance": 14
+     }
+    ],
+    "customers_on_other_vehicle_in_alternative": [
+     4,
+     8
+    ],
+    "alternative_solution": {
+     "routes": [
+      [
+       1,
+       7,
+       2,
+       8
+      ],
+      [
+       4,
+       5,
+       3,
+       6
+      ]
+     ]
+    },
+    "alternative_objective": 368,
+    "solver_objective": 368.0,
+    "alternative_reoriented": [
+     1,
+     2
+    ],
+    "constraint_activity": {
+     "cap[1]": {
+      "load": 99,
+      "capacity": 100,
+      "slack": 1,
+      "binding": false
+     },
+     "cap[2]": {
+      "load": 90,
+      "capacity": 100,
+      "slack": 10,
+      "binding": false
+     },
+     "visit[*]": {
+      "note": "equalities, always active"
+     },
+     "depot_out[*]": {
+      "note": "equalities, always active"
+     }
+    },
+    "lp_relaxation": {
+     "objective": 250.396825,
+     "duals": {
+      "cap[1]": 0.0,
+      "cap[2]": 0.0,
+      "depot_out[1]": 19.0,
+      "depot_out[2]": 19.0,
+      "visit[6]": 75.0,
+      "visit[8]": 69.0
+     },
+     "reduced_costs": {
+      "x[1,6,8]": 0.0,
+      "x[1,8,6]": 0.0,
+      "x[2,6,8]": 0.0,
+      "x[2,8,6]": 0.0
+     },
+     "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+    },
+    "solve_time_s": 0.1149
+   },
+   "explanations": [
+    {
+     "text": "The current plan visits customer 6 and customer 8 one right after the other, driving the direct leg e[6,8] with a distance of 72 km. This decision is not forced by any hard constraint, but it is preferred because it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 17 km, from 351 to 368. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with legs e[0,4], e[0,6], e[1,7], e[2,8], and e[4,5].",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 6 and customer 8 one right after the other, driving the direct leg e[6,8] with a distance of 72 km. This decision is not forced by any hard constraint, but it is preferred because it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 17 km, from 351 to 368. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with legs e[0,4], e[0,6], e[1,7], e[2,8], and e[4,5].",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.994
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 6 and customer 8 one right after the other, driving the direct leg e[6,8] with a distance of 72. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 17, raising the objective from 351 to 368. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with legs e[0,4], e[0,6], e[1,7], e[2,8], and e[4,5].",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 6 and customer 8 one right after the other, driving the direct leg e[6,8] with a distance of 72. This decision is not forced by any constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 17, raising the objective from 351 to 368. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with legs e[0,4], e[0,6], e[1,7], e[2,8], and e[4,5].",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 3.922
+      }
+     ]
+    },
+    {
+     "text": "The current plan visits customer 6 and customer 8 one right after the other, driving the direct leg e[6,8] with a distance of 72 km. This decision is not forced by any hard constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 17 km, from 351 to 368. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with e[0,4], e[0,6], e[1,7], e[2,8], and e[4,5].",
+     "source": "llm",
+     "valid": true,
+     "attempts": [
+      {
+       "sample_index": 0,
+       "text": "The current plan visits customer 6 and customer 8 one right after the other, driving the direct leg e[6,8] with a distance of 72 km. This decision is not forced by any hard constraint, but it keeps the total route length shorter. If the decision were dropped, the plan would still be feasible but the total distance would increase by 17 km, from 351 to 368. In that alternative, customers 4 and 8 would be served by the other vehicle instead. The current plan uses legs e[0,2], e[0,5], e[1,4], e[4,7], and e[6,8], while the alternative would replace them with e[0,4], e[0,6], e[1,7], e[2,8], and e[4,5].",
+       "check": {
+        "ok": true,
+        "unmatched_numbers": [],
+        "unknown_entities": []
+       },
+       "latency_s": 4.006
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

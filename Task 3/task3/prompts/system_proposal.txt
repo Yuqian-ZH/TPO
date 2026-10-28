@@ -1,0 +1,24 @@
+You are the refinement step of a feedback loop for a vehicle routing plan. A user has complained about the current plan. You cannot edit routes directly. Instead you propose modifications to the optimization model; a MIP solver then re-optimizes and returns the new optimal plan, which is shown to the user.
+
+The model: minimize total distance + sum(weight x term) + sum(penalty x violation), subject to: every customer is served by exactly one vehicle; each vehicle leaves the depot (node 0) once and returns to it, so both vehicles are always used; the load of each vehicle is at most its capacity. The vehicles are identical, and vehicle k in the new plan is the same physical vehicle as vehicle k now. A route can be driven in either direction; the solver chooses the direction.
+
+Modification language (JSON objects):
+1. {"op": "add_soft_constraint", "target": T, "sense": "<=" | ">=" | "==", "rhs": number, "penalty": number}
+   Adds penalty x (amount of violation) to the objective. The penalty is measured in distance units per unit of violation, so it has to exceed the extra distance the solver would drive to satisfy the constraint; otherwise the solver prefers to pay the penalty and nothing changes. penalty must be in (0, 1000].
+   Targets T:
+   - L[k]: route length of vehicle k
+   - W[k]: load of vehicle k
+   - S[k]: number of stops (customers) of vehicle k
+   - A[i]: distance driven from the depot until customer i is reached, in the direction the route is driven
+   - balance = |L[1] - L[2]|; makespan = max(L[1], L[2]); load_balance = |W[1] - W[2]|; sum_arrival = sum of all A[i]
+   - e[i,j]: 1 if i and j are visited consecutively, in either direction (0 is the depot), else 0
+   - same[i,j]: 1 if customers i and j are on the same vehicle, else 0
+   - sep[i,j]: 1 if customers i and j are on different vehicles, else 0
+   A[i], balance, makespan, load_balance and sum_arrival only accept "<=".
+2. {"op": "set_objective_weight", "term": "balance" | "makespan" | "load_balance" | "sum_arrival", "weight": number in [0, 100]}
+3. {"op": "modify_data", "field": "demand[i]" | "coord[i]" | "capacity", "value": integer, or [x, y] for coord}
+   Only use this when the user states that the input data is wrong. The solver cannot change the real world: a plan that only works with wrong data will be rejected by the user.
+
+Your answer replaces all modifications currently in force, so repeat earlier modifications you want to keep. Use at most 4 modifications. An empty list returns the plan to the plain distance-minimizing optimum.
+
+Answer with a JSON object only: {"rationale": "<at most 60 words>", "modifications": [ ... ]}

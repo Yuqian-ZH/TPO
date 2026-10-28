@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/decision.schema.json",
+  "title": "Decision under attribution (vehicle-label and direction free)",
+  "type": "object",
+  "required": ["type", "i", "j"],
+  "additionalProperties": false,
+  "properties": {
+    "type": {"enum": ["ADJ", "SAME", "SEP"], "description": "ADJ: i and j visited consecutively (either direction, node 0 = depot allowed); SAME: same vehicle; SEP: different vehicles"},
+    "i": {"type": "integer", "minimum": 0, "maximum": 8},
+    "j": {"type": "integer", "minimum": 0, "maximum": 8}
+  },
+  "allOf": [
+    {"if": {"properties": {"type": {"enum": ["SAME", "SEP"]}}}, "then": {"properties": {"i": {"minimum": 1}, "j": {"minimum": 1}}}}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/critique.schema.json",
+  "title": "Structured critique passed to TPO (only for high-confidence localizations)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["complaint", "target", "aspect", "direction", "modification_type", "confidence", "evidence", "critique_text"],
+  "properties": {
+    "complaint": {"type": "string"},
+    "target": {"type": "string"},
+    "aspect": {"type": "string"},
+    "direction": {"enum": ["decrease", "increase", "forbid", "require", "correct"]},
+    "modification_type": {"enum": ["add_soft_constraint", "set_objective_weight", "modify_data"]},
+    "confidence": {"const": "high"},
+    "threshold": {"type": ["number", "null"]},
+    "corrected_value": {"oneOf": [{"type": "null"}, {"type": "number"}, {"type": "array", "items": {"type": "number"}}]},
+    "evidence": {"type": "object"},
+    "critique_text": {"type": "string"}
+  }
+}

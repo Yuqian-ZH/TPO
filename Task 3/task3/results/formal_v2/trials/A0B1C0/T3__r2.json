@@ -1,0 +1,914 @@
+{
+ "protocol": "task3_v1",
+ "case_id": "T3",
+ "config": "A0B1C0",
+ "run": 2,
+ "flags": {
+  "A": false,
+  "B": true,
+  "C": false,
+  "blind": false,
+  "clar_text": false
+ },
+ "settings": {
+  "max_iters": 3,
+  "n_candidates": 3,
+  "propose_temperature": 0.7,
+  "propose_max_tokens": 800,
+  "select_temperature": 0.0,
+  "select_max_tokens": 200,
+  "tie_diagnostic": true
+ },
+ "localization": null,
+ "iterations": [
+  {
+   "t": 1,
+   "input_solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "mods_before": [],
+   "blocks": [
+    "instance",
+    "plan",
+    "mods_in_force",
+    "complaint"
+   ],
+   "proposal_prompt": "## Instance\nDepot = node 0, customers 1-8, 2 identical vehicles with capacity 100 each. Distances are rounded Euclidean distances (symmetric integers).\n| node | x | y | demand |\n|---|---|---|---|\n| 0 (depot) | 50 | 50 | 0 |\n| 1 | 56 | 46 | 52 |\n| 2 | 14 | 26 | 24 |\n| 3 | 66 | 29 | 49 |\n| 4 | 35 | 11 | 12 |\n| 5 | 49 | 13 | 14 |\n| 6 | 97 | 46 | 16 |\n| 7 | 6 | 8 | 11 |\n| 8 | 42 | 93 | 11 |\n\nDistance matrix (row i, column j):\n     0  1  2  3  4  5  6  7  8\n  0  0  7 43 26 42 37 47 61 44\n  1  7  0 47 20 41 34 41 63 49\n  2 43 47  0 52 26 37 85 20 73\n  3 26 20 52  0 36 23 35 64 68\n  4 42 41 26 36  0 14 71 29 82\n  5 37 34 37 23 14  0 58 43 80\n  6 47 41 85 35 71 58  0 99 72\n  7 61 63 20 64 29 43 99  0 92\n  8 44 49 73 68 82 80 72 92  0\n\n## Current plan\n- Vehicle 1: 0 -> 1 -> 4 -> 7 -> 2 -> 0 | length 140 | load 99 / 100 | stops 4\n- Vehicle 2: 0 -> 5 -> 3 -> 6 -> 8 -> 0 | length 211 | load 90 / 100 | stops 4\n- Arrival distances: A[1]=7, A[2]=97, A[3]=60, A[4]=48, A[5]=37, A[6]=95, A[7]=77, A[8]=167\n- total distance 351, balance 71, makespan 211, load_balance 9, sum_arrival 588\n\n## Modifications currently in force (your answer replaces this list)\nnone\n\n## User complaint\n\"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\"\n\n## Task\nPropose the complete list of modifications for the next plan.",
+   "attribution": null,
+   "candidates": [
+    {
+     "sample": 0,
+     "seed": 1085334465,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 100,
+       "prompt_tokens": 1492,
+       "total_tokens": 1592,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 1024,
+        "image_tokens": null,
+        "text_tokens": 1492
+       }
+      },
+      "latency_s": 3.046,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\":\"Customer 6's arrival distance is 95 km, much more than its 47 km depot distance. Adding a soft constraint to limit A[6] to 47 with a high penalty encourages the solver to visit customer 6 earlier in the route or reassign it to reduce detour.\",\"modifications\":[{\"op\":\"add_soft_constraint\",\"target\":\"A[6]\",\"sense\":\"<=\",\"rhs\":47,\"penalty\":200}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 200
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 200
+      }
+     ],
+     "rationale": "Customer 6's arrival distance is 95 km, much more than its 47 km depot distance. Adding a soft constraint to limit A[6] to 47 with a high penalty encourages the solver to visit customer 6 earlier in the route or reassign it to reduce detour.",
+     "errors": [],
+     "probe": {
+      "feasible": true,
+      "level": "L0",
+      "probe_version": "v2",
+      "raw": {
+       "method": "local",
+       "rule": "task3_v1: escalate on infeasible, remaining soft violation of the query, unchanged plan, or modify_data",
+       "anchor": {
+        "type": "MOVE",
+        "i": 1,
+        "k": 1,
+        "role": "anchor"
+       },
+       "involved_customers": [
+        3,
+        5,
+        6,
+        8
+       ],
+       "level": "L0",
+       "levels_tried": [
+        {
+         "level": "L0",
+         "status": "optimal",
+         "free_customers": [
+          3,
+          5,
+          6,
+          8
+         ],
+         "runtime_s": 0.009396076202392578,
+         "escalate_reason": null
+        }
+       ],
+       "latency": {
+        "with_model_setup_s": 0.010298292007064447,
+        "solve_only_s": 0.009396076202392578
+       },
+       "current_objective": 9951,
+       "current_distance": 351,
+       "feasible": true,
+       "status": "optimal",
+       "objective": 369.0,
+       "solver_objective": 369.0,
+       "total_distance": 369,
+       "change_set": {
+        "moved": [],
+        "added_edges": [
+         [
+          0,
+          6
+         ],
+         [
+          5,
+          8
+         ]
+        ],
+        "removed_edges": [
+         [
+          0,
+          5
+         ],
+         [
+          6,
+          8
+         ]
+        ]
+       },
+       "reversed_routes": [],
+       "metric_changes": {
+        "A[3]": {
+         "before": 60,
+         "after": 82
+        },
+        "A[5]": {
+         "before": 37,
+         "after": 105
+        },
+        "A[6]": {
+         "before": 95,
+         "after": 47
+        },
+        "A[8]": {
+         "before": 167,
+         "after": 185
+        },
+        "L[2]": {
+         "before": 211,
+         "after": 229
+        },
+        "balance": {
+         "before": 71,
+         "after": 89
+        },
+        "makespan": {
+         "before": 211,
+         "after": 229
+        },
+        "sum_arrival": {
+         "before": 588,
+         "after": 648
+        },
+        "total_distance": {
+         "before": 351,
+         "after": 369
+        }
+       },
+       "delta_objective": -9582.0,
+       "delta_distance": 18
+      },
+      "objective": 369.0,
+      "delta_objective": -9582.0,
+      "distance_before": 351,
+      "distance_after": 369,
+      "metric_changes": {
+       "A[3]": [
+        60,
+        82
+       ],
+       "A[5]": [
+        37,
+        105
+       ],
+       "A[6]": [
+        95,
+        47
+       ],
+       "A[8]": [
+        167,
+        185
+       ],
+       "L[2]": [
+        211,
+        229
+       ],
+       "balance": [
+        71,
+        89
+       ],
+       "makespan": [
+        211,
+        229
+       ],
+       "sum_arrival": [
+        588,
+        648
+       ],
+       "total_distance": [
+        351,
+        369
+       ]
+      },
+      "change_set": {
+       "moved": [],
+       "added_edges": [
+        [
+         0,
+         6
+        ],
+        [
+         5,
+         8
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         6,
+         8
+        ]
+       ]
+      },
+      "solution": {
+       "routes": [
+        [
+         1,
+         4,
+         7,
+         2
+        ],
+        [
+         6,
+         3,
+         5,
+         8
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "sample": 1,
+     "seed": 966385669,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 101,
+       "prompt_tokens": 1492,
+       "total_tokens": 1593,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 1024,
+        "image_tokens": null,
+        "text_tokens": 1492
+       }
+      },
+      "latency_s": 3.039,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\":\"Customer 6's arrival distance A[6]=95 is too high. Adding a soft constraint to limit A[6] to 47 (its direct depot distance) with a high penalty will force the solver to place customer 6 early in its route or reassign it, reducing the detour.\",\"modifications\":[{\"op\":\"add_soft_constraint\",\"target\":\"A[6]\",\"sense\":\"<=\",\"rhs\":47,\"penalty\":200}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 200
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 200
+      }
+     ],
+     "rationale": "Customer 6's arrival distance A[6]=95 is too high. Adding a soft constraint to limit A[6] to 47 (its direct depot distance) with a high penalty will force the solver to place customer 6 early in its route or reassign it, reducing the detour.",
+     "errors": [],
+     "probe": {
+      "feasible": true,
+      "level": "L0",
+      "probe_version": "v2",
+      "raw": {
+       "method": "local",
+       "rule": "task3_v1: escalate on infeasible, remaining soft violation of the query, unchanged plan, or modify_data",
+       "anchor": {
+        "type": "MOVE",
+        "i": 1,
+        "k": 1,
+        "role": "anchor"
+       },
+       "involved_customers": [
+        3,
+        5,
+        6,
+        8
+       ],
+       "level": "L0",
+       "levels_tried": [
+        {
+         "level": "L0",
+         "status": "optimal",
+         "free_customers": [
+          3,
+          5,
+          6,
+          8
+         ],
+         "runtime_s": 0.007689952850341797,
+         "escalate_reason": null
+        }
+       ],
+       "latency": {
+        "with_model_setup_s": 0.008358375023817644,
+        "solve_only_s": 0.007689952850341797
+       },
+       "current_objective": 9951,
+       "current_distance": 351,
+       "feasible": true,
+       "status": "optimal",
+       "objective": 369.0,
+       "solver_objective": 369.0,
+       "total_distance": 369,
+       "change_set": {
+        "moved": [],
+        "added_edges": [
+         [
+          0,
+          6
+         ],
+         [
+          5,
+          8
+         ]
+        ],
+        "removed_edges": [
+         [
+          0,
+          5
+         ],
+         [
+          6,
+          8
+         ]
+        ]
+       },
+       "reversed_routes": [],
+       "metric_changes": {
+        "A[3]": {
+         "before": 60,
+         "after": 82
+        },
+        "A[5]": {
+         "before": 37,
+         "after": 105
+        },
+        "A[6]": {
+         "before": 95,
+         "after": 47
+        },
+        "A[8]": {
+         "before": 167,
+         "after": 185
+        },
+        "L[2]": {
+         "before": 211,
+         "after": 229
+        },
+        "balance": {
+         "before": 71,
+         "after": 89
+        },
+        "makespan": {
+         "before": 211,
+         "after": 229
+        },
+        "sum_arrival": {
+         "before": 588,
+         "after": 648
+        },
+        "total_distance": {
+         "before": 351,
+         "after": 369
+        }
+       },
+       "delta_objective": -9582.0,
+       "delta_distance": 18
+      },
+      "objective": 369.0,
+      "delta_objective": -9582.0,
+      "distance_before": 351,
+      "distance_after": 369,
+      "metric_changes": {
+       "A[3]": [
+        60,
+        82
+       ],
+       "A[5]": [
+        37,
+        105
+       ],
+       "A[6]": [
+        95,
+        47
+       ],
+       "A[8]": [
+        167,
+        185
+       ],
+       "L[2]": [
+        211,
+        229
+       ],
+       "balance": [
+        71,
+        89
+       ],
+       "makespan": [
+        211,
+        229
+       ],
+       "sum_arrival": [
+        588,
+        648
+       ],
+       "total_distance": [
+        351,
+        369
+       ]
+      },
+      "change_set": {
+       "moved": [],
+       "added_edges": [
+        [
+         0,
+         6
+        ],
+        [
+         5,
+         8
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         6,
+         8
+        ]
+       ]
+      },
+      "solution": {
+       "routes": [
+        [
+         1,
+         4,
+         7,
+         2
+        ],
+        [
+         6,
+         3,
+         5,
+         8
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "sample": 2,
+     "seed": 653436682,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 96,
+       "prompt_tokens": 1492,
+       "total_tokens": 1588,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 1024,
+        "image_tokens": null,
+        "text_tokens": 1492
+       }
+      },
+      "latency_s": 2.662,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\":\"Customer 6's arrival distance is 95 km. Adding a soft constraint to cap A[6] at 47 (its direct depot distance) with a high penalty encourages the solver to place customer 6 early in its route or reassign it, reducing the detour.\",\"modifications\":[{\"op\":\"add_soft_constraint\",\"target\":\"A[6]\",\"sense\":\"<=\",\"rhs\":47,\"penalty\":100}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 100
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 100
+      }
+     ],
+     "rationale": "Customer 6's arrival distance is 95 km. Adding a soft constraint to cap A[6] at 47 (its direct depot distance) with a high penalty encourages the solver to place customer 6 early in its route or reassign it, reducing the detour.",
+     "errors": [],
+     "probe": {
+      "feasible": true,
+      "level": "L0",
+      "probe_version": "v2",
+      "raw": {
+       "method": "local",
+       "rule": "task3_v1: escalate on infeasible, remaining soft violation of the query, unchanged plan, or modify_data",
+       "anchor": {
+        "type": "MOVE",
+        "i": 1,
+        "k": 1,
+        "role": "anchor"
+       },
+       "involved_customers": [
+        3,
+        5,
+        6,
+        8
+       ],
+       "level": "L0",
+       "levels_tried": [
+        {
+         "level": "L0",
+         "status": "optimal",
+         "free_customers": [
+          3,
+          5,
+          6,
+          8
+         ],
+         "runtime_s": 0.006662130355834961,
+         "escalate_reason": null
+        }
+       ],
+       "latency": {
+        "with_model_setup_s": 0.007250499998917803,
+        "solve_only_s": 0.006662130355834961
+       },
+       "current_objective": 5151,
+       "current_distance": 351,
+       "feasible": true,
+       "status": "optimal",
+       "objective": 369.0,
+       "solver_objective": 369.0,
+       "total_distance": 369,
+       "change_set": {
+        "moved": [],
+        "added_edges": [
+         [
+          0,
+          6
+         ],
+         [
+          5,
+          8
+         ]
+        ],
+        "removed_edges": [
+         [
+          0,
+          5
+         ],
+         [
+          6,
+          8
+         ]
+        ]
+       },
+       "reversed_routes": [],
+       "metric_changes": {
+        "A[3]": {
+         "before": 60,
+         "after": 82
+        },
+        "A[5]": {
+         "before": 37,
+         "after": 105
+        },
+        "A[6]": {
+         "before": 95,
+         "after": 47
+        },
+        "A[8]": {
+         "before": 167,
+         "after": 185
+        },
+        "L[2]": {
+         "before": 211,
+         "after": 229
+        },
+        "balance": {
+         "before": 71,
+         "after": 89
+        },
+        "makespan": {
+         "before": 211,
+         "after": 229
+        },
+        "sum_arrival": {
+         "before": 588,
+         "after": 648
+        },
+        "total_distance": {
+         "before": 351,
+         "after": 369
+        }
+       },
+       "delta_objective": -4782.0,
+       "delta_distance": 18
+      },
+      "objective": 369.0,
+      "delta_objective": -4782.0,
+      "distance_before": 351,
+      "distance_after": 369,
+      "metric_changes": {
+       "A[3]": [
+        60,
+        82
+       ],
+       "A[5]": [
+        37,
+        105
+       ],
+       "A[6]": [
+        95,
+        47
+       ],
+       "A[8]": [
+        167,
+        185
+       ],
+       "L[2]": [
+        211,
+        229
+       ],
+       "balance": [
+        71,
+        89
+       ],
+       "makespan": [
+        211,
+        229
+       ],
+       "sum_arrival": [
+        588,
+        648
+       ],
+       "total_distance": [
+        351,
+        369
+       ]
+      },
+      "change_set": {
+       "moved": [],
+       "added_edges": [
+        [
+         0,
+         6
+        ],
+        [
+         5,
+         8
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         6,
+         8
+        ]
+       ]
+      },
+      "solution": {
+       "routes": [
+        [
+         1,
+         4,
+         7,
+         2
+        ],
+        [
+         6,
+         3,
+         5,
+         8
+        ]
+       ]
+      }
+     }
+    }
+   ],
+   "selection": {
+    "called": true,
+    "seed": 1856144054,
+    "prompt": "## Instance\nDepot = node 0, customers 1-8, 2 identical vehicles with capacity 100 each. Distances are rounded Euclidean distances (symmetric integers).\n| node | x | y | demand |\n|---|---|---|---|\n| 0 (depot) | 50 | 50 | 0 |\n| 1 | 56 | 46 | 52 |\n| 2 | 14 | 26 | 24 |\n| 3 | 66 | 29 | 49 |\n| 4 | 35 | 11 | 12 |\n| 5 | 49 | 13 | 14 |\n| 6 | 97 | 46 | 16 |\n| 7 | 6 | 8 | 11 |\n| 8 | 42 | 93 | 11 |\n\nDistance matrix (row i, column j):\n     0  1  2  3  4  5  6  7  8\n  0  0  7 43 26 42 37 47 61 44\n  1  7  0 47 20 41 34 41 63 49\n  2 43 47  0 52 26 37 85 20 73\n  3 26 20 52  0 36 23 35 64 68\n  4 42 41 26 36  0 14 71 29 82\n  5 37 34 37 23 14  0 58 43 80\n  6 47 41 85 35 71 58  0 99 72\n  7 61 63 20 64 29 43 99  0 92\n  8 44 49 73 68 82 80 72 92  0\n\n## Current plan\n- Vehicle 1: 0 -> 1 -> 4 -> 7 -> 2 -> 0 | length 140 | load 99 / 100 | stops 4\n- Vehicle 2: 0 -> 5 -> 3 -> 6 -> 8 -> 0 | length 211 | load 90 / 100 | stops 4\n- Arrival distances: A[1]=7, A[2]=97, A[3]=60, A[4]=48, A[5]=37, A[6]=95, A[7]=77, A[8]=167\n- total distance 351, balance 71, makespan 211, load_balance 9, sum_arrival 588\n\n## Modifications currently in force (your answer replaces this list)\nnone\n\n## User complaint\n\"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\"\n\n## Candidates\nCandidate 1: [{\"op\": \"add_soft_constraint\", \"target\": \"A[6]\", \"sense\": \"<=\", \"rhs\": 47, \"penalty\": 200}]\n  proposer's rationale: Customer 6's arrival distance is 95 km, much more than its 47 km depot distance. Adding a soft constraint to limit A[6] to 47 with a high penalty encourages the solver to visit customer 6 earlier in the route or reassign it to reduce detour.\n  predicted outcome: total distance 351 -> 369; customers changing vehicle: []; edges removed: [[0, 5], [6, 8]]; edges added: [[0, 6], [5, 8]]\n  changed indicators: A[3] 60->82, A[5] 37->105, A[6] 95->47, A[8] 167->185, L[2] 211->229, balance 71->89, makespan 211->229, sum_arrival 588->648\nCandidate 2: [{\"op\": \"add_soft_constraint\", \"target\": \"A[6]\", \"sense\": \"<=\", \"rhs\": 47, \"penalty\": 200}]\n  proposer's rationale: Customer 6's arrival distance A[6]=95 is too high. Adding a soft constraint to limit A[6] to 47 (its direct depot distance) with a high penalty will force the solver to place customer 6 early in its route or reassign it, reducing the detour.\n  predicted outcome: total distance 351 -> 369; customers changing vehicle: []; edges removed: [[0, 5], [6, 8]]; edges added: [[0, 6], [5, 8]]\n  changed indicators: A[3] 60->82, A[5] 37->105, A[6] 95->47, A[8] 167->185, L[2] 211->229, balance 71->89, makespan 211->229, sum_arrival 588->648\nCandidate 3: [{\"op\": \"add_soft_constraint\", \"target\": \"A[6]\", \"sense\": \"<=\", \"rhs\": 47, \"penalty\": 100}]\n  proposer's rationale: Customer 6's arrival distance is 95 km. Adding a soft constraint to cap A[6] at 47 (its direct depot distance) with a high penalty encourages the solver to place customer 6 early in its route or reassign it, reducing the detour.\n  predicted outcome: total distance 351 -> 369; customers changing vehicle: []; edges removed: [[0, 5], [6, 8]]; edges added: [[0, 6], [5, 8]]\n  changed indicators: A[3] 60->82, A[5] 37->105, A[6] 95->47, A[8] 167->185, L[2] 211->229, balance 71->89, makespan 211->229, sum_arrival 588->648\n\n## Task\nChoose the candidate to commit.",
+    "llm": {
+     "parse_status": "json_ok",
+     "usage": {
+      "completion_tokens": 43,
+      "prompt_tokens": 1758,
+      "total_tokens": 1801,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+       "audio_tokens": null,
+       "cache_write_tokens": null,
+       "cached_tokens": 0,
+       "image_tokens": null,
+       "text_tokens": 1758
+      }
+     },
+     "latency_s": 1.897,
+     "returned_model": "qwen3.8-max",
+     "attempts": 1,
+     "reasoning_present": false
+    },
+    "content": "{\"choice\": 1, \"reason\": \"All candidates predict identical outcomes. Penalty 200 more reliably enforces A[6]<=47 to address the detour complaint without unnecessary extra distance.\"}",
+    "ok": true,
+    "index": 0,
+    "reason": "All candidates predict identical outcomes. Penalty 200 more reliably enforces A[6]<=47 to address the detour complaint without unnecessary extra distance."
+   },
+   "chosen_sample": 0,
+   "commit": {
+    "status": "optimal",
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor"
+    },
+    "solver_runtime_s": 0.08837485313415527,
+    "wall_s": 0.09366779201081954,
+    "objective": 368.0,
+    "metrics": {
+     "L[1]": 207,
+     "W[1]": 98,
+     "S[1]": 4,
+     "L[2]": 161,
+     "W[2]": 91,
+     "S[2]": 4,
+     "A[1]": 7,
+     "A[2]": 90,
+     "A[3]": 82,
+     "A[4]": 119,
+     "A[5]": 105,
+     "A[6]": 47,
+     "A[7]": 70,
+     "A[8]": 163,
+     "total_distance": 368,
+     "balance": 46,
+     "makespan": 207,
+     "load_balance": 7,
+     "sum_arrival": 683
+    },
+    "reoriented": [
+     1
+    ]
+   },
+   "tie": {
+    "oracle_feasible": true,
+    "oracle_objective": 368.0,
+    "matches_commit": true,
+    "n_optimal": 2,
+    "n_optimal_resolving": 2
+   },
+   "probe_vs_commit": {
+    "feasible": true,
+    "objective_1pct": true,
+    "change_set": false
+   },
+   "illegal_data_mods": [],
+   "status": "committed",
+   "note": null,
+   "committed_mods": [
+    {
+     "op": "add_soft_constraint",
+     "target": "A[6]",
+     "sense": "<=",
+     "rhs": 47,
+     "penalty": 200
+    }
+   ],
+   "solution_after": {
+    "routes": [
+     [
+      1,
+      7,
+      2,
+      8
+     ],
+     [
+      6,
+      3,
+      5,
+      4
+     ]
+    ]
+   },
+   "verdict": {
+    "resolved": true,
+    "feasible": true,
+    "checker": {
+     "passed": true,
+     "value": 1.0,
+     "threshold": 1.5
+    }
+   },
+   "label_swap_resolved": true,
+   "wall_s": 10.7949
+  }
+ ],
+ "outcome": "converged",
+ "converged": true,
+ "converged_at": 1,
+ "final_solution": {
+  "routes": [
+   [
+    1,
+    7,
+    2,
+    8
+   ],
+   [
+    6,
+    3,
+    5,
+    4
+   ]
+  ]
+ },
+ "final_mods": [
+  {
+   "op": "add_soft_constraint",
+   "target": "A[6]",
+   "sense": "<=",
+   "rhs": 47,
+   "penalty": 200
+  }
+ ]
+}

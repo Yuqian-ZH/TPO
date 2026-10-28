@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/counterfactual_output.schema.json",
+  "title": "Output of counterfactual()",
+  "type": "object",
+  "required": ["query", "method", "anchor", "feasible", "latency", "current_objective", "current_distance"],
+  "properties": {
+    "query": {"$ref": "query.schema.json"},
+    "method": {"enum": ["local", "full"]},
+    "feasible": {"type": "boolean"},
+    "level": {"enum": ["L0", "L1", "L2", null]},
+    "latency": {"type": "object", "required": ["with_model_setup_s", "solve_only_s"]},
+    "change_set": {"type": "object", "required": ["moved", "added_edges", "removed_edges"]},
+    "reversed_routes": {"type": "array", "items": {"enum": [1, 2]}}
+  },
+  "allOf": [
+    {"if": {"properties": {"feasible": {"const": true}}},
+     "then": {"required": ["objective", "total_distance", "delta_objective", "delta_distance", "change_set",
+                           "reversed_routes", "metric_changes", "solution"]}},
+    {"if": {"properties": {"method": {"const": "local"}, "feasible": {"const": false}}},
+     "then": {"properties": {"levels_tried": {"minItems": 3}}, "required": ["levels_tried"]}}
+  ]
+}

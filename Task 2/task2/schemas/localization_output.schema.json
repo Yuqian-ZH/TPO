@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/localization_output.schema.json",
+  "title": "Output of localize(); a low-confidence result carries a clarifying question and no critique",
+  "type": "object",
+  "required": ["complaint", "confidence", "critique", "clarifying_question", "diagnostics"],
+  "properties": {
+    "complaint": {"type": "string"},
+    "clarification": {"type": ["object", "null"]},
+    "confidence": {"enum": ["high", "low"]},
+    "critique": {"oneOf": [{"type": "null"}, {"$ref": "critique.schema.json"}]},
+    "clarifying_question": {"type": ["string", "null"]},
+    "diagnostics": {"type": "object", "required": ["samples", "valid_samples", "invalid_samples", "majority_target",
+                                                     "majority_modification_type", "majority_count",
+                                                     "non_ambiguous_count"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"confidence": {"const": "low"}}},
+     "then": {"properties": {"critique": {"type": "null"}, "clarifying_question": {"type": "string", "minLength": 1}}}},
+    {"if": {"properties": {"confidence": {"const": "high"}}},
+     "then": {"properties": {"critique": {"type": "object"}}}}
+  ]
+}

@@ -1,0 +1,16 @@
+# Feedback validator: mechanism demonstration
+
+Offline, Gurobi only. Starting points are sessions from Task 4's end-to-end run; the feedback text is illustrative and enters as the structured claim the localizer would extract.
+
+| ID | Situation | User says | Claim | Evidence | Verdict | Flags | Expected |
+|---|---|---|---|---|---|---|---|
+| V1 | T2 session after accepting W[1] <= 92 (plan v1) | "Vehicle 1 now drives 235 km; that is too far." | `{"target": "L[1]", "direction": "decrease"}` | L[1] = 235; without the user's W[1] input: L[1] = 140, total distance 390 -> 351 | **self_imposed** | conflicts_with_user_input | self_imposed |
+| V2 | T9 session, user-entered demand[3] = 54 (plan v0) | "Customers 2 and 5 should share a truck." | `{"decision": {"type": "SEP", "i": 2, "j": 5}}` | attribution: hard_constraint_forced by ['cap[1]', 'cap[2]']; without demand[3] = 54: objective_preferred | **self_imposed** | forced_by_user_data | self_imposed |
+| V2b | same T9 session (control: a real physical limit) | "Customers 1 and 3 should share a truck." | `{"decision": {"type": "SEP", "i": 1, "j": 3}}` | attribution: hard_constraint_forced by ['cap[1]', 'cap[2]']; without demand[3] = 54: hard_constraint_forced | **hard_constraint** | forced_by_physical_constraint | hard_constraint |
+| V3 | T2: accepted plan v1 after the W[1] <= 92 fix | "Thanks for putting customers 3 and 5 on the same truck." | `{"decision": {"type": "SAME", "i": 3, "j": 5}}` | held before: True, after: True; before the fix it was objective_preferred | **exclude_from_training** | credit_misattributed | exclude_from_training |
+| V4 | T2: accepted plan v1 | "Great, customer 3 now gets its delivery early." | `{"target": "A[3]", "direction": "decrease"}` | A[3] 60 -> 129 | **exclude_from_training** | praised_change_absent | exclude_from_training |
+| V5 | T2 plan v0 refined with an unstated capacity change (constructed) | "Good, the second driver has fewer stops now." | `{"target": "S[2]", "direction": "decrease"}` | S[2] 4 -> 2; loads {1: 124, 2: 65} vs capacity 100 on confirmed data | **incident** | infeasible_on_confirmed_data | incident |
+| V6 | T2: accepted plan v1 (control: valid praise) | "Good, vehicle 1 is no longer loaded to the limit." | `{"target": "W[1]", "direction": "decrease"}` | W[1] 99 -> 91 | **usable_positive** | none | usable_positive |
+| V7 | T2 session plan v1 (control: user inputs present but not the cause) | "Vehicle 2 still has too many stops." | `{"target": "S[2]", "direction": "decrease"}` | S[2] = 4; without the user's W[1] input: S[2] = 4, total distance 390 -> 351 | **genuine** | none | genuine |
+| V8 | T1 session plan v0 (control: no user inputs) | "Vehicle 2 is on the road for 211 km." | `{"target": "L[2]", "direction": "decrease"}` | L[2] = 211; no user inputs to drop | **genuine** | none | genuine |
+| V9 | constructed day: user entered demand[3] = 62 and capacity 110 (no plan without the capacity entry; the v1 validator crashed here) | "Vehicle 2 drives too far." | `{"target": "L[2]", "direction": "decrease"}` | L[2] = 211; without the user's demand[3] input: L[2] = 155, total distance 351 -> 319; without the user's capacity input: no feasible plan | **self_imposed** | conflicts_with_user_input | self_imposed |

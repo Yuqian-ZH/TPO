@@ -1,0 +1,45 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.18it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.00it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:01,  1.02s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.30it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.18it/s]
+Device set to use cuda:0
+Processing Chunk:   0%|                                   | 0/5 [00:00<?, ?it/s]Processing Chunk: 100%|█████████████████████████| 5/5 [00:00<00:00, 1950.29it/s]
+Completing Futures:   0%|                                 | 0/5 [00:00<?, ?it/s]Completing Futures:   0%|                                 | 0/5 [00:13<?, ?it/s]
+Traceback (most recent call last):
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "/home/yuqian/TPO/textgrad-main/textgrad/engine/openai.py", line 249, in generate
+    return self._generate_from_single_prompt(content, system_prompt=system_prompt, **kwargs)
+  File "/home/yuqian/TPO/textgrad-main/textgrad/engine/openai.py", line 268, in _generate_from_single_prompt
+    response = self.client.chat.completions.create(
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/openai/_utils/_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py", line 1296, in create
+    return self._post(
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/openai/_base_client.py", line 1375, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/openai/_base_client.py", line 1148, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Internal Server Error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yuqian/TPO/run.py", line 164, in <module>
+    answer = future.result()
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/yuqian/TPO/tpo_utils.py", line 130, in run_test_time_training_tpo
+    init_responses = llm_engine(query, **gen_params)
+  File "/home/yuqian/TPO/textgrad-main/textgrad/engine/openai.py", line 291, in __call__
+    return self.generate(prompt, **kwargs)
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/tenacity/__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "/dataMeR2/Yuqian/miniconda3/envs/tpo/lib/python3.10/site-packages/tenacity/__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x7f23c26bd9c0 state=finished raised InternalServerError>]

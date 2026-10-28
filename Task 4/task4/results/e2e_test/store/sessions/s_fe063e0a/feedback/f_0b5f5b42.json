@@ -1,0 +1,728 @@
+{
+ "feedback_id": "f_0b5f5b42",
+ "session_id": "s_fe063e0a",
+ "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+ "received_at": "2026-10-23T13:12:57.895+08:00",
+ "solution": {
+  "version": 0,
+  "routes": [
+   [
+    1,
+    4,
+    7,
+    2
+   ],
+   [
+    5,
+    3,
+    6,
+    8
+   ]
+  ]
+ },
+ "config": "A1B1C1",
+ "max_iterations": 3,
+ "session_modifications": [],
+ "accepted_modifications": [],
+ "status": "resolved",
+ "status_history": [
+  {
+   "status": "received",
+   "time": "2026-10-23T13:12:57.895+08:00"
+  },
+  {
+   "status": "processing",
+   "time": "2026-10-23T13:12:57.896+08:00",
+   "job": "process_feedback"
+  },
+  {
+   "status": "needs_clarification",
+   "time": "2026-10-23T13:13:11.746+08:00"
+  },
+  {
+   "status": "received",
+   "time": "2026-10-23T13:13:11.751+08:00"
+  },
+  {
+   "status": "processing",
+   "time": "2026-10-23T13:13:11.752+08:00",
+   "job": "process_clarification"
+  },
+  {
+   "status": "awaiting_reply",
+   "time": "2026-10-23T13:13:30.702+08:00",
+   "iteration": 1
+  },
+  {
+   "status": "resolved",
+   "time": "2026-10-23T13:13:30.709+08:00"
+  }
+ ],
+ "localization": {
+  "case_id": "f_0b5f5b42",
+  "run": 1,
+  "initial": {
+   "confidence": "low",
+   "clarification_question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?",
+   "critique": null,
+   "raw": {
+    "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": true,
+        "clarifying_question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?",
+        "rationale": "The user says a number for customer 7 is wrong and should be 18, but does not specify whether this refers to the demand (currently 11) or one of the location coordinates (currently 6, 8)."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": true,
+        "clarifying_question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its coordinates?",
+        "rationale": "The user says a number for customer 7 is wrong and should be 18, but does not specify whether they mean the demand (currently 11) or one of the location coordinates (currently 6 or 8)."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": true,
+        "clarifying_question": "Which value for customer 7 should be corrected to 18: its demand, its x-coordinate, or its y-coordinate?",
+        "rationale": "The user says a number for customer 7 is wrong and should be 18, but does not specify whether they mean the demand (currently 11) or one of the location coordinates (currently 6, 8)."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": true,
+        "clarifying_question": "Which attribute of customer 7 should be 18—its demand, or one of its coordinates?",
+        "rationale": "The user says a number for customer 7 is wrong and should be 18, but does not specify whether they mean the demand (currently 11) or a coordinate (currently x=6, y=8)."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": true,
+        "clarifying_question": "Which attribute of customer 7 should be 18: its demand, or one of its coordinates?",
+        "rationale": "The user says a number for customer 7 is wrong and should be 18, but does not specify whether they mean the demand (currently 11) or a coordinate (currently x=6 or y=8)."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[7]",
+     "majority_key_target": "demand[7]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 0,
+     "target_counts": {
+      "demand[7]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "low",
+    "critique": null,
+    "clarifying_question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?"
+   }
+  },
+  "asked": true,
+  "question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?",
+  "answer": "I mean the order size: customer 7 now orders 18 units, not 11.",
+  "after_clarification": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+    "target": "demand[7]",
+    "aspect": "demand",
+    "direction": "correct",
+    "modification_type": "modify_data",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": 18,
+    "evidence": {
+     "demand[7]": 11,
+     "W[1]": 99,
+     "W[2]": 90,
+     "capacity": 100
+    },
+    "critique_text": "User complaint: \"One of the numbers you have for customer 7 is wrong. It should be 18.\" It targets demand[7] (demand); current values: demand[7] = 11, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 18."
+   },
+   "raw": {
+    "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+    "clarification": {
+     "question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?",
+     "answer": "I mean the order size: customer 7 now orders 18 units, not 11."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's order size (demand) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[7]",
+     "majority_key_target": "demand[7]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "demand[7]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+     "target": "demand[7]",
+     "aspect": "demand",
+     "direction": "correct",
+     "modification_type": "modify_data",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": 18,
+     "evidence": {
+      "demand[7]": 11,
+      "W[1]": 99,
+      "W[2]": 90,
+      "capacity": 100
+     },
+     "critique_text": "User complaint: \"One of the numbers you have for customer 7 is wrong. It should be 18.\" It targets demand[7] (demand); current values: demand[7] = 11, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 18."
+    },
+    "clarifying_question": null
+   }
+  },
+  "final": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+    "target": "demand[7]",
+    "aspect": "demand",
+    "direction": "correct",
+    "modification_type": "modify_data",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": 18,
+    "evidence": {
+     "demand[7]": 11,
+     "W[1]": 99,
+     "W[2]": 90,
+     "capacity": 100
+    },
+    "critique_text": "User complaint: \"One of the numbers you have for customer 7 is wrong. It should be 18.\" It targets demand[7] (demand); current values: demand[7] = 11, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 18."
+   },
+   "raw": {
+    "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+    "clarification": {
+     "question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?",
+     "answer": "I mean the order size: customer 7 now orders 18 units, not 11."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's order size (demand) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         7
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 18,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 7's demand (order size) should be corrected from 11 to 18 units."
+       },
+       "valid": true,
+       "target": "demand[7]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[7]",
+     "majority_key_target": "demand[7]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "demand[7]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+     "target": "demand[7]",
+     "aspect": "demand",
+     "direction": "correct",
+     "modification_type": "modify_data",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": 18,
+     "evidence": {
+      "demand[7]": 11,
+      "W[1]": 99,
+      "W[2]": 90,
+      "capacity": 100
+     },
+     "critique_text": "User complaint: \"One of the numbers you have for customer 7 is wrong. It should be 18.\" It targets demand[7] (demand); current values: demand[7] = 11, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 18."
+    },
+    "clarifying_question": null
+   }
+  }
+ },
+ "critique": {
+  "source": "feedback_localization",
+  "text": "User complaint: \"One of the numbers you have for customer 7 is wrong. It should be 18.\" It targets demand[7] (demand); current values: demand[7] = 11, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 18.",
+  "structured": {
+   "target": "demand[7]",
+   "aspect": "demand",
+   "direction": "correct",
+   "modification_type": "modify_data",
+   "confidence": "high",
+   "threshold": null,
+   "corrected_value": 18,
+   "evidence": {
+    "demand[7]": 11,
+    "W[1]": 99,
+    "W[2]": 90,
+    "capacity": 100
+   }
+  },
+  "clarification": {
+   "question": "Which attribute of customer 7 should be corrected to 18: its demand, or one of its location coordinates?",
+   "answer": "I mean the order size: customer 7 now orders 18 units, not 11."
+  }
+ },
+ "trial": {
+  "t": 1,
+  "plan_version": 1,
+  "sol": {
+   "routes": [
+    [
+     1,
+     5,
+     4,
+     7
+    ],
+    [
+     2,
+     3,
+     6,
+     8
+    ]
+   ]
+  },
+  "mods": [
+   {
+    "op": "modify_data",
+    "field": "demand[7]",
+    "value": 18
+   }
+  ],
+  "history": [
+   {
+    "t": 1,
+    "status": "committed",
+    "mods": [
+     {
+      "op": "modify_data",
+      "field": "demand[7]",
+      "value": 18
+     }
+    ],
+    "feedback": "(awaiting the user's reply)",
+    "note": null,
+    "plan_lines": [
+     "- Vehicle 1: 0 -> 1 -> 5 -> 4 -> 7 -> 0 | length 145 | load 96 / 100 | stops 4",
+     "- Vehicle 2: 0 -> 2 -> 3 -> 6 -> 8 -> 0 | length 246 | load 100 / 100 | stops 4",
+     "- Arrival distances: A[1]=7, A[2]=43, A[3]=95, A[4]=55, A[5]=41, A[6]=130, A[7]=84, A[8]=202",
+     "- total distance 391, balance 101, makespan 246, load_balance 4, sum_arrival 657"
+    ]
+   }
+  ]
+ },
+ "last_feedback_text": "The new plan still doesn't fix my complaint: One of the numbers you have for customer 7 is wrong. It should be 18.",
+ "iterations": [
+  {
+   "iteration": 1,
+   "trigger": "clarification",
+   "status": "committed",
+   "note": null,
+   "rationale": "The user corrected customer 7's demand from 11 to 18. This increases vehicle 1's load from 99 to 106, exceeding capacity 100. The solver will reassign customers to respect the corrected demand and capacity constraints.",
+   "committed_modifications": [
+    {
+     "op": "modify_data",
+     "field": "demand[7]",
+     "value": 18
+    }
+   ],
+   "feasibility": {
+    "iteration_status": "committed",
+    "solver_status": "optimal",
+    "feasible": true,
+    "feasible_on_confirmed_data": true,
+    "data_modifications_in_force": [
+     {
+      "op": "modify_data",
+      "field": "demand[7]",
+      "value": 18
+     }
+    ],
+    "checked_by": "canon.is_feasible: two non-empty routes, every customer exactly once, capacity"
+   },
+   "time": "2026-10-23T13:13:30.701+08:00",
+   "input_version": 0,
+   "plan_version": 1,
+   "new_plan": true,
+   "changes": {
+    "moved": [
+     2,
+     5
+    ],
+    "added_edges": [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "removed_edges": [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "reversed": []
+   }
+  }
+ ],
+ "replies": [
+  {
+   "iteration": 1,
+   "plan_version": 1,
+   "resolved": true,
+   "stop": false,
+   "comment": null,
+   "time": "2026-10-23T13:13:30.709+08:00"
+  }
+ ],
+ "usage": {
+  "requests": 14,
+  "completion_tokens": 1306,
+  "llm_latency_s": 31.935,
+  "failed_requests": 0,
+  "prompt_tokens": 31219
+ },
+ "error": null
+}

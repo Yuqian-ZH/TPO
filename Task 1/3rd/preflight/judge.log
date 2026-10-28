@@ -1,0 +1,34 @@
+/dataMeR2/Yuqian/miniconda3/envs/aeval/lib/python3.10/site-packages/alpaca_eval/utils.py:20: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+INFO:root:Evaluating the tulu3-8b-sft-step2 outputs.
+INFO:root:Creating the annotator from `/home/yuqian/TPO_fixed/runs/task1_frozen_v1_20261020T212426-0700/preflight/judge_config/configs.yaml`.
+INFO:root:Saving annotations to `/home/yuqian/TPO_fixed/runs/task1_frozen_v1_20261020T212426-0700/preflight/judge_config/annotations_seed0_configs.json`.
+
+Annotation chunk:   0%|          | 0/1 [00:00<?, ?it/s]INFO:root:Annotating 3 examples with weighted_qwen3_8_max
+INFO:root:Using `openai_completions` on 3 prompts using qwen3.8-max.
+INFO:root:Kwargs to completion: {'model': 'qwen3.8-max', 'temperature': 1, 'logprobs': True, 'top_logprobs': 5, 'client_config_path': 'client_configs.yaml', 'extra_body': {'enable_thinking': False}, 'is_chat': True}. num_procs=4
+
+
+prompt_batches:   0%|          | 0/3 [00:00<?, ?it/s][AINFO:root:Using OAI client number 1 out of 1.
+INFO:root:Using OAI client number 1 out of 1.
+INFO:root:Using OAI client number 1 out of 1.
+INFO:httpx2:HTTP Request: POST <DASHSCOPE_BASE_URL>/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST <DASHSCOPE_BASE_URL>/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST <DASHSCOPE_BASE_URL>/chat/completions "HTTP/1.1 200 OK"
+
+
+prompt_batches:  33%|███▎      | 1/3 [00:02<00:05,  2.93s/it][A
+prompt_batches: 100%|██████████| 3/3 [00:02<00:00,  1.02it/s]
+INFO:root:Completed 3 examples in 2.9 seconds.
+WARNING:root:Unknown model qwen3.8-max for computing price per token.
+WARNING:root:Unknown model qwen3.8-max for computing price per token.
+WARNING:root:Unknown model qwen3.8-max for computing price per token.
+INFO:root:Saving all annotations to /home/yuqian/TPO_fixed/runs/task1_frozen_v1_20261020T212426-0700/preflight/judge_config/annotations_seed0_configs.json.
+
+Annotation chunk: 100%|██████████| 1/1 [00:02<00:00,  2.96s/it]
+Annotation chunk: 100%|██████████| 1/1 [00:02<00:00,  2.96s/it]
+INFO:root:Saving all results to /home/yuqian/TPO_fixed/runs/task1_frozen_v1_20261020T212426-0700/preflight/eval_out/step2
+|                    |   win_rate |   standard_error | mode      |   avg_length |   n_wins |   n_wins_base |   n_draws |   n_total |   discrete_win_rate |
+|:-------------------|-----------:|-----------------:|:----------|-------------:|---------:|--------------:|----------:|----------:|--------------------:|
+| tulu3-8b-sft-step2 |    30.1551 |           30.155 | community |          647 |        1 |             2 |         0 |         3 |             33.3333 |
+PHASE3_STEP2_PASS: 3 valid judged examples.

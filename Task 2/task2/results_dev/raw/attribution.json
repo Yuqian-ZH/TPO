@@ -1,0 +1,720 @@
+{
+ "D1": {
+  "output": {
+   "decision": {
+    "type": "ADJ",
+    "i": 1,
+    "j": 4
+   },
+   "decision_text": "ADJ(1,4)",
+   "decision_description": "customer 1 and customer 4 are visited one right after the other (the direct leg e[1,4])",
+   "perturbation": {
+    "constraint": "FORBID_ADJ",
+    "ids": [
+     "perturbation[attr,FORBID_ADJ,1,4]"
+    ]
+   },
+   "current_objective": 351,
+   "conclusion": "objective_preferred",
+   "attribution_set": {
+    "constraints": [],
+    "variables": [
+     "e[0,2]",
+     "e[0,4]",
+     "e[1,2]",
+     "e[1,4]"
+    ]
+   },
+   "objective_increase_if_forbidden": 5,
+   "objective_increase_by_term": {
+    "distance": 5
+   },
+   "edges_only_in_current_plan": [
+    {
+     "edge": "e[0,2]",
+     "distance": 43
+    },
+    {
+     "edge": "e[1,4]",
+     "distance": 41
+    }
+   ],
+   "edges_only_in_alternative": [
+    {
+     "edge": "e[0,4]",
+     "distance": 42
+    },
+    {
+     "edge": "e[1,2]",
+     "distance": 47
+    }
+   ],
+   "customers_on_other_vehicle_in_alternative": [],
+   "alternative_solution": {
+    "routes": [
+     [
+      1,
+      2,
+      7,
+      4
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "alternative_objective": 356,
+   "constraint_activity": {
+    "cap[1]": {
+     "load": 99,
+     "capacity": 100,
+     "slack": 1,
+     "binding": false
+    },
+    "cap[2]": {
+     "load": 90,
+     "capacity": 100,
+     "slack": 10,
+     "binding": false
+    },
+    "visit[*]": {
+     "note": "equalities, always active"
+    },
+    "depot_out[*]": {
+     "note": "equalities, always active"
+    }
+   },
+   "lp_relaxation": {
+    "objective": 250.396825,
+    "duals": {
+     "cap[1]": 0.0,
+     "cap[2]": 0.0,
+     "depot_out[1]": 19.0,
+     "depot_out[2]": 19.0,
+     "visit[1]": -5.0,
+     "visit[4]": 3.0
+    },
+    "reduced_costs": {
+     "x[1,1,4]": 42.0,
+     "x[1,4,1]": 42.0,
+     "x[2,1,4]": 42.0,
+     "x[2,4,1]": 42.0
+    },
+    "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+   },
+   "solve_time_s": 0.098
+  },
+  "explanations": [
+   {
+    "text": "The current plan visits customer 1 and customer 4 one right after the other, using the direct leg e[1,4] with a distance of 41 km. This decision is not forced by any constraint, but it keeps the total route length at 351 km. If the decision were dropped, the plan would still be feasible but the total distance would increase by 5 km to 356 km. In that alternative, the plan would no longer drive legs e[0,2] with a distance of 43 km and e[1,4] with a distance of 41 km, and would instead drive legs e[0,4] with a distance of 42 km and e[1,2] with a distance of 47 km. No customers would be moved to the other vehicle in this alternative.",
+    "source": "llm",
+    "valid": true,
+    "attempts": [
+     {
+      "sample_index": 0,
+      "text": "The current plan visits customer 1 and customer 4 one right after the other, using the direct leg e[1,4] with a distance of 41 km. This decision is not forced by any constraint, but it keeps the total route length at 351 km. If the decision were dropped, the plan would still be feasible but the total distance would increase by 5 km to 356 km. In that alternative, the plan would no longer drive legs e[0,2] with a distance of 43 km and e[1,4] with a distance of 41 km, and would instead drive legs e[0,4] with a distance of 42 km and e[1,2] with a distance of 47 km. No customers would be moved to the other vehicle in this alternative.",
+      "check": {
+       "ok": true,
+       "unmatched_numbers": [],
+       "unknown_entities": []
+      },
+      "latency_s": 3.403
+     }
+    ]
+   }
+  ]
+ },
+ "D2": {
+  "output": {
+   "decision": {
+    "type": "SEP",
+    "i": 2,
+    "j": 4
+   },
+   "decision_text": "SEP(2,4)",
+   "decision_description": "customers 2 and 4 are served by different vehicles",
+   "perturbation": {
+    "constraint": "FORCE_SAME",
+    "ids": [
+     "perturbation[attr,FORCE_SAME,2,4][1]",
+     "perturbation[attr,FORCE_SAME,2,4][2]"
+    ]
+   },
+   "current_objective": 368,
+   "conclusion": "hard_constraint_forced",
+   "attribution_set": {
+    "constraints": [
+     "cap[1]",
+     "cap[2]"
+    ],
+    "variables": []
+   },
+   "iis": {
+    "constraints_by_category": {
+     "business_specific": [
+      "cap[1]",
+      "cap[2]"
+     ],
+     "business_general": [
+      "visit[1]",
+      "visit[2]",
+      "visit[3]",
+      "visit[4]",
+      "visit[5]",
+      "visit[6]",
+      "visit[7]",
+      "visit[8]"
+     ],
+     "structural": [],
+     "convention": [],
+     "perturbation": [
+      "perturbation[attr,FORCE_SAME,2,4][1]"
+     ],
+     "soft": []
+    },
+    "var_lower_bounds": [],
+    "var_upper_bounds": [],
+    "note": "IIS is one irreducible infeasible subset; it need not be unique. Only business-specific constraints enter the attribution set."
+   },
+   "constraint_activity": {
+    "cap[1]": {
+     "load": 98,
+     "capacity": 100,
+     "slack": 2,
+     "binding": false
+    },
+    "cap[2]": {
+     "load": 96,
+     "capacity": 100,
+     "slack": 4,
+     "binding": false
+    },
+    "visit[*]": {
+     "note": "equalities, always active"
+    },
+    "depot_out[*]": {
+     "note": "equalities, always active"
+    }
+   },
+   "lp_relaxation": {
+    "objective": 250.128866,
+    "duals": {
+     "cap[1]": 0.0,
+     "cap[2]": 0.0,
+     "depot_out[1]": 19.0,
+     "depot_out[2]": 19.0,
+     "visit[2]": 49.0,
+     "visit[4]": 3.0
+    },
+    "reduced_costs": {
+     "y[1,2]": 0.0,
+     "y[1,4]": 0.0,
+     "y[2,2]": 0.0,
+     "y[2,4]": 0.0
+    },
+    "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+   },
+   "solve_time_s": 0.0439
+  },
+  "explanations": [
+   {
+    "text": "The current plan assigns customers 2 and 4 to different vehicles, and this decision is forced by the capacity constraints of both vehicles. If the plan were required to serve them with the same vehicle, no feasible routing plan would exist at all. Vehicle 1 currently carries a load of 98 against its capacity limit of 100, leaving very little room for additional demand. Vehicle 2 carries a load of 96 against its own capacity limit of 100. Because both cap[1] and cap[2] are nearly full, combining customers 2 and 4 on a single vehicle would exceed the allowed capacity, making it impossible to visit all eight customers.",
+    "source": "llm",
+    "valid": true,
+    "attempts": [
+     {
+      "sample_index": 0,
+      "text": "The current plan assigns customers 2 and 4 to different vehicles, and this decision is forced by the capacity constraints of both vehicles. If the plan were required to serve them with the same vehicle, no feasible routing plan would exist at all. Vehicle 1 currently carries a load of 98 against its capacity limit of 100, leaving very little room for additional demand. Vehicle 2 carries a load of 96 against its own capacity limit of 100. Because both cap[1] and cap[2] are nearly full, combining customers 2 and 4 on a single vehicle would exceed the allowed capacity, making it impossible to visit all eight customers.",
+      "check": {
+       "ok": true,
+       "unmatched_numbers": [],
+       "unknown_entities": []
+      },
+      "latency_s": 2.842
+     }
+    ]
+   }
+  ]
+ },
+ "D3": {
+  "output": {
+   "decision": {
+    "type": "ADJ",
+    "i": 0,
+    "j": 1
+   },
+   "decision_text": "ADJ(0,1)",
+   "decision_description": "the depot and customer 1 are visited one right after the other (the direct leg e[0,1])",
+   "perturbation": {
+    "constraint": "FORBID_ADJ",
+    "ids": [
+     "perturbation[attr,FORBID_ADJ,0,1]"
+    ]
+   },
+   "current_objective": 351,
+   "conclusion": "objective_preferred",
+   "attribution_set": {
+    "constraints": [],
+    "variables": [
+     "e[0,1]",
+     "e[0,4]",
+     "e[0,5]",
+     "e[0,6]",
+     "e[1,4]",
+     "e[1,7]",
+     "e[1,8]",
+     "e[4,5]",
+     "e[4,7]",
+     "e[6,8]"
+    ]
+   },
+   "objective_increase_if_forbidden": 29,
+   "objective_increase_by_term": {
+    "distance": 29
+   },
+   "edges_only_in_current_plan": [
+    {
+     "edge": "e[0,1]",
+     "distance": 7
+    },
+    {
+     "edge": "e[0,5]",
+     "distance": 37
+    },
+    {
+     "edge": "e[1,4]",
+     "distance": 41
+    },
+    {
+     "edge": "e[4,7]",
+     "distance": 29
+    },
+    {
+     "edge": "e[6,8]",
+     "distance": 72
+    }
+   ],
+   "edges_only_in_alternative": [
+    {
+     "edge": "e[0,4]",
+     "distance": 42
+    },
+    {
+     "edge": "e[0,6]",
+     "distance": 47
+    },
+    {
+     "edge": "e[1,7]",
+     "distance": 63
+    },
+    {
+     "edge": "e[1,8]",
+     "distance": 49
+    },
+    {
+     "edge": "e[4,5]",
+     "distance": 14
+    }
+   ],
+   "customers_on_other_vehicle_in_alternative": [
+    4,
+    8
+   ],
+   "alternative_solution": {
+    "routes": [
+     [
+      2,
+      7,
+      1,
+      8
+     ],
+     [
+      4,
+      5,
+      3,
+      6
+     ]
+    ]
+   },
+   "alternative_objective": 380,
+   "constraint_activity": {
+    "cap[1]": {
+     "load": 99,
+     "capacity": 100,
+     "slack": 1,
+     "binding": false
+    },
+    "cap[2]": {
+     "load": 90,
+     "capacity": 100,
+     "slack": 10,
+     "binding": false
+    },
+    "visit[*]": {
+     "note": "equalities, always active"
+    },
+    "depot_out[*]": {
+     "note": "equalities, always active"
+    }
+   },
+   "lp_relaxation": {
+    "objective": 250.396825,
+    "duals": {
+     "cap[1]": 0.0,
+     "cap[2]": 0.0,
+     "depot_out[1]": 19.0,
+     "depot_out[2]": 19.0,
+     "visit[1]": -5.0
+    },
+    "reduced_costs": {
+     "x[1,0,1]": 0.0,
+     "x[1,1,0]": 0.0,
+     "x[2,0,1]": 0.0,
+     "x[2,1,0]": 0.0
+    },
+    "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+   },
+   "solve_time_s": 0.0584
+  },
+  "explanations": [
+   {
+    "text": "The current plan includes the direct leg e[0,1] with a distance of 7 km, meaning the depot and customer 1 are visited one right after the other. This decision is not forced by any hard constraint, but it keeps the total route length at 351 km. If the decision were dropped, the plan would still be feasible but the total distance would increase by 29 km to 380 km. In that alternative, the plan would no longer drive legs e[0,1], e[0,5], e[1,4], e[4,7], and e[6,8], and would instead use legs e[0,4], e[0,6], e[1,7], e[1,8], and e[4,5]. Additionally, customers 4 and 8 would be served by the other vehicle in the alternative plan.",
+    "source": "llm",
+    "valid": true,
+    "attempts": [
+     {
+      "sample_index": 0,
+      "text": "The current plan includes the direct leg e[0,1] with a distance of 7 km, meaning the depot and customer 1 are visited one right after the other. This decision is not forced by any hard constraint, but it keeps the total route length at 351 km. If the decision were dropped, the plan would still be feasible but the total distance would increase by 29 km to 380 km. In that alternative, the plan would no longer drive legs e[0,1], e[0,5], e[1,4], e[4,7], and e[6,8], and would instead use legs e[0,4], e[0,6], e[1,7], e[1,8], and e[4,5]. Additionally, customers 4 and 8 would be served by the other vehicle in the alternative plan.",
+      "check": {
+       "ok": true,
+       "unmatched_numbers": [],
+       "unknown_entities": []
+      },
+      "latency_s": 3.253
+     }
+    ]
+   }
+  ]
+ },
+ "D4": {
+  "output": {
+   "decision": {
+    "type": "SAME",
+    "i": 5,
+    "j": 8
+   },
+   "decision_text": "SAME(5,8)",
+   "decision_description": "customers 5 and 8 are served by the same vehicle",
+   "perturbation": {
+    "constraint": "FORCE_SEP",
+    "ids": [
+     "perturbation[attr,FORCE_SEP,5,8][1]",
+     "perturbation[attr,FORCE_SEP,5,8][2]"
+    ]
+   },
+   "current_objective": 351,
+   "conclusion": "objective_preferred",
+   "attribution_set": {
+    "constraints": [],
+    "variables": [
+     "e[0,2]",
+     "e[0,4]",
+     "e[0,5]",
+     "e[0,6]",
+     "e[1,4]",
+     "e[1,7]",
+     "e[2,8]",
+     "e[4,5]",
+     "e[4,7]",
+     "e[6,8]"
+    ]
+   },
+   "objective_increase_if_forbidden": 17,
+   "objective_increase_by_term": {
+    "distance": 17
+   },
+   "edges_only_in_current_plan": [
+    {
+     "edge": "e[0,2]",
+     "distance": 43
+    },
+    {
+     "edge": "e[0,5]",
+     "distance": 37
+    },
+    {
+     "edge": "e[1,4]",
+     "distance": 41
+    },
+    {
+     "edge": "e[4,7]",
+     "distance": 29
+    },
+    {
+     "edge": "e[6,8]",
+     "distance": 72
+    }
+   ],
+   "edges_only_in_alternative": [
+    {
+     "edge": "e[0,4]",
+     "distance": 42
+    },
+    {
+     "edge": "e[0,6]",
+     "distance": 47
+    },
+    {
+     "edge": "e[1,7]",
+     "distance": 63
+    },
+    {
+     "edge": "e[2,8]",
+     "distance": 73
+    },
+    {
+     "edge": "e[4,5]",
+     "distance": 14
+    }
+   ],
+   "customers_on_other_vehicle_in_alternative": [
+    4,
+    8
+   ],
+   "alternative_solution": {
+    "routes": [
+     [
+      1,
+      7,
+      2,
+      8
+     ],
+     [
+      4,
+      5,
+      3,
+      6
+     ]
+    ]
+   },
+   "alternative_objective": 368,
+   "constraint_activity": {
+    "cap[1]": {
+     "load": 99,
+     "capacity": 100,
+     "slack": 1,
+     "binding": false
+    },
+    "cap[2]": {
+     "load": 90,
+     "capacity": 100,
+     "slack": 10,
+     "binding": false
+    },
+    "visit[*]": {
+     "note": "equalities, always active"
+    },
+    "depot_out[*]": {
+     "note": "equalities, always active"
+    }
+   },
+   "lp_relaxation": {
+    "objective": 250.396825,
+    "duals": {
+     "cap[1]": 0.0,
+     "cap[2]": 0.0,
+     "depot_out[1]": 19.0,
+     "depot_out[2]": 19.0,
+     "visit[5]": 25.0,
+     "visit[8]": 69.0
+    },
+    "reduced_costs": {
+     "y[1,5]": 0.0,
+     "y[1,8]": 0.0,
+     "y[2,5]": 0.0,
+     "y[2,8]": 0.0
+    },
+    "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+   },
+   "solve_time_s": 0.0864
+  },
+  "explanations": [
+   {
+    "text": "The current plan assigns customers 5 and 8 to the same vehicle, which is not forced by any constraint but keeps the total distance shorter. If this decision were dropped, the plan would still be feasible with an alternative objective of 368 instead of the current 351, meaning the route would become 17 km longer. In that alternative, customers 4 and 8 would be served by the other vehicle. The current plan uses direct legs e[0,2] (43 km), e[0,5] (37 km), e[1,4] (41 km), e[4,7] (29 km), and e[6,8] (72 km). If the decision were forbidden, those legs would be replaced by e[0,4] (42 km), e[0,6] (47 km), e[1,7] (63 km), e[2,8] (73 km), and e[4,5] (14 km).",
+    "source": "llm",
+    "valid": true,
+    "attempts": [
+     {
+      "sample_index": 0,
+      "text": "The current plan assigns customers 5 and 8 to the same vehicle, which is not forced by any constraint but keeps the total distance shorter. If this decision were dropped, the plan would still be feasible with an alternative objective of 368 instead of the current 351, meaning the route would become 17 km longer. In that alternative, customers 4 and 8 would be served by the other vehicle. The current plan uses direct legs e[0,2] (43 km), e[0,5] (37 km), e[1,4] (41 km), e[4,7] (29 km), and e[6,8] (72 km). If the decision were forbidden, those legs would be replaced by e[0,4] (42 km), e[0,6] (47 km), e[1,7] (63 km), e[2,8] (73 km), and e[4,5] (14 km).",
+      "check": {
+       "ok": true,
+       "unmatched_numbers": [],
+       "unknown_entities": []
+      },
+      "latency_s": 3.708
+     }
+    ]
+   }
+  ]
+ },
+ "D5": {
+  "output": {
+   "decision": {
+    "type": "SAME",
+    "i": 3,
+    "j": 5
+   },
+   "decision_text": "SAME(3,5)",
+   "decision_description": "customers 3 and 5 are served by the same vehicle",
+   "perturbation": {
+    "constraint": "FORCE_SEP",
+    "ids": [
+     "perturbation[attr,FORCE_SEP,3,5][1]",
+     "perturbation[attr,FORCE_SEP,3,5][2]"
+    ]
+   },
+   "current_objective": 351,
+   "conclusion": "objective_preferred",
+   "attribution_set": {
+    "constraints": [],
+    "variables": [
+     "e[0,3]",
+     "e[0,5]",
+     "e[1,4]",
+     "e[1,5]",
+     "e[3,4]",
+     "e[3,5]",
+     "e[3,6]",
+     "e[5,6]"
+    ]
+   },
+   "objective_increase_if_forbidden": 18,
+   "objective_increase_by_term": {
+    "distance": 18
+   },
+   "edges_only_in_current_plan": [
+    {
+     "edge": "e[0,5]",
+     "distance": 37
+    },
+    {
+     "edge": "e[1,4]",
+     "distance": 41
+    },
+    {
+     "edge": "e[3,5]",
+     "distance": 23
+    },
+    {
+     "edge": "e[3,6]",
+     "distance": 35
+    }
+   ],
+   "edges_only_in_alternative": [
+    {
+     "edge": "e[0,3]",
+     "distance": 26
+    },
+    {
+     "edge": "e[1,5]",
+     "distance": 34
+    },
+    {
+     "edge": "e[3,4]",
+     "distance": 36
+    },
+    {
+     "edge": "e[5,6]",
+     "distance": 58
+    }
+   ],
+   "customers_on_other_vehicle_in_alternative": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "alternative_solution": {
+    "routes": [
+     [
+      1,
+      5,
+      6,
+      8
+     ],
+     [
+      2,
+      7,
+      4,
+      3
+     ]
+    ]
+   },
+   "alternative_objective": 369,
+   "constraint_activity": {
+    "cap[1]": {
+     "load": 99,
+     "capacity": 100,
+     "slack": 1,
+     "binding": false
+    },
+    "cap[2]": {
+     "load": 90,
+     "capacity": 100,
+     "slack": 10,
+     "binding": false
+    },
+    "visit[*]": {
+     "note": "equalities, always active"
+    },
+    "depot_out[*]": {
+     "note": "equalities, always active"
+    }
+   },
+   "lp_relaxation": {
+    "objective": 250.396825,
+    "duals": {
+     "cap[1]": 0.0,
+     "cap[2]": 0.0,
+     "depot_out[1]": 19.0,
+     "depot_out[2]": 19.0,
+     "visit[3]": 21.0,
+     "visit[5]": 25.0
+    },
+    "reduced_costs": {
+     "y[1,3]": 0.0,
+     "y[1,5]": 0.0,
+     "y[2,3]": 0.0,
+     "y[2,5]": 0.0
+    },
+    "note": "LP relaxation of the three-index model is weak; values are reference only and are not used to build the attribution set."
+   },
+   "solve_time_s": 0.0731
+  },
+  "explanations": [
+   {
+    "text": "The current plan assigns customers 3 and 5 to the same vehicle, which is not forced by any constraint but keeps the total distance shorter. If this decision were dropped, the plan would still be feasible but the total distance would increase by 18 km, rising from 351 to 369. In that alternative, customers 2, 4, 5, 6, 7, and 8 would be served by the other vehicle. The current plan uses direct legs e[0,5] with a distance of 37, e[1,4] with a distance of 41, e[3,5] with a distance of 23, and e[3,6] with a distance of 35. If the decision were forbidden, those legs would be replaced by e[0,3] with a distance of 26, e[1,5] with a distance of 34, e[3,4] with a distance of 36, and e[5,6] with a distance of 58.",
+    "source": "llm",
+    "valid": true,
+    "attempts": [
+     {
+      "sample_index": 0,
+      "text": "The current plan assigns customers 3 and 5 to the same vehicle, which is not forced by any constraint but keeps the total distance shorter. If this decision were dropped, the plan would still be feasible but the total distance would increase by 18 km, rising from 351 to 369. In that alternative, customers 2, 4, 5, 6, 7, and 8 would be served by the other vehicle. The current plan uses direct legs e[0,5] with a distance of 37, e[1,4] with a distance of 41, e[3,5] with a distance of 23, and e[3,6] with a distance of 35. If the decision were forbidden, those legs would be replaced by e[0,3] with a distance of 26, e[1,5] with a distance of 34, e[3,4] with a distance of 36, and e[5,6] with a distance of 58.",
+      "check": {
+       "ok": true,
+       "unmatched_numbers": [],
+       "unknown_entities": []
+      },
+      "latency_s": 4.84
+     }
+    ]
+   }
+  ]
+ }
+}

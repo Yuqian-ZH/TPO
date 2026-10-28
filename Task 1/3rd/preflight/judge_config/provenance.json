@@ -1,0 +1,44 @@
+{
+  "original_annotator": "weighted_alpaca_eval_gpt4_turbo",
+  "adapted_annotator": "weighted_qwen3_8_max",
+  "prompt_sha256": "784227e6dc2832fc08c43d2c8ea3a308e7523780187a1aaad2f85e30bac85f62",
+  "configuration": {
+    "weighted_qwen3_8_max": {
+      "prompt_template": "judge_config/alpaca_eval_clf.txt",
+      "fn_completions": "openai_completions",
+      "completions_kwargs": {
+        "model_name": "qwen3.8-max",
+        "max_tokens": 1,
+        "temperature": 1,
+        "logprobs": true,
+        "top_logprobs": 5,
+        "client_config_path": "client_configs.yaml",
+        "extra_body": {
+          "enable_thinking": false
+        },
+        "num_procs": 4
+      },
+      "fn_completion_parser": "logprob_parser",
+      "completion_parser_kwargs": {
+        "numerator_token": "m",
+        "denominator_tokens": [
+          "m",
+          "M"
+        ],
+        "is_binarize": false
+      },
+      "completion_key": "completions_all",
+      "batch_size": 1
+    }
+  },
+  "order_seed": 0,
+  "retry": {
+    "max_attempts": 3,
+    "wait_seconds": [
+      2,
+      8
+    ]
+  },
+  "key": "DASHSCOPE_API_KEY environment only",
+  "historical_judgments_used": false
+}

@@ -1,0 +1,604 @@
+{
+ "feedback_id": "f_77bfd29f",
+ "session_id": "s_29c3207f",
+ "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+ "received_at": "2026-10-27T10:55:27.112+08:00",
+ "solution": {
+  "version": 0,
+  "routes": [
+   [
+    1,
+    4,
+    7,
+    2
+   ],
+   [
+    5,
+    3,
+    6,
+    8
+   ]
+  ]
+ },
+ "config": "A0B0C1",
+ "max_iterations": 3,
+ "session_modifications": [],
+ "accepted_modifications": [],
+ "status": "resolved",
+ "status_history": [
+  {
+   "status": "received",
+   "time": "2026-10-27T10:55:27.112+08:00"
+  },
+  {
+   "status": "processing",
+   "time": "2026-10-27T10:55:27.113+08:00",
+   "job": "process_feedback"
+  },
+  {
+   "status": "awaiting_reply",
+   "time": "2026-10-27T10:55:41.318+08:00",
+   "iteration": 1
+  },
+  {
+   "status": "resolved",
+   "time": "2026-10-27T10:55:41.345+08:00"
+  }
+ ],
+ "localization": {
+  "case_id": "f_77bfd29f",
+  "run": 1,
+  "initial": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+    "target": "e[6,8]",
+    "aspect": "adjacency",
+    "direction": "forbid",
+    "modification_type": "add_soft_constraint",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": null,
+    "evidence": {
+     "e[6,8]": 1,
+     "distance": 72
+    },
+    "critique_text": "User complaint: \"Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.\" It targets e[6,8] (adjacency); current values: e[6,8] = 1, distance = 72. Requested direction: forbid. Suggested modification type: add_soft_constraint."
+   },
+   "raw": {
+    "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that customers 6 and 8 not be visited consecutively (i.e., no direct leg between them)."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which is a forbidden adjacency constraint."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which maps to forbidding their adjacency in any route."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which maps to forbidding their adjacency in the route."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which maps to forbidding their adjacency in the route."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "e[6,8]",
+     "majority_key_target": "e[6,8]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "e[6,8]": 5
+     },
+     "meaning_counts": {
+      "[\"e[6,8]\", \"forbid\", \"null\", \"null\"]": 5
+     },
+     "modification_type_counts_among_agreeing": {
+      "add_soft_constraint": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1,
+      "agree_on": [
+       "target",
+       "direction",
+       "threshold",
+       "corrected_value"
+      ]
+     },
+     "protocol": "task2_v2",
+     "disagreement": null
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+     "target": "e[6,8]",
+     "aspect": "adjacency",
+     "direction": "forbid",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": null,
+     "evidence": {
+      "e[6,8]": 1,
+      "distance": 72
+     },
+     "critique_text": "User complaint: \"Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.\" It targets e[6,8] (adjacency); current values: e[6,8] = 1, distance = 72. Requested direction: forbid. Suggested modification type: add_soft_constraint."
+    },
+    "clarifying_question": null
+   }
+  },
+  "asked": false,
+  "question": null,
+  "answer": null,
+  "after_clarification": null,
+  "final": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+    "target": "e[6,8]",
+    "aspect": "adjacency",
+    "direction": "forbid",
+    "modification_type": "add_soft_constraint",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": null,
+    "evidence": {
+     "e[6,8]": 1,
+     "distance": 72
+    },
+    "critique_text": "User complaint: \"Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.\" It targets e[6,8] (adjacency); current values: e[6,8] = 1, distance = 72. Requested direction: forbid. Suggested modification type: add_soft_constraint."
+   },
+   "raw": {
+    "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that customers 6 and 8 not be visited consecutively (i.e., no direct leg between them)."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which is a forbidden adjacency constraint."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which maps to forbidding their adjacency in any route."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which maps to forbidding their adjacency in the route."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         6,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly requests that the direct leg between customer 6 and customer 8 be avoided, which maps to forbidding their adjacency in the route."
+       },
+       "valid": true,
+       "target": "e[6,8]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "e[6,8]",
+     "majority_key_target": "e[6,8]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "e[6,8]": 5
+     },
+     "meaning_counts": {
+      "[\"e[6,8]\", \"forbid\", \"null\", \"null\"]": 5
+     },
+     "modification_type_counts_among_agreeing": {
+      "add_soft_constraint": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1,
+      "agree_on": [
+       "target",
+       "direction",
+       "threshold",
+       "corrected_value"
+      ]
+     },
+     "protocol": "task2_v2",
+     "disagreement": null
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+     "target": "e[6,8]",
+     "aspect": "adjacency",
+     "direction": "forbid",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": null,
+     "evidence": {
+      "e[6,8]": 1,
+      "distance": 72
+     },
+     "critique_text": "User complaint: \"Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.\" It targets e[6,8] (adjacency); current values: e[6,8] = 1, distance = 72. Requested direction: forbid. Suggested modification type: add_soft_constraint."
+    },
+    "clarifying_question": null
+   }
+  }
+ },
+ "critique": {
+  "source": "feedback_localization",
+  "text": "User complaint: \"Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.\" It targets e[6,8] (adjacency); current values: e[6,8] = 1, distance = 72. Requested direction: forbid. Suggested modification type: add_soft_constraint.",
+  "structured": {
+   "target": "e[6,8]",
+   "aspect": "adjacency",
+   "direction": "forbid",
+   "modification_type": "add_soft_constraint",
+   "confidence": "high",
+   "threshold": null,
+   "corrected_value": null,
+   "evidence": {
+    "e[6,8]": 1,
+    "distance": 72
+   }
+  },
+  "clarification": null
+ },
+ "trial": {
+  "t": 1,
+  "plan_version": 1,
+  "sol": {
+   "routes": [
+    [
+     1,
+     7,
+     2,
+     8
+    ],
+    [
+     4,
+     5,
+     3,
+     6
+    ]
+   ]
+  },
+  "mods": [
+   {
+    "op": "add_soft_constraint",
+    "target": "e[6,8]",
+    "sense": "<=",
+    "rhs": 0,
+    "penalty": 1000,
+    "id": "tpo_1_1"
+   }
+  ],
+  "history": [
+   {
+    "t": 1,
+    "status": "committed",
+    "mods": [
+     {
+      "op": "add_soft_constraint",
+      "target": "e[6,8]",
+      "sense": "<=",
+      "rhs": 0,
+      "penalty": 1000
+     }
+    ],
+    "feedback": "(awaiting the user's reply)",
+    "note": null,
+    "plan_lines": [
+     "- Vehicle 1: 0 -> 1 -> 7 -> 2 -> 8 -> 0 | length 207 | load 98 / 100 | stops 4",
+     "- Vehicle 2: 0 -> 4 -> 5 -> 3 -> 6 -> 0 | length 161 | load 91 / 100 | stops 4",
+     "- Arrival distances: A[1]=7, A[2]=90, A[3]=79, A[4]=42, A[5]=56, A[6]=114, A[7]=70, A[8]=163",
+     "- total distance 368, balance 46, makespan 207, load_balance 7, sum_arrival 621"
+    ]
+   }
+  ]
+ },
+ "last_feedback_text": "The new plan still doesn't fix my complaint: Vehicle 2 drives 72 km straight from customer 6 to customer 8 through the city centre. Please avoid driving directly between customers 6 and 8.",
+ "iterations": [
+  {
+   "iteration": 1,
+   "trigger": "feedback",
+   "status": "committed",
+   "note": null,
+   "rationale": "Forbid direct travel between customers 6 and 8 by adding a soft constraint e[6,8] <= 0 with a high penalty to ensure the solver avoids this edge.",
+   "committed_modifications": [
+    {
+     "op": "add_soft_constraint",
+     "target": "e[6,8]",
+     "sense": "<=",
+     "rhs": 0,
+     "penalty": 1000
+    }
+   ],
+   "feasibility": {
+    "iteration_status": "committed",
+    "solver_status": "optimal",
+    "feasible": true,
+    "feasible_on_confirmed_data": true,
+    "data_modifications_in_force": [],
+    "checked_by": "canon.is_feasible: two non-empty routes, every customer exactly once, capacity"
+   },
+   "time": "2026-10-27T10:55:41.309+08:00",
+   "input_version": 0,
+   "plan_version": 1,
+   "new_plan": true,
+   "state_change": "routes",
+   "changes": {
+    "moved": [
+     4,
+     8
+    ],
+    "added_edges": [
+     [
+      0,
+      4
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "removed_edges": [
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      6,
+      8
+     ]
+    ],
+    "reversed": []
+   }
+  }
+ ],
+ "replies": [
+  {
+   "iteration": 1,
+   "plan_version": 1,
+   "resolved": true,
+   "stop": false,
+   "comment": null,
+   "time": "2026-10-27T10:55:41.345+08:00"
+  }
+ ],
+ "usage": {
+  "failed_requests": 0,
+  "requests": 6,
+  "prompt_tokens": 8857,
+  "completion_tokens": 511,
+  "llm_latency_s": 13.591
+ },
+ "error": null
+}

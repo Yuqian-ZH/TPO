@@ -1,0 +1,2956 @@
+{
+ "protocol": "task3_v1",
+ "case_id": "D3",
+ "config": "S1",
+ "run": 1,
+ "flags": {
+  "A": true,
+  "B": true,
+  "C": true,
+  "blind": true,
+  "clar_text": false
+ },
+ "settings": {
+  "max_iters": 3,
+  "n_candidates": 3,
+  "propose_temperature": 0.7,
+  "propose_max_tokens": 800,
+  "select_temperature": 0.0,
+  "select_max_tokens": 200,
+  "tie_diagnostic": true
+ },
+ "localization": {
+  "case_id": "D3",
+  "run": 1,
+  "initial": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+    "target": "demand[2]",
+    "aspect": "demand",
+    "direction": "correct",
+    "modification_type": "modify_data",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": 30,
+    "evidence": {
+     "demand[2]": 24,
+     "W[1]": 99,
+     "W[2]": 90,
+     "capacity": 100
+    },
+    "critique_text": "User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30."
+   },
+   "raw": {
+    "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the currently recorded 24, which would cause vehicle 1's load to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the 24 currently in the data, which would cause vehicle 1 to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[2]",
+     "majority_key_target": "demand[2]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "demand[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+     "target": "demand[2]",
+     "aspect": "demand",
+     "direction": "correct",
+     "modification_type": "modify_data",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": 30,
+     "evidence": {
+      "demand[2]": 24,
+      "W[1]": 99,
+      "W[2]": 90,
+      "capacity": 100
+     },
+     "critique_text": "User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30."
+    },
+    "clarifying_question": null
+   }
+  },
+  "asked": false,
+  "question": null,
+  "answer": null,
+  "after_clarification": null,
+  "final": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+    "target": "demand[2]",
+    "aspect": "demand",
+    "direction": "correct",
+    "modification_type": "modify_data",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": 30,
+    "evidence": {
+     "demand[2]": 24,
+     "W[1]": 99,
+     "W[2]": 90,
+     "capacity": 100
+    },
+    "critique_text": "User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30."
+   },
+   "raw": {
+    "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the currently recorded 24, which would cause vehicle 1's load to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the 24 currently in the data, which would cause vehicle 1 to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[2]",
+     "majority_key_target": "demand[2]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "demand[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+     "target": "demand[2]",
+     "aspect": "demand",
+     "direction": "correct",
+     "modification_type": "modify_data",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": 30,
+     "evidence": {
+      "demand[2]": 24,
+      "W[1]": 99,
+      "W[2]": 90,
+      "capacity": 100
+     },
+     "critique_text": "User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30."
+    },
+    "clarifying_question": null
+   }
+  }
+ },
+ "iterations": [
+  {
+   "t": 1,
+   "input_solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "mods_before": [],
+   "blocks": [
+    "instance",
+    "plan",
+    "mods_in_force",
+    "complaint",
+    "localization",
+    "attribution"
+   ],
+   "proposal_prompt": "## Instance\nDepot = node 0, customers 1-8, 2 identical vehicles with capacity 100 each. Distances are rounded Euclidean distances (symmetric integers).\n| node | x | y | demand |\n|---|---|---|---|\n| 0 (depot) | 50 | 50 | 0 |\n| 1 | 56 | 46 | 52 |\n| 2 | 14 | 26 | 24 |\n| 3 | 66 | 29 | 49 |\n| 4 | 35 | 11 | 12 |\n| 5 | 49 | 13 | 14 |\n| 6 | 97 | 46 | 16 |\n| 7 | 6 | 8 | 11 |\n| 8 | 42 | 93 | 11 |\n\nDistance matrix (row i, column j):\n     0  1  2  3  4  5  6  7  8\n  0  0  7 43 26 42 37 47 61 44\n  1  7  0 47 20 41 34 41 63 49\n  2 43 47  0 52 26 37 85 20 73\n  3 26 20 52  0 36 23 35 64 68\n  4 42 41 26 36  0 14 71 29 82\n  5 37 34 37 23 14  0 58 43 80\n  6 47 41 85 35 71 58  0 99 72\n  7 61 63 20 64 29 43 99  0 92\n  8 44 49 73 68 82 80 72 92  0\n\n## Current plan\n- Vehicle 1: 0 -> 1 -> 4 -> 7 -> 2 -> 0 | length 140 | load 99 / 100 | stops 4\n- Vehicle 2: 0 -> 5 -> 3 -> 6 -> 8 -> 0 | length 211 | load 90 / 100 | stops 4\n- Arrival distances: A[1]=7, A[2]=97, A[3]=60, A[4]=48, A[5]=37, A[6]=95, A[7]=77, A[8]=167\n- total distance 351, balance 71, makespan 211, load_balance 9, sum_arrival 588\n\n## Modifications currently in force (your answer replaces this list)\nnone\n\n## User complaint\n\"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\"\n\n## Structured localization of the complaint\n{\"target\": \"demand[2]\", \"aspect\": \"demand\", \"direction\": \"correct\", \"modification_type\": \"modify_data\", \"confidence\": \"high\", \"corrected_value\": 30, \"evidence_on_current_plan\": {\"demand[2]\": 24, \"W[1]\": 99, \"W[2]\": 90, \"capacity\": 100}}\nCritique: User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30.\n\n## Decision attribution on the current plan\nFor each decision: whether hard constraints force it (and which), or how much the objective prefers it (change if the decision were forbidden, and the edges that would change).\nRemaining capacity: {\"vehicle 1\": 1, \"vehicle 2\": 10}\n- {\"decision\": \"ADJ(2,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[1,4]\", \"e[1,7]\", \"e[2,4]\", \"e[2,7]\"], \"objective_increase_if_forbidden\": 28, \"edges_only_in_current_plan\": [{\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[2,7]\", \"distance\": 20}], \"edges_only_in_alternative\": [{\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,4]\", \"distance\": 26}]}\n- {\"decision\": \"ADJ(0,2)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[1,2]\", \"e[1,4]\"], \"objective_increase_if_forbidden\": 5, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[1,4]\", \"distance\": 41}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[1,2]\", \"distance\": 47}]}\n- {\"decision\": \"SAME(1,2)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[1,4]\", \"e[1,5]\", \"e[3,4]\", \"e[3,5]\", \"e[3,6]\", \"e[5,6]\"], \"objective_increase_if_forbidden\": 18, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[3,6]\", \"distance\": 35}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,4]\", \"distance\": 36}, {\"edge\": \"e[5,6]\", \"distance\": 58}], \"customers_switching_vehicle\": [2, 4, 5, 6, 7, 8]}\n- {\"decision\": \"SAME(2,4)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"SAME(2,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,5]\", \"e[0,7]\", \"e[1,4]\", \"e[1,5]\", \"e[2,3]\", \"e[2,7]\", \"e[3,5]\", \"e[4,5]\"], \"objective_increase_if_forbidden\": 40, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[2,7]\", \"distance\": 20}, {\"edge\": \"e[3,5]\", \"distance\": 23}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,7]\", \"distance\": 61}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[2,3]\", \"distance\": 52}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [2, 5]}\n- {\"decision\": \"SEP(2,5)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[3,6]\", \"e[4,6]\", \"e[4,7]\", \"e[5,7]\"], \"objective_increase_if_forbidden\": 39, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[3,6]\", \"distance\": 35}, {\"edge\": \"e[4,7]\", \"distance\": 29}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[4,6]\", \"distance\": 71}, {\"edge\": \"e[5,7]\", \"distance\": 43}], \"customers_switching_vehicle\": [2, 6, 7, 8]}\n- {\"decision\": \"SEP(2,3)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[1,4]\", \"e[1,5]\", \"e[3,4]\", \"e[3,5]\", \"e[3,6]\", \"e[5,6]\"], \"objective_increase_if_forbidden\": 18, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[3,6]\", \"distance\": 35}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,4]\", \"distance\": 36}, {\"edge\": \"e[5,6]\", \"distance\": 58}], \"customers_switching_vehicle\": [2, 4, 5, 6, 7, 8]}\n- {\"decision\": \"SEP(2,6)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,5]\", \"e[3,5]\", \"e[3,7]\", \"e[4,5]\", \"e[4,7]\", \"e[4,8]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 39, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,7]\", \"distance\": 64}, {\"edge\": \"e[4,5]\", \"distance\": 14}, {\"edge\": \"e[4,8]\", \"distance\": 82}], \"customers_switching_vehicle\": [2, 5, 7, 8]}\n- {\"decision\": \"SEP(2,8)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"ADJ(0,1)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,1]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[1,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 29, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,1]\", \"distance\": 7}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[1,8]\", \"distance\": 49}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"ADJ(1,4)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[1,2]\", \"e[1,4]\"], \"objective_increase_if_forbidden\": 5, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[1,4]\", \"distance\": 41}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[1,2]\", \"distance\": 47}]}\n- {\"decision\": \"ADJ(4,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,7]\", \"e[2,4]\", \"e[4,7]\"], \"objective_increase_if_forbidden\": 15, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[4,7]\", \"distance\": 29}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,7]\", \"distance\": 61}, {\"edge\": \"e[2,4]\", \"distance\": 26}]}\n- {\"decision\": \"SAME(1,4)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"SAME(1,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[1,4]\", \"e[1,5]\", \"e[3,4]\", \"e[3,5]\", \"e[3,6]\", \"e[5,6]\"], \"objective_increase_if_forbidden\": 18, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[3,6]\", \"distance\": 35}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,4]\", \"distance\": 36}, {\"edge\": \"e[5,6]\", \"distance\": 58}], \"customers_switching_vehicle\": [2, 4, 5, 6, 7, 8]}\n- {\"decision\": \"SAME(4,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n\n## Task\nPropose the complete list of modifications for the next plan.",
+   "attribution": {
+    "entities": {
+     "vehicles": [
+      1
+     ],
+     "customers": [
+      2
+     ]
+    },
+    "decisions": [
+     {
+      "type": "ADJ",
+      "i": 2,
+      "j": 7
+     },
+     {
+      "type": "ADJ",
+      "i": 0,
+      "j": 2
+     },
+     {
+      "type": "SAME",
+      "i": 1,
+      "j": 2
+     },
+     {
+      "type": "SAME",
+      "i": 2,
+      "j": 4
+     },
+     {
+      "type": "SAME",
+      "i": 2,
+      "j": 7
+     },
+     {
+      "type": "SEP",
+      "i": 2,
+      "j": 5
+     },
+     {
+      "type": "SEP",
+      "i": 2,
+      "j": 3
+     },
+     {
+      "type": "SEP",
+      "i": 2,
+      "j": 6
+     },
+     {
+      "type": "SEP",
+      "i": 2,
+      "j": 8
+     },
+     {
+      "type": "ADJ",
+      "i": 0,
+      "j": 1
+     },
+     {
+      "type": "ADJ",
+      "i": 1,
+      "j": 4
+     },
+     {
+      "type": "ADJ",
+      "i": 4,
+      "j": 7
+     },
+     {
+      "type": "SAME",
+      "i": 1,
+      "j": 4
+     },
+     {
+      "type": "SAME",
+      "i": 1,
+      "j": 7
+     },
+     {
+      "type": "SAME",
+      "i": 4,
+      "j": 7
+     }
+    ],
+    "items": [
+     {
+      "decision": "ADJ(2,7)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,4]",
+       "e[2,7]"
+      ],
+      "objective_increase_if_forbidden": 28,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[2,7]",
+        "distance": 20
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[1,7]",
+        "distance": 63
+       },
+       {
+        "edge": "e[2,4]",
+        "distance": 26
+       }
+      ],
+      "customers_switching_vehicle": [],
+      "raw": {
+       "decision": {
+        "type": "ADJ",
+        "i": 2,
+        "j": 7
+       },
+       "decision_text": "ADJ(2,7)",
+       "decision_description": "customer 2 and customer 7 are visited one right after the other (the direct leg e[2,7])",
+       "perturbation": {
+        "constraint": "FORBID_ADJ",
+        "ids": [
+         "perturbation[attr,FORBID_ADJ,2,7]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[1,4]",
+         "e[1,7]",
+         "e[2,4]",
+         "e[2,7]"
+        ]
+       },
+       "objective_increase_if_forbidden": 28,
+       "objective_increase_by_term": {
+        "distance": 28
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[2,7]",
+         "distance": 20
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[1,7]",
+         "distance": 63
+        },
+        {
+         "edge": "e[2,4]",
+         "distance": 26
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          7,
+          4,
+          2
+         ],
+         [
+          5,
+          3,
+          6,
+          8
+         ]
+        ]
+       },
+       "alternative_objective": 379,
+       "solve_time_s": 0.0623
+      }
+     },
+     {
+      "decision": "ADJ(0,2)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,4]",
+       "e[1,2]",
+       "e[1,4]"
+      ],
+      "objective_increase_if_forbidden": 5,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[1,2]",
+        "distance": 47
+       }
+      ],
+      "customers_switching_vehicle": [],
+      "raw": {
+       "decision": {
+        "type": "ADJ",
+        "i": 0,
+        "j": 2
+       },
+       "decision_text": "ADJ(0,2)",
+       "decision_description": "the depot and customer 2 are visited one right after the other (the direct leg e[0,2])",
+       "perturbation": {
+        "constraint": "FORBID_ADJ",
+        "ids": [
+         "perturbation[attr,FORBID_ADJ,0,2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,4]",
+         "e[1,2]",
+         "e[1,4]"
+        ]
+       },
+       "objective_increase_if_forbidden": 5,
+       "objective_increase_by_term": {
+        "distance": 5
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[1,2]",
+         "distance": 47
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          2,
+          7,
+          4
+         ],
+         [
+          5,
+          3,
+          6,
+          8
+         ]
+        ]
+       },
+       "alternative_objective": 356,
+       "solve_time_s": 0.0953
+      }
+     },
+     {
+      "decision": "SAME(1,2)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,3]",
+       "e[0,5]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[3,4]",
+       "e[3,5]",
+       "e[3,6]",
+       "e[5,6]"
+      ],
+      "objective_increase_if_forbidden": 18,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[3,5]",
+        "distance": 23
+       },
+       {
+        "edge": "e[3,6]",
+        "distance": 35
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,3]",
+        "distance": 26
+       },
+       {
+        "edge": "e[1,5]",
+        "distance": 34
+       },
+       {
+        "edge": "e[3,4]",
+        "distance": 36
+       },
+       {
+        "edge": "e[5,6]",
+        "distance": 58
+       }
+      ],
+      "customers_switching_vehicle": [
+       2,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SAME",
+        "i": 1,
+        "j": 2
+       },
+       "decision_text": "SAME(1,2)",
+       "decision_description": "customers 1 and 2 are served by the same vehicle",
+       "perturbation": {
+        "constraint": "FORCE_SEP",
+        "ids": [
+         "perturbation[attr,FORCE_SEP,1,2][1]",
+         "perturbation[attr,FORCE_SEP,1,2][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,3]",
+         "e[0,5]",
+         "e[1,4]",
+         "e[1,5]",
+         "e[3,4]",
+         "e[3,5]",
+         "e[3,6]",
+         "e[5,6]"
+        ]
+       },
+       "objective_increase_if_forbidden": 18,
+       "objective_increase_by_term": {
+        "distance": 18
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[3,5]",
+         "distance": 23
+        },
+        {
+         "edge": "e[3,6]",
+         "distance": 35
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,3]",
+         "distance": 26
+        },
+        {
+         "edge": "e[1,5]",
+         "distance": 34
+        },
+        {
+         "edge": "e[3,4]",
+         "distance": 36
+        },
+        {
+         "edge": "e[5,6]",
+         "distance": 58
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          5,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          4,
+          3
+         ]
+        ]
+       },
+       "alternative_objective": 369,
+       "solve_time_s": 0.0756
+      }
+     },
+     {
+      "decision": "SAME(2,4)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,4]",
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,8]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ],
+      "objective_increase_if_forbidden": 17,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       },
+       {
+        "edge": "e[6,8]",
+        "distance": 72
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[0,6]",
+        "distance": 47
+       },
+       {
+        "edge": "e[1,7]",
+        "distance": 63
+       },
+       {
+        "edge": "e[2,8]",
+        "distance": 73
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       }
+      ],
+      "customers_switching_vehicle": [
+       4,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SAME",
+        "i": 2,
+        "j": 4
+       },
+       "decision_text": "SAME(2,4)",
+       "decision_description": "customers 2 and 4 are served by the same vehicle",
+       "perturbation": {
+        "constraint": "FORCE_SEP",
+        "ids": [
+         "perturbation[attr,FORCE_SEP,2,4][1]",
+         "perturbation[attr,FORCE_SEP,2,4][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,4]",
+         "e[0,5]",
+         "e[0,6]",
+         "e[1,4]",
+         "e[1,7]",
+         "e[2,8]",
+         "e[4,5]",
+         "e[4,7]",
+         "e[6,8]"
+        ]
+       },
+       "objective_increase_if_forbidden": 17,
+       "objective_increase_by_term": {
+        "distance": 17
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        },
+        {
+         "edge": "e[6,8]",
+         "distance": 72
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[0,6]",
+         "distance": 47
+        },
+        {
+         "edge": "e[1,7]",
+         "distance": 63
+        },
+        {
+         "edge": "e[2,8]",
+         "distance": 73
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        4,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       },
+       "alternative_objective": 368,
+       "solve_time_s": 0.0729
+      }
+     },
+     {
+      "decision": "SAME(2,7)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,5]",
+       "e[0,7]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[2,3]",
+       "e[2,7]",
+       "e[3,5]",
+       "e[4,5]"
+      ],
+      "objective_increase_if_forbidden": 40,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[2,7]",
+        "distance": 20
+       },
+       {
+        "edge": "e[3,5]",
+        "distance": 23
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,7]",
+        "distance": 61
+       },
+       {
+        "edge": "e[1,5]",
+        "distance": 34
+       },
+       {
+        "edge": "e[2,3]",
+        "distance": 52
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       }
+      ],
+      "customers_switching_vehicle": [
+       2,
+       5
+      ],
+      "raw": {
+       "decision": {
+        "type": "SAME",
+        "i": 2,
+        "j": 7
+       },
+       "decision_text": "SAME(2,7)",
+       "decision_description": "customers 2 and 7 are served by the same vehicle",
+       "perturbation": {
+        "constraint": "FORCE_SEP",
+        "ids": [
+         "perturbation[attr,FORCE_SEP,2,7][1]",
+         "perturbation[attr,FORCE_SEP,2,7][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,5]",
+         "e[0,7]",
+         "e[1,4]",
+         "e[1,5]",
+         "e[2,3]",
+         "e[2,7]",
+         "e[3,5]",
+         "e[4,5]"
+        ]
+       },
+       "objective_increase_if_forbidden": 40,
+       "objective_increase_by_term": {
+        "distance": 40
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[2,7]",
+         "distance": 20
+        },
+        {
+         "edge": "e[3,5]",
+         "distance": 23
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,7]",
+         "distance": 61
+        },
+        {
+         "edge": "e[1,5]",
+         "distance": 34
+        },
+        {
+         "edge": "e[2,3]",
+         "distance": 52
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        2,
+        5
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          5,
+          4,
+          7
+         ],
+         [
+          2,
+          3,
+          6,
+          8
+         ]
+        ]
+       },
+       "alternative_objective": 391,
+       "solve_time_s": 0.0706
+      }
+     },
+     {
+      "decision": "SEP(2,5)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,3]",
+       "e[0,5]",
+       "e[3,6]",
+       "e[4,6]",
+       "e[4,7]",
+       "e[5,7]"
+      ],
+      "objective_increase_if_forbidden": 39,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[3,6]",
+        "distance": 35
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,3]",
+        "distance": 26
+       },
+       {
+        "edge": "e[4,6]",
+        "distance": 71
+       },
+       {
+        "edge": "e[5,7]",
+        "distance": 43
+       }
+      ],
+      "customers_switching_vehicle": [
+       2,
+       6,
+       7,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SEP",
+        "i": 2,
+        "j": 5
+       },
+       "decision_text": "SEP(2,5)",
+       "decision_description": "customers 2 and 5 are served by different vehicles",
+       "perturbation": {
+        "constraint": "FORCE_SAME",
+        "ids": [
+         "perturbation[attr,FORCE_SAME,2,5][1]",
+         "perturbation[attr,FORCE_SAME,2,5][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,3]",
+         "e[0,5]",
+         "e[3,6]",
+         "e[4,6]",
+         "e[4,7]",
+         "e[5,7]"
+        ]
+       },
+       "objective_increase_if_forbidden": 39,
+       "objective_increase_by_term": {
+        "distance": 39
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[3,6]",
+         "distance": 35
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,3]",
+         "distance": 26
+        },
+        {
+         "edge": "e[4,6]",
+         "distance": 71
+        },
+        {
+         "edge": "e[5,7]",
+         "distance": 43
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        2,
+        6,
+        7,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          4,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          5,
+          3
+         ]
+        ]
+       },
+       "alternative_objective": 390,
+       "solve_time_s": 0.0739
+      }
+     },
+     {
+      "decision": "SEP(2,3)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,3]",
+       "e[0,5]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[3,4]",
+       "e[3,5]",
+       "e[3,6]",
+       "e[5,6]"
+      ],
+      "objective_increase_if_forbidden": 18,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[3,5]",
+        "distance": 23
+       },
+       {
+        "edge": "e[3,6]",
+        "distance": 35
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,3]",
+        "distance": 26
+       },
+       {
+        "edge": "e[1,5]",
+        "distance": 34
+       },
+       {
+        "edge": "e[3,4]",
+        "distance": 36
+       },
+       {
+        "edge": "e[5,6]",
+        "distance": 58
+       }
+      ],
+      "customers_switching_vehicle": [
+       2,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SEP",
+        "i": 2,
+        "j": 3
+       },
+       "decision_text": "SEP(2,3)",
+       "decision_description": "customers 2 and 3 are served by different vehicles",
+       "perturbation": {
+        "constraint": "FORCE_SAME",
+        "ids": [
+         "perturbation[attr,FORCE_SAME,2,3][1]",
+         "perturbation[attr,FORCE_SAME,2,3][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,3]",
+         "e[0,5]",
+         "e[1,4]",
+         "e[1,5]",
+         "e[3,4]",
+         "e[3,5]",
+         "e[3,6]",
+         "e[5,6]"
+        ]
+       },
+       "objective_increase_if_forbidden": 18,
+       "objective_increase_by_term": {
+        "distance": 18
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[3,5]",
+         "distance": 23
+        },
+        {
+         "edge": "e[3,6]",
+         "distance": 35
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,3]",
+         "distance": 26
+        },
+        {
+         "edge": "e[1,5]",
+         "distance": 34
+        },
+        {
+         "edge": "e[3,4]",
+         "distance": 36
+        },
+        {
+         "edge": "e[5,6]",
+         "distance": 58
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          5,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          4,
+          3
+         ]
+        ]
+       },
+       "alternative_objective": 369,
+       "solve_time_s": 0.0849
+      }
+     },
+     {
+      "decision": "SEP(2,6)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[3,5]",
+       "e[3,7]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[4,8]",
+       "e[6,8]"
+      ],
+      "objective_increase_if_forbidden": 39,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[3,5]",
+        "distance": 23
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       },
+       {
+        "edge": "e[6,8]",
+        "distance": 72
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,6]",
+        "distance": 47
+       },
+       {
+        "edge": "e[1,5]",
+        "distance": 34
+       },
+       {
+        "edge": "e[3,7]",
+        "distance": 64
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       },
+       {
+        "edge": "e[4,8]",
+        "distance": 82
+       }
+      ],
+      "customers_switching_vehicle": [
+       2,
+       5,
+       7,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SEP",
+        "i": 2,
+        "j": 6
+       },
+       "decision_text": "SEP(2,6)",
+       "decision_description": "customers 2 and 6 are served by different vehicles",
+       "perturbation": {
+        "constraint": "FORCE_SAME",
+        "ids": [
+         "perturbation[attr,FORCE_SAME,2,6][1]",
+         "perturbation[attr,FORCE_SAME,2,6][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,5]",
+         "e[0,6]",
+         "e[1,4]",
+         "e[1,5]",
+         "e[3,5]",
+         "e[3,7]",
+         "e[4,5]",
+         "e[4,7]",
+         "e[4,8]",
+         "e[6,8]"
+        ]
+       },
+       "objective_increase_if_forbidden": 39,
+       "objective_increase_by_term": {
+        "distance": 39
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[3,5]",
+         "distance": 23
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        },
+        {
+         "edge": "e[6,8]",
+         "distance": 72
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,6]",
+         "distance": 47
+        },
+        {
+         "edge": "e[1,5]",
+         "distance": 34
+        },
+        {
+         "edge": "e[3,7]",
+         "distance": 64
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        },
+        {
+         "edge": "e[4,8]",
+         "distance": 82
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        2,
+        5,
+        7,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          5,
+          4,
+          8
+         ],
+         [
+          2,
+          7,
+          3,
+          6
+         ]
+        ]
+       },
+       "alternative_objective": 390,
+       "solve_time_s": 0.0604
+      }
+     },
+     {
+      "decision": "SEP(2,8)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,4]",
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,8]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ],
+      "objective_increase_if_forbidden": 17,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       },
+       {
+        "edge": "e[6,8]",
+        "distance": 72
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[0,6]",
+        "distance": 47
+       },
+       {
+        "edge": "e[1,7]",
+        "distance": 63
+       },
+       {
+        "edge": "e[2,8]",
+        "distance": 73
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       }
+      ],
+      "customers_switching_vehicle": [
+       4,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SEP",
+        "i": 2,
+        "j": 8
+       },
+       "decision_text": "SEP(2,8)",
+       "decision_description": "customers 2 and 8 are served by different vehicles",
+       "perturbation": {
+        "constraint": "FORCE_SAME",
+        "ids": [
+         "perturbation[attr,FORCE_SAME,2,8][1]",
+         "perturbation[attr,FORCE_SAME,2,8][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,4]",
+         "e[0,5]",
+         "e[0,6]",
+         "e[1,4]",
+         "e[1,7]",
+         "e[2,8]",
+         "e[4,5]",
+         "e[4,7]",
+         "e[6,8]"
+        ]
+       },
+       "objective_increase_if_forbidden": 17,
+       "objective_increase_by_term": {
+        "distance": 17
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        },
+        {
+         "edge": "e[6,8]",
+         "distance": 72
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[0,6]",
+         "distance": 47
+        },
+        {
+         "edge": "e[1,7]",
+         "distance": 63
+        },
+        {
+         "edge": "e[2,8]",
+         "distance": 73
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        4,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       },
+       "alternative_objective": 368,
+       "solve_time_s": 0.0566
+      }
+     },
+     {
+      "decision": "ADJ(0,1)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,1]",
+       "e[0,4]",
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,7]",
+       "e[1,8]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ],
+      "objective_increase_if_forbidden": 29,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,1]",
+        "distance": 7
+       },
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       },
+       {
+        "edge": "e[6,8]",
+        "distance": 72
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[0,6]",
+        "distance": 47
+       },
+       {
+        "edge": "e[1,7]",
+        "distance": 63
+       },
+       {
+        "edge": "e[1,8]",
+        "distance": 49
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       }
+      ],
+      "customers_switching_vehicle": [
+       4,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "ADJ",
+        "i": 0,
+        "j": 1
+       },
+       "decision_text": "ADJ(0,1)",
+       "decision_description": "the depot and customer 1 are visited one right after the other (the direct leg e[0,1])",
+       "perturbation": {
+        "constraint": "FORBID_ADJ",
+        "ids": [
+         "perturbation[attr,FORBID_ADJ,0,1]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,1]",
+         "e[0,4]",
+         "e[0,5]",
+         "e[0,6]",
+         "e[1,4]",
+         "e[1,7]",
+         "e[1,8]",
+         "e[4,5]",
+         "e[4,7]",
+         "e[6,8]"
+        ]
+       },
+       "objective_increase_if_forbidden": 29,
+       "objective_increase_by_term": {
+        "distance": 29
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,1]",
+         "distance": 7
+        },
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        },
+        {
+         "edge": "e[6,8]",
+         "distance": 72
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[0,6]",
+         "distance": 47
+        },
+        {
+         "edge": "e[1,7]",
+         "distance": 63
+        },
+        {
+         "edge": "e[1,8]",
+         "distance": 49
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        4,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          2,
+          7,
+          1,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       },
+       "alternative_objective": 380,
+       "solve_time_s": 0.0541
+      }
+     },
+     {
+      "decision": "ADJ(1,4)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,4]",
+       "e[1,2]",
+       "e[1,4]"
+      ],
+      "objective_increase_if_forbidden": 5,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[1,2]",
+        "distance": 47
+       }
+      ],
+      "customers_switching_vehicle": [],
+      "raw": {
+       "decision": {
+        "type": "ADJ",
+        "i": 1,
+        "j": 4
+       },
+       "decision_text": "ADJ(1,4)",
+       "decision_description": "customer 1 and customer 4 are visited one right after the other (the direct leg e[1,4])",
+       "perturbation": {
+        "constraint": "FORBID_ADJ",
+        "ids": [
+         "perturbation[attr,FORBID_ADJ,1,4]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,4]",
+         "e[1,2]",
+         "e[1,4]"
+        ]
+       },
+       "objective_increase_if_forbidden": 5,
+       "objective_increase_by_term": {
+        "distance": 5
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[1,2]",
+         "distance": 47
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          2,
+          7,
+          4
+         ],
+         [
+          5,
+          3,
+          6,
+          8
+         ]
+        ]
+       },
+       "alternative_objective": 356,
+       "solve_time_s": 0.0738
+      }
+     },
+     {
+      "decision": "ADJ(4,7)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,7]",
+       "e[2,4]",
+       "e[4,7]"
+      ],
+      "objective_increase_if_forbidden": 15,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,7]",
+        "distance": 61
+       },
+       {
+        "edge": "e[2,4]",
+        "distance": 26
+       }
+      ],
+      "customers_switching_vehicle": [],
+      "raw": {
+       "decision": {
+        "type": "ADJ",
+        "i": 4,
+        "j": 7
+       },
+       "decision_text": "ADJ(4,7)",
+       "decision_description": "customer 4 and customer 7 are visited one right after the other (the direct leg e[4,7])",
+       "perturbation": {
+        "constraint": "FORBID_ADJ",
+        "ids": [
+         "perturbation[attr,FORBID_ADJ,4,7]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,7]",
+         "e[2,4]",
+         "e[4,7]"
+        ]
+       },
+       "objective_increase_if_forbidden": 15,
+       "objective_increase_by_term": {
+        "distance": 15
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,7]",
+         "distance": 61
+        },
+        {
+         "edge": "e[2,4]",
+         "distance": 26
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          4,
+          2,
+          7
+         ],
+         [
+          5,
+          3,
+          6,
+          8
+         ]
+        ]
+       },
+       "alternative_objective": 366,
+       "solve_time_s": 0.0828
+      }
+     },
+     {
+      "decision": "SAME(1,4)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,4]",
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,8]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ],
+      "objective_increase_if_forbidden": 17,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       },
+       {
+        "edge": "e[6,8]",
+        "distance": 72
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[0,6]",
+        "distance": 47
+       },
+       {
+        "edge": "e[1,7]",
+        "distance": 63
+       },
+       {
+        "edge": "e[2,8]",
+        "distance": 73
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       }
+      ],
+      "customers_switching_vehicle": [
+       4,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SAME",
+        "i": 1,
+        "j": 4
+       },
+       "decision_text": "SAME(1,4)",
+       "decision_description": "customers 1 and 4 are served by the same vehicle",
+       "perturbation": {
+        "constraint": "FORCE_SEP",
+        "ids": [
+         "perturbation[attr,FORCE_SEP,1,4][1]",
+         "perturbation[attr,FORCE_SEP,1,4][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,4]",
+         "e[0,5]",
+         "e[0,6]",
+         "e[1,4]",
+         "e[1,7]",
+         "e[2,8]",
+         "e[4,5]",
+         "e[4,7]",
+         "e[6,8]"
+        ]
+       },
+       "objective_increase_if_forbidden": 17,
+       "objective_increase_by_term": {
+        "distance": 17
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        },
+        {
+         "edge": "e[6,8]",
+         "distance": 72
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[0,6]",
+         "distance": 47
+        },
+        {
+         "edge": "e[1,7]",
+         "distance": 63
+        },
+        {
+         "edge": "e[2,8]",
+         "distance": 73
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        4,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       },
+       "alternative_objective": 368,
+       "solve_time_s": 0.0685
+      }
+     },
+     {
+      "decision": "SAME(1,7)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,3]",
+       "e[0,5]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[3,4]",
+       "e[3,5]",
+       "e[3,6]",
+       "e[5,6]"
+      ],
+      "objective_increase_if_forbidden": 18,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[3,5]",
+        "distance": 23
+       },
+       {
+        "edge": "e[3,6]",
+        "distance": 35
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,3]",
+        "distance": 26
+       },
+       {
+        "edge": "e[1,5]",
+        "distance": 34
+       },
+       {
+        "edge": "e[3,4]",
+        "distance": 36
+       },
+       {
+        "edge": "e[5,6]",
+        "distance": 58
+       }
+      ],
+      "customers_switching_vehicle": [
+       2,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SAME",
+        "i": 1,
+        "j": 7
+       },
+       "decision_text": "SAME(1,7)",
+       "decision_description": "customers 1 and 7 are served by the same vehicle",
+       "perturbation": {
+        "constraint": "FORCE_SEP",
+        "ids": [
+         "perturbation[attr,FORCE_SEP,1,7][1]",
+         "perturbation[attr,FORCE_SEP,1,7][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,3]",
+         "e[0,5]",
+         "e[1,4]",
+         "e[1,5]",
+         "e[3,4]",
+         "e[3,5]",
+         "e[3,6]",
+         "e[5,6]"
+        ]
+       },
+       "objective_increase_if_forbidden": 18,
+       "objective_increase_by_term": {
+        "distance": 18
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[3,5]",
+         "distance": 23
+        },
+        {
+         "edge": "e[3,6]",
+         "distance": 35
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,3]",
+         "distance": 26
+        },
+        {
+         "edge": "e[1,5]",
+         "distance": 34
+        },
+        {
+         "edge": "e[3,4]",
+         "distance": 36
+        },
+        {
+         "edge": "e[5,6]",
+         "distance": 58
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          5,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          4,
+          3
+         ]
+        ]
+       },
+       "alternative_objective": 369,
+       "solve_time_s": 0.0536
+      }
+     },
+     {
+      "decision": "SAME(4,7)",
+      "conclusion": "objective_preferred",
+      "constraint_ids": [],
+      "variable_ids": [
+       "e[0,2]",
+       "e[0,4]",
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,8]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ],
+      "objective_increase_if_forbidden": 17,
+      "increase_by_term": null,
+      "edges_only_in_current_plan": [
+       {
+        "edge": "e[0,2]",
+        "distance": 43
+       },
+       {
+        "edge": "e[0,5]",
+        "distance": 37
+       },
+       {
+        "edge": "e[1,4]",
+        "distance": 41
+       },
+       {
+        "edge": "e[4,7]",
+        "distance": 29
+       },
+       {
+        "edge": "e[6,8]",
+        "distance": 72
+       }
+      ],
+      "edges_only_in_alternative": [
+       {
+        "edge": "e[0,4]",
+        "distance": 42
+       },
+       {
+        "edge": "e[0,6]",
+        "distance": 47
+       },
+       {
+        "edge": "e[1,7]",
+        "distance": 63
+       },
+       {
+        "edge": "e[2,8]",
+        "distance": 73
+       },
+       {
+        "edge": "e[4,5]",
+        "distance": 14
+       }
+      ],
+      "customers_switching_vehicle": [
+       4,
+       8
+      ],
+      "raw": {
+       "decision": {
+        "type": "SAME",
+        "i": 4,
+        "j": 7
+       },
+       "decision_text": "SAME(4,7)",
+       "decision_description": "customers 4 and 7 are served by the same vehicle",
+       "perturbation": {
+        "constraint": "FORCE_SEP",
+        "ids": [
+         "perturbation[attr,FORCE_SEP,4,7][1]",
+         "perturbation[attr,FORCE_SEP,4,7][2]"
+        ]
+       },
+       "current_objective": 351,
+       "conclusion": "objective_preferred",
+       "attribution_set": {
+        "constraints": [],
+        "variables": [
+         "e[0,2]",
+         "e[0,4]",
+         "e[0,5]",
+         "e[0,6]",
+         "e[1,4]",
+         "e[1,7]",
+         "e[2,8]",
+         "e[4,5]",
+         "e[4,7]",
+         "e[6,8]"
+        ]
+       },
+       "objective_increase_if_forbidden": 17,
+       "objective_increase_by_term": {
+        "distance": 17
+       },
+       "edges_only_in_current_plan": [
+        {
+         "edge": "e[0,2]",
+         "distance": 43
+        },
+        {
+         "edge": "e[0,5]",
+         "distance": 37
+        },
+        {
+         "edge": "e[1,4]",
+         "distance": 41
+        },
+        {
+         "edge": "e[4,7]",
+         "distance": 29
+        },
+        {
+         "edge": "e[6,8]",
+         "distance": 72
+        }
+       ],
+       "edges_only_in_alternative": [
+        {
+         "edge": "e[0,4]",
+         "distance": 42
+        },
+        {
+         "edge": "e[0,6]",
+         "distance": 47
+        },
+        {
+         "edge": "e[1,7]",
+         "distance": 63
+        },
+        {
+         "edge": "e[2,8]",
+         "distance": 73
+        },
+        {
+         "edge": "e[4,5]",
+         "distance": 14
+        }
+       ],
+       "customers_on_other_vehicle_in_alternative": [
+        4,
+        8
+       ],
+       "alternative_solution": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       },
+       "alternative_objective": 368,
+       "solve_time_s": 0.0558
+      }
+     }
+    ]
+   },
+   "candidates": [
+    {
+     "sample": 0,
+     "seed": 39291329,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 100,
+       "prompt_tokens": 5435,
+       "total_tokens": 5535,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 5120,
+        "image_tokens": null,
+        "text_tokens": 5435
+       }
+      },
+      "latency_s": 2.663,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\": \"User reports customer 2's demand is 30, not 24. With the old demand, vehicle 1 carries 99 units; with 30 it would carry 105, exceeding capacity 100. Updating demand[2] to 30 forces the solver to find a feasible plan.\", \"modifications\": [{\"op\": \"modify_data\", \"field\": \"demand[2]\", \"value\": 30}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[2]",
+       "value": 30
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[2]",
+       "value": 30
+      }
+     ],
+     "rationale": "User reports customer 2's demand is 30, not 24. With the old demand, vehicle 1 carries 99 units; with 30 it would carry 105, exceeding capacity 100. Updating demand[2] to 30 forces the solver to find a feasible plan.",
+     "errors": []
+    },
+    {
+     "sample": 1,
+     "seed": 75826958,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 102,
+       "prompt_tokens": 5435,
+       "total_tokens": 5537,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 5120,
+        "image_tokens": null,
+        "text_tokens": 5435
+       }
+      },
+      "latency_s": 2.311,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\": \"User reports customer 2's demand is 30, not 24. With the old demand, vehicle 1 carried 99 units; with 30 it would be 105, exceeding capacity 100. Updating demand[2] to 30 forces the solver to find a feasible assignment respecting capacity.\", \"modifications\": [{\"op\": \"modify_data\", \"field\": \"demand[2]\", \"value\": 30}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[2]",
+       "value": 30
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[2]",
+       "value": 30
+      }
+     ],
+     "rationale": "User reports customer 2's demand is 30, not 24. With the old demand, vehicle 1 carried 99 units; with 30 it would be 105, exceeding capacity 100. Updating demand[2] to 30 forces the solver to find a feasible assignment respecting capacity.",
+     "errors": []
+    },
+    {
+     "sample": 2,
+     "seed": 1511310767,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 79,
+       "prompt_tokens": 5435,
+       "total_tokens": 5514,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 5120,
+        "image_tokens": null,
+        "text_tokens": 5435
+       }
+      },
+      "latency_s": 2.083,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\": \"User corrected demand for customer 2 from 24 to 30. This makes vehicle 1's current load (99) exceed capacity (100). Updating the data forces the solver to find a feasible plan.\", \"modifications\": [{\"op\": \"modify_data\", \"field\": \"demand[2]\", \"value\": 30}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[2]",
+       "value": 30
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[2]",
+       "value": 30
+      }
+     ],
+     "rationale": "User corrected demand for customer 2 from 24 to 30. This makes vehicle 1's current load (99) exceed capacity (100). Updating the data forces the solver to find a feasible plan.",
+     "errors": []
+    }
+   ],
+   "selection": {
+    "called": true,
+    "seed": 396246573,
+    "prompt": "## Instance\nDepot = node 0, customers 1-8, 2 identical vehicles with capacity 100 each. Distances are rounded Euclidean distances (symmetric integers).\n| node | x | y | demand |\n|---|---|---|---|\n| 0 (depot) | 50 | 50 | 0 |\n| 1 | 56 | 46 | 52 |\n| 2 | 14 | 26 | 24 |\n| 3 | 66 | 29 | 49 |\n| 4 | 35 | 11 | 12 |\n| 5 | 49 | 13 | 14 |\n| 6 | 97 | 46 | 16 |\n| 7 | 6 | 8 | 11 |\n| 8 | 42 | 93 | 11 |\n\nDistance matrix (row i, column j):\n     0  1  2  3  4  5  6  7  8\n  0  0  7 43 26 42 37 47 61 44\n  1  7  0 47 20 41 34 41 63 49\n  2 43 47  0 52 26 37 85 20 73\n  3 26 20 52  0 36 23 35 64 68\n  4 42 41 26 36  0 14 71 29 82\n  5 37 34 37 23 14  0 58 43 80\n  6 47 41 85 35 71 58  0 99 72\n  7 61 63 20 64 29 43 99  0 92\n  8 44 49 73 68 82 80 72 92  0\n\n## Current plan\n- Vehicle 1: 0 -> 1 -> 4 -> 7 -> 2 -> 0 | length 140 | load 99 / 100 | stops 4\n- Vehicle 2: 0 -> 5 -> 3 -> 6 -> 8 -> 0 | length 211 | load 90 / 100 | stops 4\n- Arrival distances: A[1]=7, A[2]=97, A[3]=60, A[4]=48, A[5]=37, A[6]=95, A[7]=77, A[8]=167\n- total distance 351, balance 71, makespan 211, load_balance 9, sum_arrival 588\n\n## Modifications currently in force (your answer replaces this list)\nnone\n\n## User complaint\n\"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\"\n\n## Structured localization of the complaint\n{\"target\": \"demand[2]\", \"aspect\": \"demand\", \"direction\": \"correct\", \"modification_type\": \"modify_data\", \"confidence\": \"high\", \"corrected_value\": 30, \"evidence_on_current_plan\": {\"demand[2]\": 24, \"W[1]\": 99, \"W[2]\": 90, \"capacity\": 100}}\nCritique: User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30.\n\n## Decision attribution on the current plan\nFor each decision: whether hard constraints force it (and which), or how much the objective prefers it (change if the decision were forbidden, and the edges that would change).\nRemaining capacity: {\"vehicle 1\": 1, \"vehicle 2\": 10}\n- {\"decision\": \"ADJ(2,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[1,4]\", \"e[1,7]\", \"e[2,4]\", \"e[2,7]\"], \"objective_increase_if_forbidden\": 28, \"edges_only_in_current_plan\": [{\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[2,7]\", \"distance\": 20}], \"edges_only_in_alternative\": [{\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,4]\", \"distance\": 26}]}\n- {\"decision\": \"ADJ(0,2)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[1,2]\", \"e[1,4]\"], \"objective_increase_if_forbidden\": 5, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[1,4]\", \"distance\": 41}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[1,2]\", \"distance\": 47}]}\n- {\"decision\": \"SAME(1,2)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[1,4]\", \"e[1,5]\", \"e[3,4]\", \"e[3,5]\", \"e[3,6]\", \"e[5,6]\"], \"objective_increase_if_forbidden\": 18, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[3,6]\", \"distance\": 35}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,4]\", \"distance\": 36}, {\"edge\": \"e[5,6]\", \"distance\": 58}], \"customers_switching_vehicle\": [2, 4, 5, 6, 7, 8]}\n- {\"decision\": \"SAME(2,4)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"SAME(2,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,5]\", \"e[0,7]\", \"e[1,4]\", \"e[1,5]\", \"e[2,3]\", \"e[2,7]\", \"e[3,5]\", \"e[4,5]\"], \"objective_increase_if_forbidden\": 40, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[2,7]\", \"distance\": 20}, {\"edge\": \"e[3,5]\", \"distance\": 23}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,7]\", \"distance\": 61}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[2,3]\", \"distance\": 52}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [2, 5]}\n- {\"decision\": \"SEP(2,5)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[3,6]\", \"e[4,6]\", \"e[4,7]\", \"e[5,7]\"], \"objective_increase_if_forbidden\": 39, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[3,6]\", \"distance\": 35}, {\"edge\": \"e[4,7]\", \"distance\": 29}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[4,6]\", \"distance\": 71}, {\"edge\": \"e[5,7]\", \"distance\": 43}], \"customers_switching_vehicle\": [2, 6, 7, 8]}\n- {\"decision\": \"SEP(2,3)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[1,4]\", \"e[1,5]\", \"e[3,4]\", \"e[3,5]\", \"e[3,6]\", \"e[5,6]\"], \"objective_increase_if_forbidden\": 18, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[3,6]\", \"distance\": 35}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,4]\", \"distance\": 36}, {\"edge\": \"e[5,6]\", \"distance\": 58}], \"customers_switching_vehicle\": [2, 4, 5, 6, 7, 8]}\n- {\"decision\": \"SEP(2,6)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,5]\", \"e[3,5]\", \"e[3,7]\", \"e[4,5]\", \"e[4,7]\", \"e[4,8]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 39, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,7]\", \"distance\": 64}, {\"edge\": \"e[4,5]\", \"distance\": 14}, {\"edge\": \"e[4,8]\", \"distance\": 82}], \"customers_switching_vehicle\": [2, 5, 7, 8]}\n- {\"decision\": \"SEP(2,8)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"ADJ(0,1)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,1]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[1,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 29, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,1]\", \"distance\": 7}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[1,8]\", \"distance\": 49}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"ADJ(1,4)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[1,2]\", \"e[1,4]\"], \"objective_increase_if_forbidden\": 5, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[1,4]\", \"distance\": 41}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[1,2]\", \"distance\": 47}]}\n- {\"decision\": \"ADJ(4,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,7]\", \"e[2,4]\", \"e[4,7]\"], \"objective_increase_if_forbidden\": 15, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[4,7]\", \"distance\": 29}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,7]\", \"distance\": 61}, {\"edge\": \"e[2,4]\", \"distance\": 26}]}\n- {\"decision\": \"SAME(1,4)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n- {\"decision\": \"SAME(1,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,3]\", \"e[0,5]\", \"e[1,4]\", \"e[1,5]\", \"e[3,4]\", \"e[3,5]\", \"e[3,6]\", \"e[5,6]\"], \"objective_increase_if_forbidden\": 18, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[3,5]\", \"distance\": 23}, {\"edge\": \"e[3,6]\", \"distance\": 35}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,3]\", \"distance\": 26}, {\"edge\": \"e[1,5]\", \"distance\": 34}, {\"edge\": \"e[3,4]\", \"distance\": 36}, {\"edge\": \"e[5,6]\", \"distance\": 58}], \"customers_switching_vehicle\": [2, 4, 5, 6, 7, 8]}\n- {\"decision\": \"SAME(4,7)\", \"conclusion\": \"objective_preferred\", \"variable_ids\": [\"e[0,2]\", \"e[0,4]\", \"e[0,5]\", \"e[0,6]\", \"e[1,4]\", \"e[1,7]\", \"e[2,8]\", \"e[4,5]\", \"e[4,7]\", \"e[6,8]\"], \"objective_increase_if_forbidden\": 17, \"edges_only_in_current_plan\": [{\"edge\": \"e[0,2]\", \"distance\": 43}, {\"edge\": \"e[0,5]\", \"distance\": 37}, {\"edge\": \"e[1,4]\", \"distance\": 41}, {\"edge\": \"e[4,7]\", \"distance\": 29}, {\"edge\": \"e[6,8]\", \"distance\": 72}], \"edges_only_in_alternative\": [{\"edge\": \"e[0,4]\", \"distance\": 42}, {\"edge\": \"e[0,6]\", \"distance\": 47}, {\"edge\": \"e[1,7]\", \"distance\": 63}, {\"edge\": \"e[2,8]\", \"distance\": 73}, {\"edge\": \"e[4,5]\", \"distance\": 14}], \"customers_switching_vehicle\": [4, 8]}\n\n## Candidates\nCandidate 1: [{\"op\": \"modify_data\", \"field\": \"demand[2]\", \"value\": 30}]\n  proposer's rationale: User reports customer 2's demand is 30, not 24. With the old demand, vehicle 1 carries 99 units; with 30 it would carry 105, exceeding capacity 100. Updating demand[2] to 30 forces the solver to find a feasible plan.\nCandidate 2: [{\"op\": \"modify_data\", \"field\": \"demand[2]\", \"value\": 30}]\n  proposer's rationale: User reports customer 2's demand is 30, not 24. With the old demand, vehicle 1 carried 99 units; with 30 it would be 105, exceeding capacity 100. Updating demand[2] to 30 forces the solver to find a feasible assignment respecting capacity.\nCandidate 3: [{\"op\": \"modify_data\", \"field\": \"demand[2]\", \"value\": 30}]\n  proposer's rationale: User corrected demand for customer 2 from 24 to 30. This makes vehicle 1's current load (99) exceed capacity (100). Updating the data forces the solver to find a feasible plan.\n\n## Task\nChoose the candidate to commit.",
+    "llm": {
+     "parse_status": "json_ok",
+     "usage": {
+      "completion_tokens": 41,
+      "prompt_tokens": 5217,
+      "total_tokens": 5258,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+       "audio_tokens": null,
+       "cache_write_tokens": null,
+       "cached_tokens": 4096,
+       "image_tokens": null,
+       "text_tokens": 5217
+      }
+     },
+     "latency_s": 1.646,
+     "returned_model": "qwen3.8-max",
+     "attempts": 1,
+     "reasoning_present": false
+    },
+    "content": "{\"choice\": 1, \"reason\": \"All candidates are identical; updating demand[2] to 30 fixes the infeasibility by forcing the solver to reassign customers within capacity.\"}",
+    "ok": true,
+    "index": 0,
+    "reason": "All candidates are identical; updating demand[2] to 30 fixes the infeasibility by forcing the solver to reassign customers within capacity."
+   },
+   "chosen_sample": 0,
+   "commit": {
+    "status": "optimal",
+    "anchor": {
+     "type": "MOVE",
+     "i": 3,
+     "k": 2,
+     "role": "anchor"
+    },
+    "solver_runtime_s": 0.044895172119140625,
+    "wall_s": 0.04805283294990659,
+    "objective": 397,
+    "metrics": {
+     "L[1]": 220,
+     "W[1]": 100,
+     "S[1]": 5,
+     "L[2]": 177,
+     "W[2]": 95,
+     "S[2]": 3,
+     "A[1]": 7,
+     "A[2]": 43,
+     "A[3]": 95,
+     "A[4]": 55,
+     "A[5]": 41,
+     "A[6]": 130,
+     "A[7]": 84,
+     "A[8]": 176,
+     "total_distance": 397,
+     "balance": 43,
+     "makespan": 220,
+     "load_balance": 5,
+     "sum_arrival": 631
+    },
+    "reoriented": [
+     2
+    ]
+   },
+   "tie": {
+    "oracle_feasible": true,
+    "oracle_objective": 397.0,
+    "matches_commit": true,
+    "n_optimal": 4,
+    "n_optimal_resolving": 4
+   },
+   "illegal_data_mods": [],
+   "status": "committed",
+   "note": null,
+   "committed_mods": [
+    {
+     "op": "modify_data",
+     "field": "demand[2]",
+     "value": 30
+    }
+   ],
+   "solution_after": {
+    "routes": [
+     [
+      1,
+      5,
+      4,
+      7,
+      8
+     ],
+     [
+      2,
+      3,
+      6
+     ]
+    ]
+   },
+   "verdict": {
+    "resolved": true,
+    "feasible": true,
+    "checker": {
+     "passed": true,
+     "value": [
+      100,
+      95
+     ],
+     "threshold": 100
+    }
+   },
+   "label_swap_resolved": true,
+   "wall_s": 9.8244
+  }
+ ],
+ "outcome": "converged",
+ "converged": true,
+ "converged_at": 1,
+ "final_solution": {
+  "routes": [
+   [
+    1,
+    5,
+    4,
+    7,
+    8
+   ],
+   [
+    2,
+    3,
+    6
+   ]
+  ]
+ },
+ "final_mods": [
+  {
+   "op": "modify_data",
+   "field": "demand[2]",
+   "value": 30
+  }
+ ]
+}

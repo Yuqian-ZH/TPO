@@ -1,0 +1,375 @@
+[
+ {
+  "id": "V1",
+  "kind": "complaint",
+  "situation": "T2 session after accepting W[1] <= 92 (plan v1)",
+  "user_says": "Vehicle 1 now drives 235 km; that is too far.",
+  "claim": {
+   "target": "L[1]",
+   "direction": "decrease"
+  },
+  "expected": "self_imposed",
+  "verdict": "self_imposed",
+  "flags": [
+   "conflicts_with_user_input"
+  ],
+  "binding_user_inputs": [
+   {
+    "op": "add_soft_constraint",
+    "target": "W[1]",
+    "sense": "<=",
+    "rhs": 92,
+    "penalty": 500,
+    "id": "acc1_1"
+   }
+  ],
+  "evidence": {
+   "L[1]": 235,
+   "total_distance": 390,
+   "without_each_user_input": [
+    {
+     "input": {
+      "op": "add_soft_constraint",
+      "target": "W[1]",
+      "sense": "<=",
+      "rhs": 92,
+      "penalty": 500,
+      "id": "acc1_1"
+     },
+     "L[1]_without_it": 140,
+     "routes_without_it": [
+      [
+       1,
+       4,
+       7,
+       2
+      ],
+      [
+       5,
+       3,
+       6,
+       8
+      ]
+     ],
+     "total_distance_without_it": 351
+    }
+   ]
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V2",
+  "kind": "complaint",
+  "situation": "T9 session, user-entered demand[3] = 54 (plan v0)",
+  "user_says": "Customers 2 and 5 should share a truck.",
+  "claim": {
+   "decision": {
+    "type": "SEP",
+    "i": 2,
+    "j": 5
+   }
+  },
+  "expected": "self_imposed",
+  "verdict": "self_imposed",
+  "flags": [
+   "forced_by_user_data"
+  ],
+  "binding_user_inputs": [
+   {
+    "op": "modify_data",
+    "field": "demand[3]",
+    "value": 54
+   }
+  ],
+  "evidence": {
+   "attribution": {
+    "decision": "SEP(2,5)",
+    "conclusion": "hard_constraint_forced",
+    "constraint_ids": [
+     "cap[1]",
+     "cap[2]"
+    ]
+   },
+   "without_each_user_data_item": [
+    {
+     "input": {
+      "op": "modify_data",
+      "field": "demand[3]",
+      "value": 54
+     },
+     "conclusion_without_it": "objective_preferred"
+    }
+   ]
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V2b",
+  "kind": "complaint",
+  "situation": "same T9 session (control: a real physical limit)",
+  "user_says": "Customers 1 and 3 should share a truck.",
+  "claim": {
+   "decision": {
+    "type": "SEP",
+    "i": 1,
+    "j": 3
+   }
+  },
+  "expected": "hard_constraint",
+  "verdict": "hard_constraint",
+  "flags": [
+   "forced_by_physical_constraint"
+  ],
+  "binding_user_inputs": [],
+  "evidence": {
+   "attribution": {
+    "decision": "SEP(1,3)",
+    "conclusion": "hard_constraint_forced",
+    "constraint_ids": [
+     "cap[1]",
+     "cap[2]"
+    ]
+   },
+   "without_each_user_data_item": [
+    {
+     "input": {
+      "op": "modify_data",
+      "field": "demand[3]",
+      "value": 54
+     },
+     "conclusion_without_it": "hard_constraint_forced"
+    }
+   ]
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V3",
+  "kind": "praise",
+  "situation": "T2: accepted plan v1 after the W[1] <= 92 fix",
+  "user_says": "Thanks for putting customers 3 and 5 on the same truck.",
+  "claim": {
+   "decision": {
+    "type": "SAME",
+    "i": 3,
+    "j": 5
+   }
+  },
+  "expected": "exclude_from_training",
+  "verdict": "exclude_from_training",
+  "flags": [
+   "credit_misattributed"
+  ],
+  "evidence": {
+   "feasible_on_confirmed_data": true,
+   "holds_before": true,
+   "holds_after": true,
+   "why_it_held_before": {
+    "decision": "SAME(3,5)",
+    "conclusion": "objective_preferred",
+    "constraint_ids": [],
+    "objective_increase_if_forbidden": 18
+   }
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V4",
+  "kind": "praise",
+  "situation": "T2: accepted plan v1",
+  "user_says": "Great, customer 3 now gets its delivery early.",
+  "claim": {
+   "target": "A[3]",
+   "direction": "decrease"
+  },
+  "expected": "exclude_from_training",
+  "verdict": "exclude_from_training",
+  "flags": [
+   "praised_change_absent"
+  ],
+  "evidence": {
+   "feasible_on_confirmed_data": true,
+   "A[3]": {
+    "before": 60,
+    "after": 129
+   }
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V5",
+  "kind": "praise",
+  "situation": "T2 plan v0 refined with an unstated capacity change (constructed)",
+  "user_says": "Good, the second driver has fewer stops now.",
+  "claim": {
+   "target": "S[2]",
+   "direction": "decrease"
+  },
+  "expected": "incident",
+  "verdict": "incident",
+  "flags": [
+   "infeasible_on_confirmed_data"
+  ],
+  "evidence": {
+   "feasible_on_confirmed_data": false,
+   "loads_on_confirmed_data": {
+    "1": 124,
+    "2": 65
+   },
+   "capacity_on_confirmed_data": 100,
+   "S[2]": {
+    "before": 4,
+    "after": 2
+   }
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V6",
+  "kind": "praise",
+  "situation": "T2: accepted plan v1 (control: valid praise)",
+  "user_says": "Good, vehicle 1 is no longer loaded to the limit.",
+  "claim": {
+   "target": "W[1]",
+   "direction": "decrease"
+  },
+  "expected": "usable_positive",
+  "verdict": "usable_positive",
+  "flags": [],
+  "evidence": {
+   "feasible_on_confirmed_data": true,
+   "W[1]": {
+    "before": 99,
+    "after": 91
+   }
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V7",
+  "kind": "complaint",
+  "situation": "T2 session plan v1 (control: user inputs present but not the cause)",
+  "user_says": "Vehicle 2 still has too many stops.",
+  "claim": {
+   "target": "S[2]",
+   "direction": "decrease"
+  },
+  "expected": "genuine",
+  "verdict": "genuine",
+  "flags": [],
+  "binding_user_inputs": [],
+  "evidence": {
+   "S[2]": 4,
+   "total_distance": 390,
+   "without_each_user_input": [
+    {
+     "input": {
+      "op": "add_soft_constraint",
+      "target": "W[1]",
+      "sense": "<=",
+      "rhs": 92,
+      "penalty": 500,
+      "id": "acc1_1"
+     },
+     "S[2]_without_it": 4,
+     "routes_without_it": [
+      [
+       1,
+       4,
+       7,
+       2
+      ],
+      [
+       5,
+       3,
+       6,
+       8
+      ]
+     ],
+     "total_distance_without_it": 351
+    }
+   ]
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V8",
+  "kind": "complaint",
+  "situation": "T1 session plan v0 (control: no user inputs)",
+  "user_says": "Vehicle 2 is on the road for 211 km.",
+  "claim": {
+   "target": "L[2]",
+   "direction": "decrease"
+  },
+  "expected": "genuine",
+  "verdict": "genuine",
+  "flags": [],
+  "binding_user_inputs": [],
+  "evidence": {
+   "L[2]": 211,
+   "total_distance": 351
+  },
+  "as_expected": true
+ },
+ {
+  "id": "V9",
+  "kind": "complaint",
+  "situation": "constructed day: user entered demand[3] = 62 and capacity 110 (no plan without the capacity entry; the v1 validator crashed here)",
+  "user_says": "Vehicle 2 drives too far.",
+  "claim": {
+   "target": "L[2]",
+   "direction": "decrease"
+  },
+  "expected": "self_imposed",
+  "verdict": "self_imposed",
+  "flags": [
+   "conflicts_with_user_input"
+  ],
+  "binding_user_inputs": [
+   {
+    "op": "modify_data",
+    "field": "demand[3]",
+    "value": 62
+   }
+  ],
+  "evidence": {
+   "L[2]": 211,
+   "total_distance": 351,
+   "without_each_user_input": [
+    {
+     "input": {
+      "op": "modify_data",
+      "field": "demand[3]",
+      "value": 62
+     },
+     "L[2]_without_it": 155,
+     "routes_without_it": [
+      [
+       1,
+       6,
+       8
+      ],
+      [
+       2,
+       7,
+       4,
+       5,
+       3
+      ]
+     ],
+     "total_distance_without_it": 319
+    },
+    {
+     "input": {
+      "op": "modify_data",
+      "field": "capacity",
+      "value": 110
+     },
+     "feasible_without_it": false,
+     "solver_status_without_it": "infeasible"
+    }
+   ]
+  },
+  "as_expected": true
+ }
+]

@@ -1,0 +1,3227 @@
+{
+ "protocol": "task2_v3",
+ "instance_sha256": "1a9e58dc949b1ef8f8ef86953099594841b41091d31069fbf1d8998b5dd1cab6",
+ "cases": [
+  {
+   "id": "U1",
+   "split": "test",
+   "stratum": "control",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "Vehicle 2 is on the road for 211 km today. That is too much for one driver: its route must not be longer than 180 km.",
+   "explanation": "I mean the total length of vehicle 2's route: it should be 180 km or less.",
+   "clarification_answer": "I mean the total length of vehicle 2's route: it should be 180 km or less.",
+   "clarity": "clear",
+   "complaint_object": "vehicle",
+   "conditions": [
+    {
+     "kind": "max",
+     "params": {
+      "target": "L[2]",
+      "max": 180
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "L[2]",
+     "sense": "<=",
+     "rhs": 180,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Customer 3 is only 20 km from customer 1. Why is it on vehicle 2 and not with customer 1?",
+   "why_decision": {
+    "type": "SEP",
+    "i": 1,
+    "j": 3
+   },
+   "what_if_question": "What if vehicle 2's route were limited to 180 km?",
+   "what_if": {
+    "type": "APPLY_MODIFICATIONS",
+    "mods": [
+     {
+      "op": "add_soft_constraint",
+      "target": "L[2]",
+      "sense": "<=",
+      "rhs": 180,
+      "penalty": 10
+     }
+    ]
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "vehicle 2's route is 211 km long, and it must be at most 180 km"
+    ]
+   },
+   "min_compliant_distance": 368.0,
+   "compliant_plans": 2928,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "L[2]",
+       "sense": "<=",
+       "rhs": 180,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "L[2]",
+       "sense": "<=",
+       "rhs": 180,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": []
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "L[2]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "capacity_forced",
+     "acceptable_sets": [
+      [
+       "cap[1]",
+       "cap[2]"
+      ]
+     ],
+     "constraints_in_every_iis": [
+      "cap[1]",
+      "cap[2]"
+     ],
+     "part": "constraints"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      3,
+      5,
+      6,
+      8
+     ],
+     "current_objective": 661,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 368.0,
+     "total_distance": 368,
+     "delta_objective": -293.0,
+     "delta_distance": 17,
+     "acceptable_change_sets": [
+      {
+       "moved": [
+        4,
+        8
+       ],
+       "added_edges": [
+        [
+         0,
+         4
+        ],
+        [
+         0,
+         6
+        ],
+        [
+         1,
+         7
+        ],
+        [
+         2,
+         8
+        ],
+        [
+         4,
+         5
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         2
+        ],
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         6,
+         8
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  },
+  {
+   "id": "U2",
+   "split": "test",
+   "stratum": "control",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "The direct road between customers 6 and 8 is closed today, so no truck may drive straight from one to the other.",
+   "explanation": "No truck may drive directly from customer 6 to customer 8 or back.",
+   "clarification_answer": "No truck may drive directly from customer 6 to customer 8 or back.",
+   "clarity": "clear",
+   "complaint_object": "customer",
+   "conditions": [
+    {
+     "kind": "not_adjacent",
+     "params": {
+      "i": 6,
+      "j": 8
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "e[6,8]",
+     "sense": "<=",
+     "rhs": 0,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why does vehicle 2 drive from customer 6 straight to customer 8?",
+   "why_decision": {
+    "type": "ADJ",
+    "i": 6,
+    "j": 8
+   },
+   "what_if_question": "What if vehicle 2 went to customer 8 first?",
+   "what_if": {
+    "type": "FIX_ARC",
+    "k": 2,
+    "i": 0,
+    "j": 8
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "a truck still drives directly between customer 6 and customer 8"
+    ]
+   },
+   "min_compliant_distance": 368.0,
+   "compliant_plans": 13248,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "e[6,8]",
+       "sense": "<=",
+       "rhs": 0,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "e[6,8]",
+       "sense": "<=",
+       "rhs": 0,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": []
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "e[6,8]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 17.0,
+     "acceptable_sets": [
+      [
+       "e[0,2]",
+       "e[0,4]",
+       "e[0,5]",
+       "e[0,6]",
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,8]",
+       "e[4,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,2]",
+        "e[0,4]",
+        "e[0,5]",
+        "e[0,6]",
+        "e[1,4]",
+        "e[1,7]",
+        "e[2,8]",
+        "e[4,5]",
+        "e[4,7]",
+        "e[6,8]"
+       ],
+       "added_edges": [
+        [
+         0,
+         4
+        ],
+        [
+         0,
+         6
+        ],
+        [
+         1,
+         7
+        ],
+        [
+         2,
+         8
+        ],
+        [
+         4,
+         5
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         2
+        ],
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         6,
+         8
+        ]
+       ],
+       "added_distance": 239,
+       "removed_distance": 222,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      8
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 351.0,
+     "total_distance": 351,
+     "delta_objective": 0.0,
+     "delta_distance": 0,
+     "acceptable_change_sets": [
+      {
+       "moved": [],
+       "added_edges": [],
+       "removed_edges": [],
+       "reversed": [
+        2
+       ],
+       "solution": {
+        "routes": [
+         [
+          1,
+          4,
+          7,
+          2
+         ],
+         [
+          8,
+          6,
+          3,
+          5
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_unchanged"
+    }
+   }
+  },
+  {
+   "id": "U3",
+   "split": "test",
+   "stratum": "ambiguity",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "Vehicle 1 is doing too much work.",
+   "explanation": "I mean the load: vehicle 1 leaves the depot with 99 units, which is practically full. It should carry at most 92 units.",
+   "clarification_answer": "I mean the load: vehicle 1 leaves the depot with 99 units, which is practically full. It should carry at most 92 units.",
+   "clarity": "ambiguous",
+   "complaint_object": "vehicle",
+   "conditions": [
+    {
+     "kind": "max",
+     "params": {
+      "target": "W[1]",
+      "max": 92
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "W[1]",
+     "sense": "<=",
+     "rhs": 92,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why are customers 1 and 2 both served by vehicle 1?",
+   "why_decision": {
+    "type": "SAME",
+    "i": 1,
+    "j": 2
+   },
+   "what_if_question": "What if customer 7 were moved to vehicle 2?",
+   "what_if": {
+    "type": "MOVE",
+    "i": 7,
+    "k": 2
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "vehicle 1 carries 99 units, and it must carry at most 92"
+    ]
+   },
+   "min_compliant_distance": 368.0,
+   "compliant_plans": 6192,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "W[1]",
+       "sense": "<=",
+       "rhs": 92,
+       "penalty": 100
+      }
+     ],
+     "optima": 2,
+     "resolving": 2,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        4,
+        8
+       ],
+       [
+        2,
+        7,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 390,
+     "first_unmet": []
+    },
+    "misreading": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "load_balance",
+       "sense": "<=",
+       "rhs": 5,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        6,
+        8
+       ],
+       [
+        2,
+        7,
+        4,
+        3
+       ]
+      ]
+     },
+     "first_distance": 369,
+     "first_unmet": [
+      "vehicle 1 carries 93 units, and it must carry at most 92"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "W[1]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "low"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 18.0,
+     "acceptable_sets": [
+      [
+       "e[0,3]",
+       "e[0,5]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[3,4]",
+       "e[3,5]",
+       "e[3,6]",
+       "e[5,6]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,3]",
+        "e[0,5]",
+        "e[1,4]",
+        "e[1,5]",
+        "e[3,4]",
+        "e[3,5]",
+        "e[3,6]",
+        "e[5,6]"
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         1,
+         5
+        ],
+        [
+         3,
+         4
+        ],
+        [
+         5,
+         6
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         3,
+         5
+        ],
+        [
+         3,
+         6
+        ]
+       ],
+       "added_distance": 154,
+       "removed_distance": 136,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          5,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          4,
+          3
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      7
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 369.0,
+     "total_distance": 369,
+     "delta_objective": 18.0,
+     "delta_distance": 18,
+     "acceptable_change_sets": [
+      {
+       "moved": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         1,
+         5
+        ],
+        [
+         3,
+         4
+        ],
+        [
+         5,
+         6
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         3,
+         5
+        ],
+        [
+         3,
+         6
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          1,
+          5,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          4,
+          3
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  },
+  {
+   "id": "U4",
+   "split": "test",
+   "stratum": "ambiguity",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "One of the numbers you have for customer 7 is wrong. It should be 18.",
+   "explanation": "I mean the order size: customer 7 now orders 18 units, not 11.",
+   "clarification_answer": "I mean the order size: customer 7 now orders 18 units, not 11.",
+   "clarity": "ambiguous",
+   "complaint_object": "data",
+   "conditions": [],
+   "allowed_data_corrections": [
+    {
+     "op": "modify_data",
+     "field": "demand[7]",
+     "value": 18
+    }
+   ],
+   "reference_modification": [
+    {
+     "op": "modify_data",
+     "field": "demand[7]",
+     "value": 18
+    }
+   ],
+   "why_question": "Why does vehicle 1 go from customer 7 to customer 2?",
+   "why_decision": {
+    "type": "ADJ",
+    "i": 2,
+    "j": 7
+   },
+   "what_if_question": "What if customers 2 and 7 were on different vehicles?",
+   "what_if": {
+    "type": "FORCE_SEP",
+    "i": 2,
+    "j": 7
+   },
+   "initial_verdict": {
+    "feasible": false,
+    "unmet": [
+     "this plan can't be used: with the real orders vehicle 1 would carry 106 units, more than its capacity of 100"
+    ]
+   },
+   "min_compliant_distance": 391.0,
+   "compliant_plans": 5760,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "modify_data",
+       "field": "demand[7]",
+       "value": 18
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        4,
+        7
+       ],
+       [
+        2,
+        3,
+        6,
+        8
+       ]
+      ]
+     },
+     "first_distance": 391,
+     "first_unmet": []
+    },
+    "misreading": {
+     "modifications": [
+      {
+       "op": "modify_data",
+       "field": "coord[7]",
+       "value": [
+        6,
+        18
+       ]
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        4,
+        7,
+        2
+       ],
+       [
+        5,
+        3,
+        6,
+        8
+       ]
+      ]
+     },
+     "first_distance": 351,
+     "first_unmet": [
+      "this plan can't be used: with the real orders vehicle 1 would carry 106 units, more than its capacity of 100"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "demand[7]"
+     ],
+     "modification_types": [
+      "modify_data"
+     ],
+     "confidence": "low"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 28.0,
+     "acceptable_sets": [
+      [
+       "e[1,4]",
+       "e[1,7]",
+       "e[2,4]",
+       "e[2,7]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[1,4]",
+        "e[1,7]",
+        "e[2,4]",
+        "e[2,7]"
+       ],
+       "added_edges": [
+        [
+         1,
+         7
+        ],
+        [
+         2,
+         4
+        ]
+       ],
+       "removed_edges": [
+        [
+         1,
+         4
+        ],
+        [
+         2,
+         7
+        ]
+       ],
+       "added_distance": 89,
+       "removed_distance": 61,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          7,
+          4,
+          2
+         ],
+         [
+          5,
+          3,
+          6,
+          8
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      2,
+      7
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 391.0,
+     "total_distance": 391,
+     "delta_objective": 40.0,
+     "delta_distance": 40,
+     "acceptable_change_sets": [
+      {
+       "moved": [
+        2,
+        5
+       ],
+       "added_edges": [
+        [
+         0,
+         7
+        ],
+        [
+         1,
+         5
+        ],
+        [
+         2,
+         3
+        ],
+        [
+         4,
+         5
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         2,
+         7
+        ],
+        [
+         3,
+         5
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          1,
+          5,
+          4,
+          7
+         ],
+         [
+          2,
+          3,
+          6,
+          8
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  },
+  {
+   "id": "U5",
+   "split": "test",
+   "stratum": "ambiguity",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+   "explanation": "It is about the loads: one truck carries 99 units and the other 90. The two loads should differ by at most 5 units, even if that costs some extra distance.",
+   "clarification_answer": "It is about the loads: one truck carries 99 units and the other 90. The two loads should differ by at most 5 units, even if that costs some extra distance.",
+   "clarity": "ambiguous",
+   "complaint_object": "global",
+   "conditions": [
+    {
+     "kind": "max",
+     "params": {
+      "target": "load_balance",
+      "max": 5
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "load_balance",
+     "sense": "<=",
+     "rhs": 5,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why are customers 2 and 7 on the same vehicle?",
+   "why_decision": {
+    "type": "SAME",
+    "i": 2,
+    "j": 7
+   },
+   "what_if_question": "What if customers 1 and 8 swapped vehicles?",
+   "what_if": {
+    "type": "SWAP",
+    "i": 1,
+    "j": 8
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "the two loads differ by 9 units, and they may differ by at most 5"
+    ]
+   },
+   "min_compliant_distance": 369.0,
+   "compliant_plans": 4896,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "load_balance",
+       "sense": "<=",
+       "rhs": 5,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        6,
+        8
+       ],
+       [
+        2,
+        7,
+        4,
+        3
+       ]
+      ]
+     },
+     "first_distance": 369,
+     "first_unmet": []
+    },
+    "misreading": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "balance",
+       "sense": "<=",
+       "rhs": 50,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": [
+      "the two loads differ by 7 units, and they may differ by at most 5"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "load_balance"
+     ],
+     "modification_types": [
+      "set_objective_weight",
+      "add_soft_constraint"
+     ],
+     "confidence": "low"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 40.0,
+     "acceptable_sets": [
+      [
+       "e[0,5]",
+       "e[0,7]",
+       "e[1,4]",
+       "e[1,5]",
+       "e[2,3]",
+       "e[2,7]",
+       "e[3,5]",
+       "e[4,5]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,5]",
+        "e[0,7]",
+        "e[1,4]",
+        "e[1,5]",
+        "e[2,3]",
+        "e[2,7]",
+        "e[3,5]",
+        "e[4,5]"
+       ],
+       "added_edges": [
+        [
+         0,
+         7
+        ],
+        [
+         1,
+         5
+        ],
+        [
+         2,
+         3
+        ],
+        [
+         4,
+         5
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         2,
+         7
+        ],
+        [
+         3,
+         5
+        ]
+       ],
+       "added_distance": 161,
+       "removed_distance": 121,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          5,
+          4,
+          7
+         ],
+         [
+          2,
+          3,
+          6,
+          8
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 2,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      1,
+      8
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 389.0,
+     "total_distance": 389,
+     "delta_objective": 38.0,
+     "delta_distance": 38,
+     "acceptable_change_sets": [
+      {
+       "moved": [
+        1,
+        3,
+        4,
+        8
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         0,
+         4
+        ],
+        [
+         1,
+         6
+        ],
+        [
+         2,
+         8
+        ],
+        [
+         3,
+         7
+        ],
+        [
+         4,
+         5
+        ],
+        [
+         5,
+         6
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         2
+        ],
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         3,
+         5
+        ],
+        [
+         3,
+         6
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         6,
+         8
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          3,
+          7,
+          2,
+          8
+         ],
+         [
+          1,
+          6,
+          5,
+          4
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  },
+  {
+   "id": "U6",
+   "split": "test",
+   "stratum": "side",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "Customer 6 is only 47 km from the depot, but it is reached after 95 km of driving. It should be reached within the first 70 km. Vehicle 1 has already left the depot, so its route cannot change any more.",
+   "explanation": "Customer 6 must be reached within 70 km, and vehicle 1 keeps its route 0 -> 1 -> 4 -> 7 -> 2 -> 0 exactly.",
+   "clarification_answer": "Customer 6 must be reached within 70 km, and vehicle 1 keeps its route 0 -> 1 -> 4 -> 7 -> 2 -> 0 exactly.",
+   "clarity": "clear",
+   "complaint_object": "customer",
+   "conditions": [
+    {
+     "kind": "max",
+     "params": {
+      "target": "A[6]",
+      "max": 70
+     }
+    },
+    {
+     "kind": "route_kept",
+     "params": {
+      "k": 1
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "A[6]",
+     "sense": "<=",
+     "rhs": 70,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[1,4]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[1,7]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[1,2]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why does vehicle 2 go from customer 3 to customer 6?",
+   "why_decision": {
+    "type": "ADJ",
+    "i": 3,
+    "j": 6
+   },
+   "what_if_question": "What if vehicle 2 went to customer 6 first?",
+   "what_if": {
+    "type": "FIX_ARC",
+    "k": 2,
+    "i": 0,
+    "j": 6
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "customer 6 is reached only after 95 km, and it must be reached within 70 km"
+    ]
+   },
+   "min_compliant_distance": 369.0,
+   "compliant_plans": 16,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 70,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[1,4]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[1,7]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[1,2]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        4,
+        7,
+        2
+       ],
+       [
+        6,
+        3,
+        5,
+        8
+       ]
+      ]
+     },
+     "first_distance": 369,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 70,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        6,
+        3,
+        5,
+        4
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": [
+      "vehicle 1's route was changed to 0 -> 1 -> 7 -> 2 -> 8 -> 0; it has to stay 0 -> 1 -> 4 -> 7 -> 2 -> 0"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "A[6]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 12.0,
+     "acceptable_sets": [
+      [
+       "e[0,3]",
+       "e[0,5]",
+       "e[3,6]",
+       "e[5,6]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,3]",
+        "e[0,5]",
+        "e[3,6]",
+        "e[5,6]"
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         5,
+         6
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         3,
+         6
+        ]
+       ],
+       "added_distance": 84,
+       "removed_distance": 72,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          4,
+          7,
+          2
+         ],
+         [
+          3,
+          5,
+          6,
+          8
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      6
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 368.0,
+     "total_distance": 368,
+     "delta_objective": 17.0,
+     "delta_distance": 17,
+     "acceptable_change_sets": [
+      {
+       "moved": [
+        4,
+        8
+       ],
+       "added_edges": [
+        [
+         0,
+         4
+        ],
+        [
+         0,
+         6
+        ],
+        [
+         1,
+         7
+        ],
+        [
+         2,
+         8
+        ],
+        [
+         4,
+         5
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         2
+        ],
+        [
+         0,
+         5
+        ],
+        [
+         1,
+         4
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         6,
+         8
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          1,
+          7,
+          2,
+          8
+         ],
+         [
+          6,
+          3,
+          5,
+          4
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  },
+  {
+   "id": "U7",
+   "split": "test",
+   "stratum": "side",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "Vehicle 1 is loaded with 99 of its 100 units, which its driver finds too risky: it should carry at most 94 units. Both trucks are already half loaded, so at most two customers may change trucks.",
+   "explanation": "Vehicle 1 should carry at most 94 units, and at most two customers may move to the other truck.",
+   "clarification_answer": "Vehicle 1 should carry at most 94 units, and at most two customers may move to the other truck.",
+   "clarity": "clear",
+   "complaint_object": "vehicle",
+   "conditions": [
+    {
+     "kind": "max",
+     "params": {
+      "target": "W[1]",
+      "max": 94
+     }
+    },
+    {
+     "kind": "max_moved",
+     "params": {
+      "max": 2
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "W[1]",
+     "sense": "<=",
+     "rhs": 94,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[1,7]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why are customers 2 and 5 on different vehicles?",
+   "why_decision": {
+    "type": "SEP",
+    "i": 2,
+    "j": 5
+   },
+   "what_if_question": "What if vehicle 1 also served customer 3?",
+   "what_if": {
+    "type": "MOVE",
+    "i": 3,
+    "k": 1
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "vehicle 1 carries 99 units, and it must carry at most 94"
+    ]
+   },
+   "min_compliant_distance": 391.0,
+   "compliant_plans": 1152,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "W[1]",
+       "sense": "<=",
+       "rhs": 94,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[1,7]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        4,
+        7
+       ],
+       [
+        2,
+        3,
+        6,
+        8
+       ]
+      ]
+     },
+     "first_distance": 391,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "W[1]",
+       "sense": "<=",
+       "rhs": 94,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        6,
+        8
+       ],
+       [
+        2,
+        7,
+        4,
+        3
+       ]
+      ]
+     },
+     "first_distance": 369,
+     "first_unmet": [
+      "6 customers changed trucks (2, 4, 5, 6, 7, 8), and at most 2 may change trucks"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "W[1]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 39.0,
+     "acceptable_sets": [
+      [
+       "e[0,3]",
+       "e[0,5]",
+       "e[3,6]",
+       "e[4,6]",
+       "e[4,7]",
+       "e[5,7]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,3]",
+        "e[0,5]",
+        "e[3,6]",
+        "e[4,6]",
+        "e[4,7]",
+        "e[5,7]"
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         4,
+         6
+        ],
+        [
+         5,
+         7
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         3,
+         6
+        ],
+        [
+         4,
+         7
+        ]
+       ],
+       "added_distance": 140,
+       "removed_distance": 101,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          4,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          5,
+          3
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      3
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": false,
+     "infeasible_without_capacity": false,
+     "outcome": "infeasible_capacity"
+    }
+   }
+  },
+  {
+   "id": "U8",
+   "split": "test",
+   "stratum": "side",
+   "scenario": "Reference instance; the plan complained about is its optimum (351 km).",
+   "model_modifications": [],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 351.0,
+   "solution_metrics": {
+    "L[1]": 140,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 97,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 77,
+    "A[8]": 167,
+    "total_distance": 351,
+    "balance": 71,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 588
+   },
+   "complaint": "Customers 2, 4, 5 and 7 are all in the south-west. If possible, one truck should serve all four. If the trucks are too small for that, at least customers 4 and 5 should share a truck, and the total distance must not go above 370 km.",
+   "explanation": "Ideally customers 2, 4, 5 and 7 share one truck; if that cannot be done, customers 4 and 5 share a truck and the total distance stays at or below 370 km.",
+   "clarification_answer": "Ideally customers 2, 4, 5 and 7 share one truck; if that cannot be done, customers 4 and 5 share a truck and the total distance stays at or below 370 km.",
+   "clarity": "clear",
+   "complaint_object": "customer",
+   "conditions": [
+    {
+     "kind": "same",
+     "params": {
+      "i": 4,
+      "j": 5
+     }
+    },
+    {
+     "kind": "total_max",
+     "params": {
+      "max": 370
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "same[4,5]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why are customers 2 and 5 not on the same vehicle?",
+   "why_decision": {
+    "type": "SEP",
+    "i": 2,
+    "j": 5
+   },
+   "what_if_question": "What if customers 2 and 5 had to share a vehicle?",
+   "what_if": {
+    "type": "FORCE_SAME",
+    "i": 2,
+    "j": 5
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "customers 4 and 5 are on different trucks, and they must share one"
+    ]
+   },
+   "min_compliant_distance": 368.0,
+   "compliant_plans": 8,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "same[4,5]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        2,
+        8
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 368,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "same[2,4]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[4,5]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[5,7]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        4,
+        7
+       ],
+       [
+        2,
+        3,
+        6,
+        8
+       ]
+      ]
+     },
+     "first_distance": 391,
+     "first_unmet": [
+      "the total distance is 391 km, and I can accept at most 370 km"
+     ]
+    },
+    "impossible_wish": {
+     "conditions": [
+      {
+       "kind": "same",
+       "params": {
+        "i": 2,
+        "j": 4
+       }
+      },
+      {
+       "kind": "same",
+       "params": {
+        "i": 4,
+        "j": 5
+       }
+      },
+      {
+       "kind": "same",
+       "params": {
+        "i": 5,
+        "j": 7
+       }
+      }
+     ],
+     "feasible_plans": 0
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "same[4,5]",
+      "sep[4,5]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 39.0,
+     "acceptable_sets": [
+      [
+       "e[0,3]",
+       "e[0,5]",
+       "e[3,6]",
+       "e[4,6]",
+       "e[4,7]",
+       "e[5,7]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,3]",
+        "e[0,5]",
+        "e[3,6]",
+        "e[4,6]",
+        "e[4,7]",
+        "e[5,7]"
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         4,
+         6
+        ],
+        [
+         5,
+         7
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         3,
+         6
+        ],
+        [
+         4,
+         7
+        ]
+       ],
+       "added_distance": 140,
+       "removed_distance": 101,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          4,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          5,
+          3
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      2,
+      5
+     ],
+     "current_objective": 351,
+     "current_distance": 351,
+     "feasible": true,
+     "objective": 390.0,
+     "total_distance": 390,
+     "delta_objective": 39.0,
+     "delta_distance": 39,
+     "acceptable_change_sets": [
+      {
+       "moved": [
+        2,
+        6,
+        7,
+        8
+       ],
+       "added_edges": [
+        [
+         0,
+         3
+        ],
+        [
+         4,
+         6
+        ],
+        [
+         5,
+         7
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         5
+        ],
+        [
+         3,
+         6
+        ],
+        [
+         4,
+         7
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          1,
+          4,
+          6,
+          8
+         ],
+         [
+          2,
+          7,
+          5,
+          3
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  },
+  {
+   "id": "U9",
+   "split": "test",
+   "stratum": "side",
+   "scenario": "Earlier in this session the user reported that the road between customers 4 and 7 is closed; the fix was accepted and stays in force.",
+   "model_modifications": [
+    {
+     "op": "add_soft_constraint",
+     "target": "e[4,7]",
+     "sense": "<=",
+     "rhs": 0,
+     "penalty": 100
+    }
+   ],
+   "solution": {
+    "routes": [
+     [
+      1,
+      4,
+      2,
+      7
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "solution_objective": 366.0,
+   "solution_metrics": {
+    "L[1]": 155,
+    "W[1]": 99,
+    "S[1]": 4,
+    "L[2]": 211,
+    "W[2]": 90,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 74,
+    "A[3]": 60,
+    "A[4]": 48,
+    "A[5]": 37,
+    "A[6]": 95,
+    "A[7]": 94,
+    "A[8]": 167,
+    "total_distance": 366,
+    "balance": 56,
+    "makespan": 211,
+    "load_balance": 9,
+    "sum_arrival": 582
+   },
+   "complaint": "Customers 5 and 7 order from the same supplier and should be served by one truck. At most two customers may change trucks, and remember that the road between customers 4 and 7 is still closed.",
+   "explanation": "Customers 5 and 7 on one truck, at most two customers moving to the other truck, and no truck driving directly between customers 4 and 7.",
+   "clarification_answer": "Customers 5 and 7 on one truck, at most two customers moving to the other truck, and no truck driving directly between customers 4 and 7.",
+   "clarity": "clear",
+   "complaint_object": "customer",
+   "conditions": [
+    {
+     "kind": "same",
+     "params": {
+      "i": 5,
+      "j": 7
+     }
+    },
+    {
+     "kind": "max_moved",
+     "params": {
+      "max": 2
+     }
+    },
+    {
+     "kind": "not_adjacent",
+     "params": {
+      "i": 4,
+      "j": 7
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "same[5,7]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[1,4]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[3,8]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Customers 1 and 3 are only 20 km apart. Why are they on different trucks?",
+   "why_decision": {
+    "type": "SEP",
+    "i": 1,
+    "j": 3
+   },
+   "what_if_question": "What if customers 1 and 3 had to share a truck?",
+   "what_if": {
+    "type": "FORCE_SAME",
+    "i": 1,
+    "j": 3
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "customers 5 and 7 are on different trucks, and they must share one"
+    ]
+   },
+   "min_compliant_distance": 400.0,
+   "compliant_plans": 864,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "same[5,7]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[1,4]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[3,8]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        4,
+        5,
+        7
+       ],
+       [
+        2,
+        3,
+        6,
+        8
+       ]
+      ]
+     },
+     "first_distance": 412,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "same[5,7]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        4,
+        6,
+        8
+       ],
+       [
+        2,
+        7,
+        5,
+        3
+       ]
+      ]
+     },
+     "first_distance": 390,
+     "first_unmet": [
+      "4 customers changed trucks (2, 6, 7, 8), and at most 2 may change trucks"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "same[5,7]",
+      "sep[5,7]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "capacity_forced",
+     "acceptable_sets": [
+      [
+       "cap[1]",
+       "cap[2]"
+      ]
+     ],
+     "constraints_in_every_iis": [
+      "cap[1]",
+      "cap[2]"
+     ],
+     "part": "constraints"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 2,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      1,
+      3
+     ],
+     "current_objective": 366.0,
+     "current_distance": 366,
+     "feasible": false,
+     "infeasible_without_capacity": false,
+     "outcome": "infeasible_capacity"
+    }
+   }
+  },
+  {
+   "id": "U10",
+   "split": "test",
+   "stratum": "side",
+   "scenario": "Earlier in this session the user asked for customers 4 and 5 to share a truck; the fix was accepted and stays in force.",
+   "model_modifications": [
+    {
+     "op": "add_soft_constraint",
+     "target": "same[4,5]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    }
+   ],
+   "solution": {
+    "routes": [
+     [
+      1,
+      7,
+      2,
+      8
+     ],
+     [
+      4,
+      5,
+      3,
+      6
+     ]
+    ]
+   },
+   "solution_objective": 368.0,
+   "solution_metrics": {
+    "L[1]": 207,
+    "W[1]": 98,
+    "S[1]": 4,
+    "L[2]": 161,
+    "W[2]": 91,
+    "S[2]": 4,
+    "A[1]": 7,
+    "A[2]": 90,
+    "A[3]": 79,
+    "A[4]": 42,
+    "A[5]": 56,
+    "A[6]": 114,
+    "A[7]": 70,
+    "A[8]": 163,
+    "total_distance": 368,
+    "balance": 46,
+    "makespan": 207,
+    "load_balance": 7,
+    "sum_arrival": 621
+   },
+   "complaint": "The direct road between customers 2 and 7 is closed today. Vehicle 2 has already left the depot, so its route cannot change any more, and customers 4 and 5 still have to share a truck.",
+   "explanation": "No truck may drive directly between customers 2 and 7, vehicle 2 keeps its route exactly, and customers 4 and 5 stay on one truck.",
+   "clarification_answer": "No truck may drive directly between customers 2 and 7, vehicle 2 keeps its route exactly, and customers 4 and 5 stay on one truck.",
+   "clarity": "clear",
+   "complaint_object": "customer",
+   "conditions": [
+    {
+     "kind": "not_adjacent",
+     "params": {
+      "i": 2,
+      "j": 7
+     }
+    },
+    {
+     "kind": "route_kept",
+     "params": {
+      "k": 2
+     }
+    },
+    {
+     "kind": "same",
+     "params": {
+      "i": 4,
+      "j": 5
+     }
+    }
+   ],
+   "allowed_data_corrections": [],
+   "reference_modification": [
+    {
+     "op": "add_soft_constraint",
+     "target": "e[2,7]",
+     "sense": "<=",
+     "rhs": 0,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[3,4]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    },
+    {
+     "op": "add_soft_constraint",
+     "target": "same[3,6]",
+     "sense": ">=",
+     "rhs": 1,
+     "penalty": 100
+    }
+   ],
+   "why_question": "Why does vehicle 1 drive from customer 7 straight to customer 2?",
+   "why_decision": {
+    "type": "ADJ",
+    "i": 2,
+    "j": 7
+   },
+   "what_if_question": "What if customer 2 were the first stop of vehicle 1?",
+   "what_if": {
+    "type": "FIX_ARC",
+    "k": 1,
+    "i": 0,
+    "j": 2
+   },
+   "initial_verdict": {
+    "feasible": true,
+    "unmet": [
+     "a truck still drives directly between customer 2 and customer 7"
+    ]
+   },
+   "min_compliant_distance": 439.0,
+   "compliant_plans": 24,
+   "design": {
+    "reference": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "e[2,7]",
+       "sense": "<=",
+       "rhs": 0,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[3,4]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      },
+      {
+       "op": "add_soft_constraint",
+       "target": "same[3,6]",
+       "sense": ">=",
+       "rhs": 1,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 1,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        7,
+        8,
+        2
+       ],
+       [
+        4,
+        5,
+        3,
+        6
+       ]
+      ]
+     },
+     "first_distance": 439,
+     "first_unmet": []
+    },
+    "direct": {
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "e[2,7]",
+       "sense": "<=",
+       "rhs": 0,
+       "penalty": 100
+      }
+     ],
+     "optima": 1,
+     "resolving": 0,
+     "first_plan": {
+      "routes": [
+       [
+        1,
+        5,
+        4,
+        7
+       ],
+       [
+        2,
+        3,
+        6,
+        8
+       ]
+      ]
+     },
+     "first_distance": 391,
+     "first_unmet": [
+      "vehicle 2's route was changed to 0 -> 2 -> 3 -> 6 -> 8 -> 0; it has to stay 0 -> 4 -> 5 -> 3 -> 6 -> 0"
+     ]
+    }
+   },
+   "gt": {
+    "localization": {
+     "targets": [
+      "e[2,7]"
+     ],
+     "modification_types": [
+      "add_soft_constraint"
+     ],
+     "confidence": "high"
+    },
+    "attribution": {
+     "conclusion": "objective_preferred",
+     "delta": 23.0,
+     "acceptable_sets": [
+      [
+       "e[0,2]",
+       "e[0,4]",
+       "e[0,6]",
+       "e[0,7]",
+       "e[1,5]",
+       "e[1,7]",
+       "e[2,3]",
+       "e[2,7]",
+       "e[2,8]",
+       "e[3,5]",
+       "e[4,7]",
+       "e[6,8]"
+      ]
+     ],
+     "details": [
+      {
+       "edges": [
+        "e[0,2]",
+        "e[0,4]",
+        "e[0,6]",
+        "e[0,7]",
+        "e[1,5]",
+        "e[1,7]",
+        "e[2,3]",
+        "e[2,7]",
+        "e[2,8]",
+        "e[3,5]",
+        "e[4,7]",
+        "e[6,8]"
+       ],
+       "added_edges": [
+        [
+         0,
+         2
+        ],
+        [
+         0,
+         7
+        ],
+        [
+         1,
+         5
+        ],
+        [
+         2,
+         3
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         6,
+         8
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         4
+        ],
+        [
+         0,
+         6
+        ],
+        [
+         1,
+         7
+        ],
+        [
+         2,
+         7
+        ],
+        [
+         2,
+         8
+        ],
+        [
+         3,
+         5
+        ]
+       ],
+       "added_distance": 291,
+       "removed_distance": 268,
+       "forbidden_optimum": {
+        "routes": [
+         [
+          1,
+          5,
+          4,
+          7
+         ],
+         [
+          2,
+          3,
+          6,
+          8
+         ]
+        ]
+       }
+      }
+     ],
+     "part": "variables"
+    },
+    "counterfactual": {
+     "anchor": {
+      "type": "MOVE",
+      "i": 1,
+      "k": 1,
+      "role": "anchor"
+     },
+     "involved": [
+      2
+     ],
+     "current_objective": 368.0,
+     "current_distance": 368,
+     "feasible": true,
+     "objective": 372.0,
+     "total_distance": 372,
+     "delta_objective": 4.0,
+     "delta_distance": 4,
+     "acceptable_change_sets": [
+      {
+       "moved": [],
+       "added_edges": [
+        [
+         0,
+         2
+        ],
+        [
+         1,
+         8
+        ],
+        [
+         7,
+         8
+        ]
+       ],
+       "removed_edges": [
+        [
+         0,
+         8
+        ],
+        [
+         1,
+         7
+        ],
+        [
+         2,
+         8
+        ]
+       ],
+       "reversed": [],
+       "solution": {
+        "routes": [
+         [
+          2,
+          7,
+          8,
+          1
+         ],
+         [
+          4,
+          5,
+          3,
+          6
+         ]
+        ]
+       }
+      }
+     ],
+     "outcome": "feasible_worse"
+    }
+   }
+  }
+ ]
+}

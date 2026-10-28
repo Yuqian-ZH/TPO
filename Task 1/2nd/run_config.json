@@ -1,0 +1,122 @@
+{
+  "policy_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "policy_gpu": 2,
+  "policy_port": 8002,
+  "reward_model": "sfairXC/FsfairX-LLaMA3-RM-v0.1",
+  "reward_gpu": 3,
+  "gpu_type": "NVIDIA H100 80GB HBM3",
+  "n_prompts": 100,
+  "D": 2,
+  "N": 5,
+  "seed": 7,
+  "slice_seed": 42,
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "max_tokens_response": 2048,
+  "max_tokens_all": 8192,
+  "server_max_model_len": 16384,
+  "num_threads": 8,
+  "dataset": "data/alpaca100.json",
+  "reference": "data/reference100.json",
+  "packages": {
+    "torch": "2.4.0",
+    "vllm": "0.6.3",
+    "transformers": "4.48.0",
+    "openai": "2.54.0",
+    "textgrad": "0.1.5"
+  },
+  "repo_commit": "395c3d763a4c3df0ae72a4352b0db16fe5ee18e9",
+  "repo_modified_files": [
+    "README.md",
+    "run.py",
+    "textgrad-main/setup.py",
+    "textgrad-main/textgrad/engine/openai.py"
+  ],
+  "data_sha256": {
+    "alpaca100.json": "27187db994bd629ee094a58fbbf28ddb3fca2f779f676ce56b30eb74b6fe1e6e",
+    "slice_ids.json": "cd0f97f609b908f2b0ecbab382d16e00448d0d7c0dfa1b689b4ceb5b0d0b7b65",
+    "alpaca5.json": "c7524f236668b956e043bdc489958d226a72c40577c476f0732f917b0e43ccdf",
+    "alpaca100_meta.json": "e66012ea32d8548e3c6565faa44ca91f3a003fd1c29b4b12bbc29a73601e1aea",
+    "reference100.json": "9c6c8b56e6875e22f4661eb7e04e1b7cf65de96aec6af2d1d77e975414a2bfc9"
+  },
+  "environment_fix": {
+    "package": "pyairports",
+    "old_version": "0.0.1",
+    "new_version": "2.1.1",
+    "source": "https://github.com/NICTA/pyairports",
+    "commit": "9699eae8c6b03c97239018dea92e01daa8594936",
+    "reason": "The installed pyairports 0.0.1 supplied no importable module. vLLM returned HTTP 500 from the lazy outlines import; replaced with original source, then verified actual generation."
+  },
+  "judge_model": "qwen3.8-max",
+  "judge_annotator": "weighted_qwen3_8_max",
+  "judge_settings": {
+    "temperature": 1,
+    "max_tokens": 1,
+    "logprobs": true,
+    "top_logprobs": 5,
+    "enable_thinking": false,
+    "order_randomization_seed": 0
+  },
+  "judge_packages": {
+    "alpaca-eval": "0.6.6",
+    "openai": "3.35.1",
+    "setuptools": "80.9.0",
+    "scikit-learn": "1.7.2"
+  },
+  "run_status": "Tulu generation, Qwen judging, and paired comparison complete",
+  "policy_backend": "local vLLM, unchanged Tulu-3-8B-SFT",
+  "llama_reference": "llama_reference/",
+  "model_roles": {
+    "policy": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+    "reward_model": "sfairXC/FsfairX-LLaMA3-RM-v0.1",
+    "judge": "qwen3.8-max"
+  },
+  "comparison_type": "fresh generation and Qwen judging versus preserved experiment with same model roles",
+  "deviations": [
+    "Both historical and new runs use Qwen instead of the official GPT-4 judge.",
+    "Fresh sampling can differ despite same seed because batching, server scheduling, and unseeded critique/gradient calls are stochastic.",
+    "Qwen alias exposes no dated snapshot; judging occurs later."
+  ],
+  "excluded_run": "discarded_qwen_policy/ contains the stopped role-misinterpreted run; excluded from all reported results.",
+  "runner_notes": [
+    "Uses the unchanged original TPO/BoN functions and VllmServer engine with a response-logging wrapper.",
+    "The rerun checkpoints each prompt and uses one persistent 8-thread pool; the historical run recreated its pool every 32 prompts. This may change server batching and timing."
+  ],
+  "cached_hf_revisions": {
+    "allenai--Llama-3.1-Tulu-3-8B-SFT": "f2a0b46b0cfda21003c6141b1ff837b7e165524d",
+    "sfairXC--FsfairX-LLaMA3-RM-v0.1": "94fad49f1b3227aa8b566f415a335adb68ec544c"
+  },
+  "completed_prompts": 100,
+  "completed_at": "2026-10-20T20:26:13.795883-07:00",
+  "generation_timing": {
+    "run100": {
+      "state": "complete",
+      "completed": 100,
+      "target": 100,
+      "started_at": "2026-10-20T20:17:19.941978-07:00",
+      "failed": 0,
+      "elapsed_seconds": 300.62879969200003,
+      "finished_at": "2026-10-20T20:22:20.571026-07:00"
+    },
+    "bon15": {
+      "state": "complete",
+      "completed": 100,
+      "target": 100,
+      "started_at": "2026-10-20T20:22:20.571751-07:00",
+      "failed": 0,
+      "elapsed_seconds": 72.69875133200549,
+      "finished_at": "2026-10-20T20:23:33.270953-07:00"
+    }
+  },
+  "local_policy_tokens": {
+    "prompt_tokens": 688288,
+    "completion_tokens": 692175,
+    "total_tokens": 1380463
+  },
+  "judge_usage": {
+    "smoke_requests": 0,
+    "smoke_tokens": 0,
+    "full_stage_requests": 403,
+    "full_stage_tokens": 423283
+  }
+}

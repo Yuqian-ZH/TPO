@@ -1,0 +1,466 @@
+{
+ "case_id": "T8",
+ "run": 1,
+ "initial": {
+  "confidence": "low",
+  "clarification_question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+  "critique": null,
+  "raw": {
+   "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+   "clarification": null,
+   "diagnostics": {
+    "samples": [
+     {
+      "sample_index": 0,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "distance_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": null,
+       "corrected_value": null,
+       "ambiguous": true,
+       "clarifying_question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+       "rationale": "The complaint about work being split unevenly most likely refers to the 71 km difference in route lengths, but could also refer to the 9-unit load difference."
+      },
+      "valid": true,
+      "target": "balance",
+      "reason": null
+     },
+     {
+      "sample_index": 1,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "distance_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": null,
+       "corrected_value": null,
+       "ambiguous": true,
+       "clarifying_question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+       "rationale": "The complaint about how work is split between the two vehicles most likely refers to balancing either the distance driven or the load carried, but it does not specify which metric."
+      },
+      "valid": true,
+      "target": "balance",
+      "reason": null
+     },
+     {
+      "sample_index": 2,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "distance_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": null,
+       "corrected_value": null,
+       "ambiguous": true,
+       "clarifying_question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+       "rationale": "The complaint about how work is split between the two vehicles most likely refers to balancing route lengths or loads, but it does not specify which metric."
+      },
+      "valid": true,
+      "target": "balance",
+      "reason": null
+     },
+     {
+      "sample_index": 3,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "distance_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": null,
+       "corrected_value": null,
+       "ambiguous": true,
+       "clarifying_question": "Do you mean the difference in route lengths (km driven) or the difference in load (units carried) between the two vehicles?",
+       "rationale": "The complaint about work being split unevenly most likely refers to the 71 km route-length difference, but could also refer to the 9-unit load difference."
+      },
+      "valid": true,
+      "target": "balance",
+      "reason": null
+     },
+     {
+      "sample_index": 4,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "distance_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": null,
+       "corrected_value": null,
+       "ambiguous": true,
+       "clarifying_question": "Do you mean the difference in route lengths (km driven) or the difference in loads carried between the two vehicles?",
+       "rationale": "The complaint about work being split unevenly likely refers to either the 71 km route-length difference or the 9-unit load difference, but it is not specified which."
+      },
+      "valid": true,
+      "target": "balance",
+      "reason": null
+     }
+    ],
+    "valid_samples": 5,
+    "invalid_samples": 0,
+    "majority_target": "balance",
+    "majority_key_target": "balance",
+    "majority_modification_type": "set_objective_weight",
+    "majority_count": 5,
+    "non_ambiguous_count": 0,
+    "target_counts": {
+     "balance": 5
+    },
+    "rule": {
+     "min_agree": 4,
+     "min_non_ambiguous": 3,
+     "max_invalid": 1
+    }
+   },
+   "confidence": "low",
+   "critique": null,
+   "clarifying_question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?"
+  }
+ },
+ "asked": true,
+ "question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+ "answer": "It is about the loads: one truck carries 99 units and the other 90. The two loads should differ by at most 5 units, even if that costs some extra distance.",
+ "after_clarification": {
+  "confidence": "high",
+  "clarification_question": null,
+  "critique": {
+   "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+   "target": "load_balance",
+   "aspect": "load_balance",
+   "direction": "decrease",
+   "modification_type": "set_objective_weight",
+   "confidence": "high",
+   "threshold": 5,
+   "corrected_value": null,
+   "evidence": {
+    "W[1]": 99,
+    "W[2]": 90,
+    "load_balance": 9
+   },
+   "critique_text": "User complaint: \"The drivers are unhappy with how the work is split between the two vehicles.\" It targets load_balance (load_balance); current values: W[1] = 99, W[2] = 90, load_balance = 9. Requested direction: decrease. Suggested modification type: set_objective_weight. The user's stated limit is 5."
+  },
+  "raw": {
+   "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+   "clarification": {
+    "question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+    "answer": "It is about the loads: one truck carries 99 units and the other 90. The two loads should differ by at most 5 units, even if that costs some extra distance."
+   },
+   "diagnostics": {
+    "samples": [
+     {
+      "sample_index": 0,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90 units) should be at most 5 units, even at the cost of extra distance, which maps to setting an objective weight for load balance with a soft threshold of 5."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 1,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90 units) should be at most 5 units, even at the cost of extra distance, which maps to setting an objective weight on load balance with a soft threshold of 5."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 2,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the complaint is about the load difference between vehicles (99 vs 90 units) and wants it limited to at most 5 units, even at the cost of extra distance."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 3,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90) should be at most 5 units, even at the cost of extra distance, which maps to setting an objective weight for load balance with a soft threshold of 5."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 4,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90 units) should be at most 5 units, even at the expense of extra distance."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     }
+    ],
+    "valid_samples": 5,
+    "invalid_samples": 0,
+    "majority_target": "load_balance",
+    "majority_key_target": "load_balance",
+    "majority_modification_type": "set_objective_weight",
+    "majority_count": 5,
+    "non_ambiguous_count": 5,
+    "target_counts": {
+     "load_balance": 5
+    },
+    "rule": {
+     "min_agree": 4,
+     "min_non_ambiguous": 3,
+     "max_invalid": 1
+    }
+   },
+   "confidence": "high",
+   "critique": {
+    "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+    "target": "load_balance",
+    "aspect": "load_balance",
+    "direction": "decrease",
+    "modification_type": "set_objective_weight",
+    "confidence": "high",
+    "threshold": 5,
+    "corrected_value": null,
+    "evidence": {
+     "W[1]": 99,
+     "W[2]": 90,
+     "load_balance": 9
+    },
+    "critique_text": "User complaint: \"The drivers are unhappy with how the work is split between the two vehicles.\" It targets load_balance (load_balance); current values: W[1] = 99, W[2] = 90, load_balance = 9. Requested direction: decrease. Suggested modification type: set_objective_weight. The user's stated limit is 5."
+   },
+   "clarifying_question": null
+  }
+ },
+ "final": {
+  "confidence": "high",
+  "clarification_question": null,
+  "critique": {
+   "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+   "target": "load_balance",
+   "aspect": "load_balance",
+   "direction": "decrease",
+   "modification_type": "set_objective_weight",
+   "confidence": "high",
+   "threshold": 5,
+   "corrected_value": null,
+   "evidence": {
+    "W[1]": 99,
+    "W[2]": 90,
+    "load_balance": 9
+   },
+   "critique_text": "User complaint: \"The drivers are unhappy with how the work is split between the two vehicles.\" It targets load_balance (load_balance); current values: W[1] = 99, W[2] = 90, load_balance = 9. Requested direction: decrease. Suggested modification type: set_objective_weight. The user's stated limit is 5."
+  },
+  "raw": {
+   "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+   "clarification": {
+    "question": "Do you mean the difference in route lengths (km driven) or the difference in loads (units carried) between the two vehicles?",
+    "answer": "It is about the loads: one truck carries 99 units and the other 90. The two loads should differ by at most 5 units, even if that costs some extra distance."
+   },
+   "diagnostics": {
+    "samples": [
+     {
+      "sample_index": 0,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90 units) should be at most 5 units, even at the cost of extra distance, which maps to setting an objective weight for load balance with a soft threshold of 5."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 1,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90 units) should be at most 5 units, even at the cost of extra distance, which maps to setting an objective weight on load balance with a soft threshold of 5."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 2,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the complaint is about the load difference between vehicles (99 vs 90 units) and wants it limited to at most 5 units, even at the cost of extra distance."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 3,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90) should be at most 5 units, even at the cost of extra distance, which maps to setting an objective weight for load balance with a soft threshold of 5."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     },
+     {
+      "sample_index": 4,
+      "parse_status": "json_ok",
+      "sample": {
+       "object_type": "global",
+       "vehicle": null,
+       "customers": [],
+       "aspect": "load_balance",
+       "direction": "decrease",
+       "modification_type": "set_objective_weight",
+       "threshold": 5,
+       "corrected_value": null,
+       "ambiguous": false,
+       "clarifying_question": null,
+       "rationale": "The user clarified that the load difference between the two vehicles (99 vs 90 units) should be at most 5 units, even at the expense of extra distance."
+      },
+      "valid": true,
+      "target": "load_balance",
+      "reason": null
+     }
+    ],
+    "valid_samples": 5,
+    "invalid_samples": 0,
+    "majority_target": "load_balance",
+    "majority_key_target": "load_balance",
+    "majority_modification_type": "set_objective_weight",
+    "majority_count": 5,
+    "non_ambiguous_count": 5,
+    "target_counts": {
+     "load_balance": 5
+    },
+    "rule": {
+     "min_agree": 4,
+     "min_non_ambiguous": 3,
+     "max_invalid": 1
+    }
+   },
+   "confidence": "high",
+   "critique": {
+    "complaint": "The drivers are unhappy with how the work is split between the two vehicles.",
+    "target": "load_balance",
+    "aspect": "load_balance",
+    "direction": "decrease",
+    "modification_type": "set_objective_weight",
+    "confidence": "high",
+    "threshold": 5,
+    "corrected_value": null,
+    "evidence": {
+     "W[1]": 99,
+     "W[2]": 90,
+     "load_balance": 9
+    },
+    "critique_text": "User complaint: \"The drivers are unhappy with how the work is split between the two vehicles.\" It targets load_balance (load_balance); current values: W[1] = 99, W[2] = 90, load_balance = 9. Requested direction: decrease. Suggested modification type: set_objective_weight. The user's stated limit is 5."
+   },
+   "clarifying_question": null
+  }
+ }
+}

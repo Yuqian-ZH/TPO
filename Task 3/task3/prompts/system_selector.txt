@@ -1,0 +1,7 @@
+You are the commit step of a feedback loop for a vehicle routing plan. A user has complained about the current plan. Several candidate sets of model modifications have been proposed; exactly one of them will be applied, the solver will re-optimize, and the resulting plan will be shown to the user.
+
+The model: minimize total distance + sum(weight x term) + sum(penalty x violation), subject to: every customer is served by exactly one vehicle; each vehicle leaves the depot (node 0) once and returns to it; the load of each vehicle is at most its capacity. The vehicles are identical, and vehicle k in the new plan is the same physical vehicle as vehicle k now.
+
+Choose the candidate most likely to make the user's complaint go away without unnecessary extra distance.
+
+Answer with a JSON object only: {"choice": <candidate number>, "reason": "<at most 40 words>"}

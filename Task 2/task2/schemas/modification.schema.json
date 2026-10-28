@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task2/modification.schema.json",
+  "title": "Model modification (output of localization and of TPO; input of the counterfactual component)",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["op", "target", "sense", "rhs", "penalty"],
+      "additionalProperties": false,
+      "properties": {
+        "op": {"const": "add_soft_constraint"},
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_]+$"},
+        "target": {"type": "string", "pattern": "^(L\\[[12]\\]|W\\[[12]\\]|S\\[[12]\\]|A\\[[1-8]\\]|balance|makespan|load_balance|sum_arrival|e\\[[0-8],[0-8]\\]|same\\[[1-8],[1-8]\\]|sep\\[[1-8],[1-8]\\])$"},
+        "sense": {"enum": ["<=", ">=", "=="]},
+        "rhs": {"type": "number"},
+        "penalty": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "allOf": [
+        {"if": {"properties": {"target": {"pattern": "^(A\\[|balance|makespan|load_balance|sum_arrival)"}}},
+         "then": {"properties": {"sense": {"const": "<="}}}}
+      ]
+    },
+    {
+      "type": "object",
+      "required": ["op", "term", "weight"],
+      "additionalProperties": false,
+      "properties": {
+        "op": {"const": "set_objective_weight"},
+        "term": {"enum": ["balance", "makespan", "load_balance", "sum_arrival"]},
+        "weight": {"type": "number", "minimum": 0}
+      }
+    },
+    {
+      "type": "object",
+      "required": ["op", "field", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "op": {"const": "modify_data"},
+        "field": {"type": "string", "pattern": "^(demand\\[[1-8]\\]|coord\\[[1-8]\\]|capacity)$"},
+        "value": {"oneOf": [{"type": "integer", "minimum": 0},
+                             {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 100}, "minItems": 2, "maxItems": 2}]}
+      }
+    }
+  ]
+}

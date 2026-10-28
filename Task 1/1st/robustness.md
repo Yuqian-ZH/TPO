@@ -1,0 +1,29 @@
+# Robustness checks
+
+| Subset                          |   Prompts |    init |   iter1 |   iter2 |
+|:--------------------------------|----------:|--------:|--------:|--------:|
+| All prompts                     |       100 | -4.3244 | -2.1534 | -1.6642 |
+| All 5 stored in every iteration |        51 | -4.5178 | -1.9307 | -1.4369 |
+
+| Metric        | Comparison    |   Mean Δ |   Improved prompts (%) | 95% paired CI      |
+|:--------------|:--------------|---------:|-----------------------:|:-------------------|
+| RM            | step2 - step0 |   1.5529 |                89.0000 | [1.2954, 1.8204]   |
+| RM            | step2 - bon15 |   0.8046 |                66.0000 | [0.4859, 1.1383]   |
+| Judge WR (pp) | step2 - step0 |  -2.9531 |                55.0000 | [-7.1571, 1.0288]  |
+| Judge WR (pp) | step2 - bon15 |  -5.7442 |                52.0000 | [-11.9185, 0.0072] |
+
+Paired bootstrap: 10,000 resamples, fixed seed 42.
+
+Paired differences in weighted preferences against the same GPT-4 reference. These are changes in reference-relative win scores, not direct step2-versus-control head-to-head win rates.
+
+Step2 is byte-for-byte identical to step0 for **11/100** prompts.
+
+| Iteration   |   Requested |   Stored |   Combined deficit | Missing tags     | Duplicate merges   |
+|:------------|------------:|---------:|-------------------:|:-----------------|:-------------------|
+| init        |         500 |      492 |                  8 | 0                | 8                  |
+| iter1       |         500 |      419 |                 81 | Not identifiable | Not identifiable   |
+| iter2       |         500 |      414 |                 86 | Not identifiable | Not identifiable   |
+
+Initial samples bypass response-tag extraction, so the initial deficit is entirely duplicate merging. For refinements the only identifiable total is 500 minus stored unique answers. The official multi-sample optimizer discards malformed tags and then cache_scores merges identical answers, but neither the raw five outputs nor extraction counts are logged. The two components cannot be separated retrospectively; bounds and the exact combined deficit are reported instead.
+
+Trace evidence: 200 optimizer update prompts were logged, but zero raw optimizer responses. No extra generations were run to fill in missing historical evidence.

@@ -1,0 +1,1351 @@
+{
+  "protocol": "task2_v1",
+  "instance_sha256": "1a9e58dc949b1ef8f8ef86953099594841b41091d31069fbf1d8998b5dd1cab6",
+  "cases": [
+    {
+      "id": "D1",
+      "split": "dev",
+      "scenario": "Reference instance.",
+      "model_modifications": [],
+      "solution": {
+        "routes": [
+          [
+            1,
+            4,
+            7,
+            2
+          ],
+          [
+            5,
+            3,
+            6,
+            8
+          ]
+        ]
+      },
+      "solution_objective": 351.0,
+      "solution_metrics": {
+        "L[1]": 140,
+        "W[1]": 99,
+        "S[1]": 4,
+        "L[2]": 211,
+        "W[2]": 90,
+        "S[2]": 4,
+        "A[1]": 7,
+        "A[2]": 97,
+        "A[3]": 60,
+        "A[4]": 48,
+        "A[5]": 37,
+        "A[6]": 95,
+        "A[7]": 77,
+        "A[8]": 167,
+        "total_distance": 351,
+        "balance": 71,
+        "makespan": 211,
+        "load_balance": 9,
+        "sum_arrival": 588
+      },
+      "complaint": "The driver of vehicle 2 says today's plan is exhausting.",
+      "clarity": "ambiguous",
+      "complaint_object": "vehicle",
+      "clarification_answer": "It is the number of stops: the driver can make at most 3 deliveries today, but the plan has 4.",
+      "why_question": "Why does vehicle 1 go from customer 1 to customer 4?",
+      "why_decision": {
+        "type": "ADJ",
+        "i": 1,
+        "j": 4
+      },
+      "what_if_question": "What if vehicle 1 drove its route in the opposite direction, visiting customer 4 before customer 1?",
+      "what_if": {
+        "type": "FIX_ARC",
+        "k": 1,
+        "i": 4,
+        "j": 1
+      },
+      "checker": {
+        "name": "max_stops",
+        "params": {
+          "k": 2,
+          "max": 3
+        }
+      },
+      "allowed_data_corrections": [],
+      "reference_modification": [
+        {
+          "op": "add_soft_constraint",
+          "target": "S[2]",
+          "sense": "<=",
+          "rhs": 3,
+          "penalty": 60
+        }
+      ],
+      "gt": {
+        "localization": {
+          "targets": [
+            "S[2]"
+          ],
+          "modification_types": [
+            "add_soft_constraint"
+          ],
+          "confidence": "low"
+        },
+        "attribution": {
+          "conclusion": "objective_preferred",
+          "delta": 5.0,
+          "acceptable_sets": [
+            [
+              "e[0,2]",
+              "e[0,4]",
+              "e[1,2]",
+              "e[1,4]"
+            ]
+          ],
+          "details": [
+            {
+              "edges": [
+                "e[0,2]",
+                "e[0,4]",
+                "e[1,2]",
+                "e[1,4]"
+              ],
+              "added_edges": [
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              "added_distance": 89,
+              "removed_distance": 84,
+              "forbidden_optimum": {
+                "routes": [
+                  [
+                    1,
+                    2,
+                    7,
+                    4
+                  ],
+                  [
+                    5,
+                    3,
+                    6,
+                    8
+                  ]
+                ]
+              }
+            }
+          ],
+          "part": "variables"
+        },
+        "counterfactual": {
+          "anchor": {
+            "type": "MOVE",
+            "i": 2,
+            "k": 1,
+            "role": "anchor"
+          },
+          "involved": [
+            1,
+            4
+          ],
+          "current_objective": 351,
+          "current_distance": 351,
+          "feasible": true,
+          "objective": 351.0,
+          "total_distance": 351,
+          "delta_objective": 0.0,
+          "delta_distance": 0,
+          "acceptable_change_sets": [
+            {
+              "moved": [],
+              "added_edges": [],
+              "removed_edges": [],
+              "reversed": [
+                1
+              ],
+              "solution": {
+                "routes": [
+                  [
+                    2,
+                    7,
+                    4,
+                    1
+                  ],
+                  [
+                    5,
+                    3,
+                    6,
+                    8
+                  ]
+                ]
+              }
+            }
+          ],
+          "outcome": "feasible_unchanged"
+        }
+      },
+      "initial_check": {
+        "passed": false,
+        "value": 4,
+        "threshold": 3
+      },
+      "reference_check": {
+        "feasible": true,
+        "anchor": {
+          "type": "MOVE",
+          "i": 1,
+          "k": 1,
+          "role": "anchor"
+        },
+        "objective": 397.0,
+        "solution": {
+          "routes": [
+            [
+              1,
+              5,
+              4,
+              7,
+              8
+            ],
+            [
+              2,
+              3,
+              6
+            ]
+          ]
+        },
+        "n_optimal": 4,
+        "all_optimal_resolve": true,
+        "check": {
+          "resolved": true,
+          "feasible": true,
+          "checker": {
+            "passed": true,
+            "value": 3,
+            "threshold": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "D2",
+      "split": "dev",
+      "scenario": "Variant day: customer 4 orders 17 units instead of 12 (part of this case's model).",
+      "model_modifications": [
+        {
+          "op": "modify_data",
+          "field": "demand[4]",
+          "value": 17
+        }
+      ],
+      "solution": {
+        "routes": [
+          [
+            1,
+            7,
+            2,
+            8
+          ],
+          [
+            4,
+            5,
+            3,
+            6
+          ]
+        ]
+      },
+      "solution_objective": 368.0,
+      "solution_metrics": {
+        "L[1]": 207,
+        "W[1]": 98,
+        "S[1]": 4,
+        "L[2]": 161,
+        "W[2]": 96,
+        "S[2]": 4,
+        "A[1]": 7,
+        "A[2]": 90,
+        "A[3]": 79,
+        "A[4]": 42,
+        "A[5]": 56,
+        "A[6]": 114,
+        "A[7]": 70,
+        "A[8]": 163,
+        "total_distance": 368,
+        "balance": 46,
+        "makespan": 207,
+        "load_balance": 2,
+        "sum_arrival": 621
+      },
+      "complaint": "The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.",
+      "clarity": "clear",
+      "complaint_object": "customer",
+      "clarification_answer": "Customers 2 and 8 should not be visited one right after the other.",
+      "why_question": "Why can't customers 2 and 4 share a truck?",
+      "why_decision": {
+        "type": "SEP",
+        "i": 2,
+        "j": 4
+      },
+      "what_if_question": "What if customers 2 and 4 were put on the same vehicle?",
+      "what_if": {
+        "type": "FORCE_SAME",
+        "i": 2,
+        "j": 4
+      },
+      "checker": {
+        "name": "not_adjacent",
+        "params": {
+          "i": 2,
+          "j": 8
+        }
+      },
+      "allowed_data_corrections": [],
+      "reference_modification": [
+        {
+          "op": "add_soft_constraint",
+          "target": "e[2,8]",
+          "sense": "<=",
+          "rhs": 0,
+          "penalty": 30
+        }
+      ],
+      "gt": {
+        "localization": {
+          "targets": [
+            "e[2,8]"
+          ],
+          "modification_types": [
+            "add_soft_constraint"
+          ],
+          "confidence": "high"
+        },
+        "attribution": {
+          "conclusion": "capacity_forced",
+          "acceptable_sets": [
+            [
+              "cap[1]",
+              "cap[2]"
+            ]
+          ],
+          "constraints_in_every_iis": [
+            "cap[1]",
+            "cap[2]"
+          ],
+          "part": "constraints"
+        },
+        "counterfactual": {
+          "anchor": {
+            "type": "MOVE",
+            "i": 1,
+            "k": 1,
+            "role": "anchor"
+          },
+          "involved": [
+            2,
+            4
+          ],
+          "current_objective": 368,
+          "current_distance": 368,
+          "feasible": false,
+          "infeasible_without_capacity": false,
+          "outcome": "infeasible_capacity"
+        }
+      },
+      "initial_check": {
+        "passed": false,
+        "value": 1,
+        "threshold": 0
+      },
+      "reference_check": {
+        "feasible": true,
+        "anchor": {
+          "type": "MOVE",
+          "i": 3,
+          "k": 2,
+          "role": "anchor"
+        },
+        "objective": 371.0,
+        "solution": {
+          "routes": [
+            [
+              1,
+              2,
+              7,
+              8
+            ],
+            [
+              4,
+              5,
+              3,
+              6
+            ]
+          ]
+        },
+        "n_optimal": 4,
+        "all_optimal_resolve": true,
+        "check": {
+          "resolved": true,
+          "feasible": true,
+          "checker": {
+            "passed": true,
+            "value": 0,
+            "threshold": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "D3",
+      "split": "dev",
+      "scenario": "Reference instance.",
+      "model_modifications": [],
+      "solution": {
+        "routes": [
+          [
+            1,
+            4,
+            7,
+            2
+          ],
+          [
+            5,
+            3,
+            6,
+            8
+          ]
+        ]
+      },
+      "solution_objective": 351.0,
+      "solution_metrics": {
+        "L[1]": 140,
+        "W[1]": 99,
+        "S[1]": 4,
+        "L[2]": 211,
+        "W[2]": 90,
+        "S[2]": 4,
+        "A[1]": 7,
+        "A[2]": 97,
+        "A[3]": 60,
+        "A[4]": 48,
+        "A[5]": 37,
+        "A[6]": 95,
+        "A[7]": 77,
+        "A[8]": 167,
+        "total_distance": 351,
+        "balance": 71,
+        "makespan": 211,
+        "load_balance": 9,
+        "sum_arrival": 588
+      },
+      "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+      "clarity": "clear",
+      "complaint_object": "data",
+      "clarification_answer": "Customer 2's demand is 30 units.",
+      "why_question": "Why does vehicle 1 visit customer 1 first?",
+      "why_decision": {
+        "type": "ADJ",
+        "i": 0,
+        "j": 1
+      },
+      "what_if_question": "What if customer 2 were moved to vehicle 2?",
+      "what_if": {
+        "type": "MOVE",
+        "i": 2,
+        "k": 2
+      },
+      "checker": {
+        "name": "feasible_under",
+        "params": {
+          "corrections": [
+            {
+              "op": "modify_data",
+              "field": "demand[2]",
+              "value": 30
+            }
+          ]
+        }
+      },
+      "allowed_data_corrections": [
+        {
+          "op": "modify_data",
+          "field": "demand[2]",
+          "value": 30
+        }
+      ],
+      "reference_modification": [
+        {
+          "op": "modify_data",
+          "field": "demand[2]",
+          "value": 30
+        }
+      ],
+      "gt": {
+        "localization": {
+          "targets": [
+            "demand[2]"
+          ],
+          "modification_types": [
+            "modify_data"
+          ],
+          "confidence": "high"
+        },
+        "attribution": {
+          "conclusion": "objective_preferred",
+          "delta": 29.0,
+          "acceptable_sets": [
+            [
+              "e[0,1]",
+              "e[0,4]",
+              "e[0,5]",
+              "e[0,6]",
+              "e[1,4]",
+              "e[1,7]",
+              "e[1,8]",
+              "e[4,5]",
+              "e[4,7]",
+              "e[6,8]"
+            ]
+          ],
+          "details": [
+            {
+              "edges": [
+                "e[0,1]",
+                "e[0,4]",
+                "e[0,5]",
+                "e[0,6]",
+                "e[1,4]",
+                "e[1,7]",
+                "e[1,8]",
+                "e[4,5]",
+                "e[4,7]",
+                "e[6,8]"
+              ],
+              "added_edges": [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  4,
+                  5
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ]
+              ],
+              "added_distance": 215,
+              "removed_distance": 186,
+              "forbidden_optimum": {
+                "routes": [
+                  [
+                    2,
+                    7,
+                    1,
+                    8
+                  ],
+                  [
+                    4,
+                    5,
+                    3,
+                    6
+                  ]
+                ]
+              }
+            }
+          ],
+          "part": "variables"
+        },
+        "counterfactual": {
+          "anchor": {
+            "type": "MOVE",
+            "i": 1,
+            "k": 1,
+            "role": "anchor"
+          },
+          "involved": [
+            2
+          ],
+          "current_objective": 351,
+          "current_distance": 351,
+          "feasible": true,
+          "objective": 369.0,
+          "total_distance": 369,
+          "delta_objective": 18.0,
+          "delta_distance": 18,
+          "acceptable_change_sets": [
+            {
+              "moved": [
+                2,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "added_edges": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  5,
+                  6
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ]
+              ],
+              "reversed": [],
+              "solution": {
+                "routes": [
+                  [
+                    1,
+                    5,
+                    6,
+                    8
+                  ],
+                  [
+                    2,
+                    7,
+                    4,
+                    3
+                  ]
+                ]
+              }
+            }
+          ],
+          "outcome": "feasible_worse"
+        }
+      },
+      "initial_check": {
+        "passed": false,
+        "value": [
+          105,
+          90
+        ],
+        "threshold": 100
+      },
+      "reference_check": {
+        "feasible": true,
+        "anchor": {
+          "type": "MOVE",
+          "i": 3,
+          "k": 2,
+          "role": "anchor"
+        },
+        "objective": 397.0,
+        "solution": {
+          "routes": [
+            [
+              1,
+              5,
+              4,
+              7,
+              8
+            ],
+            [
+              2,
+              3,
+              6
+            ]
+          ]
+        },
+        "n_optimal": 4,
+        "all_optimal_resolve": true,
+        "check": {
+          "resolved": true,
+          "feasible": true,
+          "checker": {
+            "passed": true,
+            "value": [
+              100,
+              95
+            ],
+            "threshold": 100
+          }
+        }
+      }
+    },
+    {
+      "id": "D4",
+      "split": "dev",
+      "scenario": "Reference instance.",
+      "model_modifications": [],
+      "solution": {
+        "routes": [
+          [
+            1,
+            4,
+            7,
+            2
+          ],
+          [
+            5,
+            3,
+            6,
+            8
+          ]
+        ]
+      },
+      "solution_objective": 351.0,
+      "solution_metrics": {
+        "L[1]": 140,
+        "W[1]": 99,
+        "S[1]": 4,
+        "L[2]": 211,
+        "W[2]": 90,
+        "S[2]": 4,
+        "A[1]": 7,
+        "A[2]": 97,
+        "A[3]": 60,
+        "A[4]": 48,
+        "A[5]": 37,
+        "A[6]": 95,
+        "A[7]": 77,
+        "A[8]": 167,
+        "total_distance": 351,
+        "balance": 71,
+        "makespan": 211,
+        "load_balance": 9,
+        "sum_arrival": 588
+      },
+      "complaint": "Customer 8 is not happy with our service.",
+      "clarity": "ambiguous",
+      "complaint_object": "customer",
+      "clarification_answer": "Customer 8 is the last stop and only gets its delivery after 167 km of driving. It wants the delivery within the first 100 km.",
+      "why_question": "Why are customers 5 and 8 on the same vehicle?",
+      "why_decision": {
+        "type": "SAME",
+        "i": 5,
+        "j": 8
+      },
+      "what_if_question": "What if customer 8 were visited right after customer 7?",
+      "what_if": {
+        "type": "FORCE_ADJ",
+        "i": 7,
+        "j": 8
+      },
+      "checker": {
+        "name": "arrival_max",
+        "params": {
+          "i": 8,
+          "max": 100
+        }
+      },
+      "allowed_data_corrections": [],
+      "reference_modification": [
+        {
+          "op": "add_soft_constraint",
+          "target": "A[8]",
+          "sense": "<=",
+          "rhs": 100,
+          "penalty": 10
+        }
+      ],
+      "gt": {
+        "localization": {
+          "targets": [
+            "A[8]"
+          ],
+          "modification_types": [
+            "add_soft_constraint"
+          ],
+          "confidence": "low"
+        },
+        "attribution": {
+          "conclusion": "objective_preferred",
+          "delta": 17.0,
+          "acceptable_sets": [
+            [
+              "e[0,2]",
+              "e[0,4]",
+              "e[0,5]",
+              "e[0,6]",
+              "e[1,4]",
+              "e[1,7]",
+              "e[2,8]",
+              "e[4,5]",
+              "e[4,7]",
+              "e[6,8]"
+            ]
+          ],
+          "details": [
+            {
+              "edges": [
+                "e[0,2]",
+                "e[0,4]",
+                "e[0,5]",
+                "e[0,6]",
+                "e[1,4]",
+                "e[1,7]",
+                "e[2,8]",
+                "e[4,5]",
+                "e[4,7]",
+                "e[6,8]"
+              ],
+              "added_edges": [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  4,
+                  5
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ]
+              ],
+              "added_distance": 239,
+              "removed_distance": 222,
+              "forbidden_optimum": {
+                "routes": [
+                  [
+                    1,
+                    7,
+                    2,
+                    8
+                  ],
+                  [
+                    4,
+                    5,
+                    3,
+                    6
+                  ]
+                ]
+              }
+            }
+          ],
+          "part": "variables"
+        },
+        "counterfactual": {
+          "anchor": {
+            "type": "MOVE",
+            "i": 1,
+            "k": 1,
+            "role": "anchor"
+          },
+          "involved": [
+            7,
+            8
+          ],
+          "current_objective": 351,
+          "current_distance": 351,
+          "feasible": true,
+          "objective": 371.0,
+          "total_distance": 371,
+          "delta_objective": 20.0,
+          "delta_distance": 20,
+          "acceptable_change_sets": [
+            {
+              "moved": [
+                4,
+                8
+              ],
+              "added_edges": [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  7,
+                  8
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ]
+              ],
+              "reversed": [],
+              "solution": {
+                "routes": [
+                  [
+                    1,
+                    2,
+                    7,
+                    8
+                  ],
+                  [
+                    4,
+                    5,
+                    3,
+                    6
+                  ]
+                ]
+              }
+            }
+          ],
+          "outcome": "feasible_worse"
+        }
+      },
+      "initial_check": {
+        "passed": false,
+        "value": 167,
+        "threshold": 100
+      },
+      "reference_check": {
+        "feasible": true,
+        "anchor": {
+          "type": "MOVE",
+          "i": 1,
+          "k": 1,
+          "role": "anchor"
+        },
+        "objective": 351.0,
+        "solution": {
+          "routes": [
+            [
+              1,
+              4,
+              7,
+              2
+            ],
+            [
+              8,
+              6,
+              3,
+              5
+            ]
+          ]
+        },
+        "n_optimal": 2,
+        "all_optimal_resolve": true,
+        "check": {
+          "resolved": true,
+          "feasible": true,
+          "checker": {
+            "passed": true,
+            "value": 44,
+            "threshold": 100
+          }
+        }
+      }
+    },
+    {
+      "id": "D5",
+      "split": "dev",
+      "scenario": "Reference instance.",
+      "model_modifications": [],
+      "solution": {
+        "routes": [
+          [
+            1,
+            4,
+            7,
+            2
+          ],
+          [
+            5,
+            3,
+            6,
+            8
+          ]
+        ]
+      },
+      "solution_objective": 351.0,
+      "solution_metrics": {
+        "L[1]": 140,
+        "W[1]": 99,
+        "S[1]": 4,
+        "L[2]": 211,
+        "W[2]": 90,
+        "S[2]": 4,
+        "A[1]": 7,
+        "A[2]": 97,
+        "A[3]": 60,
+        "A[4]": 48,
+        "A[5]": 37,
+        "A[6]": 95,
+        "A[7]": 77,
+        "A[8]": 167,
+        "total_distance": 351,
+        "balance": 71,
+        "makespan": 211,
+        "load_balance": 9,
+        "sum_arrival": 588
+      },
+      "complaint": "On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.",
+      "clarity": "clear",
+      "complaint_object": "global",
+      "clarification_answer": "The average arrival mileage over all customers should be at most 73 km.",
+      "why_question": "Why are customers 3 and 5 on the same vehicle?",
+      "why_decision": {
+        "type": "SAME",
+        "i": 3,
+        "j": 5
+      },
+      "what_if_question": "What if customers 3 and 5 were on different vehicles?",
+      "what_if": {
+        "type": "FORCE_SEP",
+        "i": 3,
+        "j": 5
+      },
+      "checker": {
+        "name": "avg_arrival_max",
+        "params": {
+          "max": 73
+        }
+      },
+      "allowed_data_corrections": [],
+      "reference_modification": [
+        {
+          "op": "set_objective_weight",
+          "term": "sum_arrival",
+          "weight": 3
+        }
+      ],
+      "gt": {
+        "localization": {
+          "targets": [
+            "sum_arrival"
+          ],
+          "modification_types": [
+            "set_objective_weight",
+            "add_soft_constraint"
+          ],
+          "confidence": "high"
+        },
+        "attribution": {
+          "conclusion": "objective_preferred",
+          "delta": 18.0,
+          "acceptable_sets": [
+            [
+              "e[0,3]",
+              "e[0,5]",
+              "e[1,4]",
+              "e[1,5]",
+              "e[3,4]",
+              "e[3,5]",
+              "e[3,6]",
+              "e[5,6]"
+            ]
+          ],
+          "details": [
+            {
+              "edges": [
+                "e[0,3]",
+                "e[0,5]",
+                "e[1,4]",
+                "e[1,5]",
+                "e[3,4]",
+                "e[3,5]",
+                "e[3,6]",
+                "e[5,6]"
+              ],
+              "added_edges": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  5,
+                  6
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ]
+              ],
+              "added_distance": 154,
+              "removed_distance": 136,
+              "forbidden_optimum": {
+                "routes": [
+                  [
+                    1,
+                    5,
+                    6,
+                    8
+                  ],
+                  [
+                    2,
+                    7,
+                    4,
+                    3
+                  ]
+                ]
+              }
+            }
+          ],
+          "part": "variables"
+        },
+        "counterfactual": {
+          "anchor": {
+            "type": "MOVE",
+            "i": 1,
+            "k": 1,
+            "role": "anchor"
+          },
+          "involved": [
+            3,
+            5
+          ],
+          "current_objective": 351,
+          "current_distance": 351,
+          "feasible": true,
+          "objective": 369.0,
+          "total_distance": 369,
+          "delta_objective": 18.0,
+          "delta_distance": 18,
+          "acceptable_change_sets": [
+            {
+              "moved": [
+                2,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "added_edges": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  5,
+                  6
+                ]
+              ],
+              "removed_edges": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ]
+              ],
+              "reversed": [],
+              "solution": {
+                "routes": [
+                  [
+                    1,
+                    5,
+                    6,
+                    8
+                  ],
+                  [
+                    2,
+                    7,
+                    4,
+                    3
+                  ]
+                ]
+              }
+            }
+          ],
+          "outcome": "feasible_worse"
+        }
+      },
+      "initial_check": {
+        "passed": false,
+        "value": 73.5,
+        "threshold": 73
+      },
+      "reference_check": {
+        "feasible": true,
+        "anchor": {
+          "type": "MOVE",
+          "i": 1,
+          "k": 1,
+          "role": "anchor"
+        },
+        "objective": 2110.0,
+        "solution": {
+          "routes": [
+            [
+              1,
+              2,
+              7,
+              8
+            ],
+            [
+              3,
+              5,
+              4,
+              6
+            ]
+          ]
+        },
+        "n_optimal": 1,
+        "all_optimal_resolve": true,
+        "check": {
+          "resolved": true,
+          "feasible": true,
+          "checker": {
+            "passed": true,
+            "value": 71.625,
+            "threshold": 73
+          }
+        }
+      }
+    }
+  ]
+}

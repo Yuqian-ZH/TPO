@@ -1,0 +1,1476 @@
+[
+ {
+  "D1": {
+   "initial": {
+    "complaint": "The driver of vehicle 2 says today's plan is exhausting.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "Do you mean the route is too long in km, has too many stops, or carries too much load?",
+        "rationale": "The driver calls the plan exhausting but does not specify whether it is due to the 211 km distance, the 4 stops, or the 90-unit load."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "Do you mean the total distance of vehicle 2's route is too long, or that it has too many stops?",
+        "rationale": "The driver calling the plan 'exhausting' most likely refers to vehicle 2's long route (211 km), but could also refer to the number of stops (4) or the overall imbalance between vehicles."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "Do you want to limit vehicle 2's route length to a specific maximum distance, or should we balance the route lengths between both vehicles?",
+        "rationale": "The complaint that vehicle 2's plan is 'exhausting' most likely refers to its long route length of 211 km, but it is ambiguous whether the user wants a hard cap on that route or a better balance with vehicle 1."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "Do you mean the total route length of vehicle 2 is too long, or that it visits too many stops?",
+        "rationale": "The driver calling the plan 'exhausting' most likely refers to vehicle 2's long route length (211 km) but could also refer to the number of stops or overall workload."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "route_length",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "Do you want to limit the total route length of vehicle 2, reduce its number of stops, or balance the workload between the two vehicles?",
+        "rationale": "The driver calling the plan 'exhausting' most likely refers to vehicle 2's long route of 211 km, but it could also refer to the number of stops or the imbalance with vehicle 1."
+       },
+       "valid": true,
+       "target": "L[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "L[2]",
+     "majority_key_target": "L[2]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 0,
+     "target_counts": {
+      "L[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "low",
+    "critique": null,
+    "clarifying_question": "Do you mean the route is too long in km, has too many stops, or carries too much load?"
+   },
+   "clarified": {
+    "complaint": "The driver of vehicle 2 says today's plan is exhausting.",
+    "clarification": {
+     "question": "Do you mean the route is too long in km, has too many stops, or carries too much load?",
+     "answer": "It is the number of stops: the driver can make at most 3 deliveries today, but the plan has 4."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "stops",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 3,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The driver of vehicle 2 can make at most 3 deliveries, but the current plan assigns 4 stops to that vehicle."
+       },
+       "valid": true,
+       "target": "S[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "stops",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 3,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The driver of vehicle 2 finds the plan exhausting because it requires 4 stops, but they can handle at most 3 deliveries."
+       },
+       "valid": true,
+       "target": "S[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "stops",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 3,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The driver of vehicle 2 can make at most 3 deliveries, but the current plan assigns 4 stops to that vehicle."
+       },
+       "valid": true,
+       "target": "S[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "stops",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 3,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The driver of vehicle 2 can make at most 3 deliveries, but the current plan assigns 4 stops to that vehicle."
+       },
+       "valid": true,
+       "target": "S[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "vehicle",
+        "vehicle": 2,
+        "customers": [],
+        "aspect": "stops",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 3,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The driver of vehicle 2 can make at most 3 deliveries, but the current plan assigns 4 stops to that vehicle."
+       },
+       "valid": true,
+       "target": "S[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "S[2]",
+     "majority_key_target": "S[2]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "S[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "The driver of vehicle 2 says today's plan is exhausting.",
+     "target": "S[2]",
+     "aspect": "stops",
+     "direction": "decrease",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": 3,
+     "corrected_value": null,
+     "evidence": {
+      "S[1]": 4,
+      "S[2]": 4
+     },
+     "critique_text": "User complaint: \"The driver of vehicle 2 says today's plan is exhausting.\" It targets S[2] (stops); current values: S[1] = 4, S[2] = 4. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 3."
+    },
+    "clarifying_question": null
+   }
+  },
+  "D2": {
+   "initial": {
+    "complaint": "The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states the road between customers 2 and 8 is closed, so the plan must forbid them from being visited consecutively on any route."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states the road between customers 2 and 8 is closed, so they must not be visited consecutively on any route."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states the road between customers 2 and 8 is closed, so the plan must forbid them from being visited consecutively on any route."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states the road between customers 2 and 8 is closed, so the plan must forbid them from being visited consecutively on any route."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states the road between customers 2 and 8 is closed, so they must not be visited consecutively by any vehicle."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "e[2,8]",
+     "majority_key_target": "e[2,8]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "e[2,8]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.",
+     "target": "e[2,8]",
+     "aspect": "adjacency",
+     "direction": "forbid",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": null,
+     "evidence": {
+      "e[2,8]": 1,
+      "distance": 73
+     },
+     "critique_text": "User complaint: \"The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.\" It targets e[2,8] (adjacency); current values: e[2,8] = 1, distance = 73. Requested direction: forbid. Suggested modification type: add_soft_constraint."
+    },
+    "clarifying_question": null
+   },
+   "clarified": {
+    "complaint": "The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.",
+    "clarification": {
+     "question": "Could you state precisely what should change?",
+     "answer": "Customers 2 and 8 should not be visited one right after the other."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that customers 2 and 8 must not be visited consecutively because the direct road between them is closed."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that customers 2 and 8 must not be visited consecutively because the direct road between them is closed."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states the road between customers 2 and 8 is closed, so they must not be visited consecutively on any route."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarifies that customers 2 and 8 must not be visited consecutively because the direct road between them is closed."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer_pair",
+        "vehicle": null,
+        "customers": [
+         2,
+         8
+        ],
+        "aspect": "adjacency",
+        "direction": "forbid",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user explicitly states that customers 2 and 8 must not be visited consecutively because the direct road between them is closed."
+       },
+       "valid": true,
+       "target": "e[2,8]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "e[2,8]",
+     "majority_key_target": "e[2,8]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "e[2,8]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.",
+     "target": "e[2,8]",
+     "aspect": "adjacency",
+     "direction": "forbid",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": null,
+     "evidence": {
+      "e[2,8]": 1,
+      "distance": 73
+     },
+     "critique_text": "User complaint: \"The direct road between customers 2 and 8 is closed today, so no truck should drive straight from one to the other.\" It targets e[2,8] (adjacency); current values: e[2,8] = 1, distance = 73. Requested direction: forbid. Suggested modification type: add_soft_constraint."
+    },
+    "clarifying_question": null
+   }
+  },
+  "D3": {
+   "initial": {
+    "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units, not 24 as currently in the data, which would cause vehicle 1 to exceed its capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the 24 units used in the plan, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the planned 24, which would cause vehicle 1 to exceed its 100-unit capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is incorrectly listed as 24 and should be corrected to 30 units."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[2]",
+     "majority_key_target": "demand[2]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "demand[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+     "target": "demand[2]",
+     "aspect": "demand",
+     "direction": "correct",
+     "modification_type": "modify_data",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": 30,
+     "evidence": {
+      "demand[2]": 24,
+      "W[1]": 99,
+      "W[2]": 90,
+      "capacity": 100
+     },
+     "critique_text": "User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30."
+    },
+    "clarifying_question": null
+   },
+   "clarified": {
+    "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+    "clarification": {
+     "question": "Could you state precisely what should change?",
+     "answer": "Customer 2's demand is 30 units."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units, not 24 as currently recorded in the data."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand should be corrected from 24 to 30 units."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user corrects customer 2's demand from 24 to 30 units, noting that this makes vehicle 1's planned load exceed capacity."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand is 30 units instead of the 24 units currently in the data."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "data",
+        "vehicle": null,
+        "customers": [
+         2
+        ],
+        "aspect": "demand",
+        "direction": "correct",
+        "modification_type": "modify_data",
+        "threshold": null,
+        "corrected_value": 30,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user states that customer 2's demand should be corrected from 24 to 30 units."
+       },
+       "valid": true,
+       "target": "demand[2]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "demand[2]",
+     "majority_key_target": "demand[2]",
+     "majority_modification_type": "modify_data",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "demand[2]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.",
+     "target": "demand[2]",
+     "aspect": "demand",
+     "direction": "correct",
+     "modification_type": "modify_data",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": 30,
+     "evidence": {
+      "demand[2]": 24,
+      "W[1]": 99,
+      "W[2]": 90,
+      "capacity": 100
+     },
+     "critique_text": "User complaint: \"Customer 2 now orders 30 units, not 24, so vehicle 1 cannot carry everything you planned.\" It targets demand[2] (demand); current values: demand[2] = 24, W[1] = 99, W[2] = 90, capacity = 100. Requested direction: correct. Suggested modification type: modify_data. The user states the correct value is 30."
+    },
+    "clarifying_question": null
+   }
+  },
+  "D4": {
+   "initial": {
+    "complaint": "Customer 8 is not happy with our service.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "Is customer 8 unhappy because they are reached too late in the route (167 km driven) or because their detour from the direct distance is too large?",
+        "rationale": "The complaint names customer 8 as dissatisfied but does not specify whether the issue is the high arrival mileage, the large detour ratio, or another aspect."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "What specifically is customer 8 unhappy about\u2014the late arrival (167 km into the route), the large detour (3.80\u00d7 direct distance), or something else?",
+        "rationale": "The complaint names customer 8 as unhappy but does not specify which aspect of the service (arrival time, detour, etc.) is the problem or what target value is desired."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "What specifically is customer 8 unhappy about: the long arrival mileage (167 km), the large detour ratio (3.80), or something else?",
+        "rationale": "The complaint mentions customer 8's dissatisfaction without specifying the cause, but the plan data shows customer 8 has by far the highest arrival mileage and detour ratio."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "What specific aspect of the service is customer 8 unhappy with (e.g., late arrival, long detour, or something else)?",
+        "rationale": "The complaint only states customer 8 is unhappy without specifying why, but given that customer 8 has the highest arrival mileage (167 km) and worst detour ratio (3.80), a late arrival or excessive detour is the most likely issue."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": true,
+        "clarifying_question": "What specifically is customer 8 unhappy about\u2014being reached too late in the route (167 km arrival mileage), a large detour, or something else?",
+        "rationale": "The complaint names customer 8 but does not specify which aspect of service (e.g., late arrival at 167 km or high detour ratio of 3.80) is the source of dissatisfaction."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "A[8]",
+     "majority_key_target": "A[8]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 0,
+     "target_counts": {
+      "A[8]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "low",
+    "critique": null,
+    "clarifying_question": "Is customer 8 unhappy because they are reached too late in the route (167 km driven) or because their detour from the direct distance is too large?"
+   },
+   "clarified": {
+    "complaint": "Customer 8 is not happy with our service.",
+    "clarification": {
+     "question": "Is customer 8 unhappy because they are reached too late in the route (167 km driven) or because their detour from the direct distance is too large?",
+     "answer": "Customer 8 is the last stop and only gets its delivery after 167 km of driving. It wants the delivery within the first 100 km."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 100,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "Customer 8 is unhappy because it is reached after 167 km of driving and wants delivery within the first 100 km, which maps to an arrival constraint."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 100,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 8 is unhappy because it is reached after 167 km of driving and wants delivery within the first 100 km, which maps to an arrival constraint."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 100,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 8 is unhappy because it is reached after 167 km of driving and wants delivery within the first 100 km, so we add a soft constraint to decrease its arrival mileage to at most 100 km."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 100,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user clarified that customer 8 is unhappy because it is reached after 167 km of driving and wants delivery within the first 100 km, so we add a soft constraint to decrease its arrival mileage to at most 100 km."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         8
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": 100,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "Customer 8 is unhappy because it is reached after 167 km of driving and wants delivery within the first 100 km, so its arrival mileage should be decreased to at most 100 km."
+       },
+       "valid": true,
+       "target": "A[8]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "A[8]",
+     "majority_key_target": "A[8]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "A[8]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 8 is not happy with our service.",
+     "target": "A[8]",
+     "aspect": "arrival",
+     "direction": "decrease",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": 100,
+     "corrected_value": null,
+     "evidence": {
+      "A[8]": 167,
+      "direct_distance": 44,
+      "detour_ratio": 3.7955
+     },
+     "critique_text": "User complaint: \"Customer 8 is not happy with our service.\" It targets A[8] (arrival); current values: A[8] = 167, direct_distance = 44, detour_ratio = 3.7955. Requested direction: decrease. Suggested modification type: add_soft_constraint. The user's stated limit is 100."
+    },
+    "clarifying_question": null
+   }
+  },
+  "D5": {
+   "initial": {
+    "complaint": "On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to reduce the average arrival mileage across all customers below 73 km, explicitly accepting a trade-off with total distance."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to minimize the average arrival mileage (currently 73.5 km) to below 73 km, explicitly willing to trade off total distance."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to reduce the average arrival mileage below 73 km and explicitly accepts a higher total distance, indicating they want to trade off total distance against average waiting via an objective weight."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to reduce the average arrival mileage below 73 km and is willing to accept higher total distance, which corresponds to setting an objective weight that trades total distance against average waiting."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to reduce the average arrival mileage below 73 km and explicitly accepts a higher total distance, indicating they want to trade off total distance against average waiting via an objective weight."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "sum_arrival",
+     "majority_key_target": "sum_arrival",
+     "majority_modification_type": "set_objective_weight",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "sum_arrival": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.",
+     "target": "sum_arrival",
+     "aspect": "average_waiting",
+     "direction": "decrease",
+     "modification_type": "set_objective_weight",
+     "confidence": "high",
+     "threshold": 73,
+     "corrected_value": null,
+     "evidence": {
+      "sum_arrival": 588,
+      "average_arrival": 73.5
+     },
+     "critique_text": "User complaint: \"On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.\" It targets sum_arrival (average_waiting); current values: sum_arrival = 588, average_arrival = 73.5. Requested direction: decrease. Suggested modification type: set_objective_weight. The user's stated limit is 73."
+    },
+    "clarifying_question": null
+   },
+   "clarified": {
+    "complaint": "On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.",
+    "clarification": {
+     "question": "Could you state precisely what should change?",
+     "answer": "The average arrival mileage over all customers should be at most 73 km."
+    },
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to minimize the average arrival mileage across all customers, setting a target of at most 73 km even if total distance increases."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants the average arrival mileage across all customers to be reduced to at most 73 km, even at the expense of total distance, which corresponds to setting an objective weight for average_waiting."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants the average arrival mileage across all customers reduced to at most 73 km, accepting a higher total distance as a trade-off."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants to minimize the average arrival mileage across all customers to at most 73 km, accepting a higher total distance as a trade-off."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "global",
+        "vehicle": null,
+        "customers": [],
+        "aspect": "average_waiting",
+        "direction": "decrease",
+        "modification_type": "set_objective_weight",
+        "threshold": 73,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user wants the average arrival mileage across all customers to be reduced below 73 km, even at the cost of increased total distance."
+       },
+       "valid": true,
+       "target": "sum_arrival",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "sum_arrival",
+     "majority_key_target": "sum_arrival",
+     "majority_modification_type": "set_objective_weight",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "sum_arrival": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.",
+     "target": "sum_arrival",
+     "aspect": "average_waiting",
+     "direction": "decrease",
+     "modification_type": "set_objective_weight",
+     "confidence": "high",
+     "threshold": 73,
+     "corrected_value": null,
+     "evidence": {
+      "sum_arrival": 588,
+      "average_arrival": 73.5
+     },
+     "critique_text": "User complaint: \"On average our customers wait for 73.5 km of driving before their delivery arrives. Bring that average below 73 km, even if the total distance grows.\" It targets sum_arrival (average_waiting); current values: sum_arrival = 588, average_arrival = 73.5. Requested direction: decrease. Suggested modification type: set_objective_weight. The user's stated limit is 73."
+    },
+    "clarifying_question": null
+   }
+  }
+ }
+]

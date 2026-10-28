@@ -1,0 +1,567 @@
+{
+ "protocol": "task3_v1",
+ "case_id": "T3",
+ "config": "A0B0C1",
+ "run": 2,
+ "flags": {
+  "A": false,
+  "B": false,
+  "C": true,
+  "blind": false,
+  "clar_text": false
+ },
+ "settings": {
+  "max_iters": 3,
+  "n_candidates": 3,
+  "propose_temperature": 0.7,
+  "propose_max_tokens": 800,
+  "select_temperature": 0.0,
+  "select_max_tokens": 200,
+  "tie_diagnostic": true
+ },
+ "localization": {
+  "case_id": "T3",
+  "run": 2,
+  "initial": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.",
+    "target": "A[6]",
+    "aspect": "detour",
+    "direction": "decrease",
+    "modification_type": "add_soft_constraint",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": null,
+    "evidence": {
+     "A[6]": 95,
+     "direct_distance": 47,
+     "detour_ratio": 2.0213
+    },
+    "critique_text": "User complaint: \"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\" It targets A[6] (detour); current values: A[6] = 95, direct_distance = 47, detour_ratio = 2.0213. Requested direction: decrease. Suggested modification type: add_soft_constraint."
+   },
+   "raw": {
+    "complaint": "Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "detour",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after driving 95 km despite being only 47 km directly from the depot, indicating the detour should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "detour",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km directly from the depot, indicating its detour should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km directly from the depot, indicating its arrival mileage should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km directly from the depot, indicating its arrival mileage should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km from the depot, indicating its arrival mileage should be decreased."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "A[6]",
+     "majority_key_target": "A[6]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "A[6]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.",
+     "target": "A[6]",
+     "aspect": "detour",
+     "direction": "decrease",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": null,
+     "evidence": {
+      "A[6]": 95,
+      "direct_distance": 47,
+      "detour_ratio": 2.0213
+     },
+     "critique_text": "User complaint: \"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\" It targets A[6] (detour); current values: A[6] = 95, direct_distance = 47, detour_ratio = 2.0213. Requested direction: decrease. Suggested modification type: add_soft_constraint."
+    },
+    "clarifying_question": null
+   }
+  },
+  "asked": false,
+  "question": null,
+  "answer": null,
+  "after_clarification": null,
+  "final": {
+   "confidence": "high",
+   "clarification_question": null,
+   "critique": {
+    "complaint": "Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.",
+    "target": "A[6]",
+    "aspect": "detour",
+    "direction": "decrease",
+    "modification_type": "add_soft_constraint",
+    "confidence": "high",
+    "threshold": null,
+    "corrected_value": null,
+    "evidence": {
+     "A[6]": 95,
+     "direct_distance": 47,
+     "detour_ratio": 2.0213
+    },
+    "critique_text": "User complaint: \"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\" It targets A[6] (detour); current values: A[6] = 95, direct_distance = 47, detour_ratio = 2.0213. Requested direction: decrease. Suggested modification type: add_soft_constraint."
+   },
+   "raw": {
+    "complaint": "Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.",
+    "clarification": null,
+    "diagnostics": {
+     "samples": [
+      {
+       "sample_index": 0,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "detour",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after driving 95 km despite being only 47 km directly from the depot, indicating the detour should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 1,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "detour",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km directly from the depot, indicating its detour should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 2,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km directly from the depot, indicating its arrival mileage should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 3,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km directly from the depot, indicating its arrival mileage should be reduced."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      },
+      {
+       "sample_index": 4,
+       "parse_status": "json_ok",
+       "sample": {
+        "object_type": "customer",
+        "vehicle": null,
+        "customers": [
+         6
+        ],
+        "aspect": "arrival",
+        "direction": "decrease",
+        "modification_type": "add_soft_constraint",
+        "threshold": null,
+        "corrected_value": null,
+        "ambiguous": false,
+        "clarifying_question": null,
+        "rationale": "The user complains that customer 6 is reached after 95 km of driving despite being only 47 km from the depot, indicating its arrival mileage should be decreased."
+       },
+       "valid": true,
+       "target": "A[6]",
+       "reason": null
+      }
+     ],
+     "valid_samples": 5,
+     "invalid_samples": 0,
+     "majority_target": "A[6]",
+     "majority_key_target": "A[6]",
+     "majority_modification_type": "add_soft_constraint",
+     "majority_count": 5,
+     "non_ambiguous_count": 5,
+     "target_counts": {
+      "A[6]": 5
+     },
+     "rule": {
+      "min_agree": 4,
+      "min_non_ambiguous": 3,
+      "max_invalid": 1
+     }
+    },
+    "confidence": "high",
+    "critique": {
+     "complaint": "Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.",
+     "target": "A[6]",
+     "aspect": "detour",
+     "direction": "decrease",
+     "modification_type": "add_soft_constraint",
+     "confidence": "high",
+     "threshold": null,
+     "corrected_value": null,
+     "evidence": {
+      "A[6]": 95,
+      "direct_distance": 47,
+      "detour_ratio": 2.0213
+     },
+     "critique_text": "User complaint: \"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\" It targets A[6] (detour); current values: A[6] = 95, direct_distance = 47, detour_ratio = 2.0213. Requested direction: decrease. Suggested modification type: add_soft_constraint."
+    },
+    "clarifying_question": null
+   }
+  },
+  "reused_from": "results/formal/localization/T3__r2.json",
+  "v2_rule_check": {
+   "initial": true
+  }
+ },
+ "iterations": [
+  {
+   "t": 1,
+   "input_solution": {
+    "routes": [
+     [
+      1,
+      4,
+      7,
+      2
+     ],
+     [
+      5,
+      3,
+      6,
+      8
+     ]
+    ]
+   },
+   "mods_before": [],
+   "blocks": [
+    "instance",
+    "plan",
+    "mods_in_force",
+    "complaint",
+    "localization"
+   ],
+   "proposal_prompt": "## Instance\nDepot = node 0, customers 1-8, 2 identical vehicles with capacity 100 each. Distances are rounded Euclidean distances (symmetric integers).\n| node | x | y | demand |\n|---|---|---|---|\n| 0 (depot) | 50 | 50 | 0 |\n| 1 | 56 | 46 | 52 |\n| 2 | 14 | 26 | 24 |\n| 3 | 66 | 29 | 49 |\n| 4 | 35 | 11 | 12 |\n| 5 | 49 | 13 | 14 |\n| 6 | 97 | 46 | 16 |\n| 7 | 6 | 8 | 11 |\n| 8 | 42 | 93 | 11 |\n\nDistance matrix (row i, column j):\n     0  1  2  3  4  5  6  7  8\n  0  0  7 43 26 42 37 47 61 44\n  1  7  0 47 20 41 34 41 63 49\n  2 43 47  0 52 26 37 85 20 73\n  3 26 20 52  0 36 23 35 64 68\n  4 42 41 26 36  0 14 71 29 82\n  5 37 34 37 23 14  0 58 43 80\n  6 47 41 85 35 71 58  0 99 72\n  7 61 63 20 64 29 43 99  0 92\n  8 44 49 73 68 82 80 72 92  0\n\n## Current plan\n- Vehicle 1: 0 -> 1 -> 4 -> 7 -> 2 -> 0 | length 140 | load 99 / 100 | stops 4\n- Vehicle 2: 0 -> 5 -> 3 -> 6 -> 8 -> 0 | length 211 | load 90 / 100 | stops 4\n- Arrival distances: A[1]=7, A[2]=97, A[3]=60, A[4]=48, A[5]=37, A[6]=95, A[7]=77, A[8]=167\n- total distance 351, balance 71, makespan 211, load_balance 9, sum_arrival 588\n\n## Modifications currently in force (your answer replaces this list)\nnone\n\n## User complaint\n\"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\"\n\n## Structured localization of the complaint\n{\"target\": \"A[6]\", \"aspect\": \"detour\", \"direction\": \"decrease\", \"modification_type\": \"add_soft_constraint\", \"confidence\": \"high\", \"evidence_on_current_plan\": {\"A[6]\": 95, \"direct_distance\": 47, \"detour_ratio\": 2.0213}}\nCritique: User complaint: \"Customer 6 is on a long detour. It is only 47 km from the depot, but vehicle 2 drives 95 km before it gets there.\" It targets A[6] (detour); current values: A[6] = 95, direct_distance = 47, detour_ratio = 2.0213. Requested direction: decrease. Suggested modification type: add_soft_constraint.\n\n## Task\nPropose the complete list of modifications for the next plan.",
+   "attribution": null,
+   "candidates": [
+    {
+     "sample": 0,
+     "seed": 757168308,
+     "llm": {
+      "parse_status": "json_ok",
+      "usage": {
+       "completion_tokens": 80,
+       "prompt_tokens": 1675,
+       "total_tokens": 1755,
+       "completion_tokens_details": null,
+       "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 1024,
+        "image_tokens": null,
+        "text_tokens": 1675
+       }
+      },
+      "latency_s": 2.275,
+      "returned_model": "qwen3.8-max",
+      "attempts": 1,
+      "reasoning_present": false
+     },
+     "content": "{\"rationale\":\"Add a soft constraint to limit the arrival distance at customer 6 to its direct depot distance (47 km), with a high penalty so the solver prefers serving customer 6 early rather than paying the penalty.\",\"modifications\":[{\"op\":\"add_soft_constraint\",\"target\":\"A[6]\",\"sense\":\"<=\",\"rhs\":47,\"penalty\":200}]}",
+     "valid": true,
+     "modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 200
+      }
+     ],
+     "raw_modifications": [
+      {
+       "op": "add_soft_constraint",
+       "target": "A[6]",
+       "sense": "<=",
+       "rhs": 47,
+       "penalty": 200
+      }
+     ],
+     "rationale": "Add a soft constraint to limit the arrival distance at customer 6 to its direct depot distance (47 km), with a high penalty so the solver prefers serving customer 6 early rather than paying the penalty.",
+     "errors": []
+    }
+   ],
+   "selection": null,
+   "chosen_sample": 0,
+   "commit": {
+    "status": "optimal",
+    "anchor": {
+     "type": "MOVE",
+     "i": 1,
+     "k": 1,
+     "role": "anchor"
+    },
+    "solver_runtime_s": 0.07910394668579102,
+    "wall_s": 0.08163487497949973,
+    "objective": 368.0,
+    "metrics": {
+     "L[1]": 207,
+     "W[1]": 98,
+     "S[1]": 4,
+     "L[2]": 161,
+     "W[2]": 91,
+     "S[2]": 4,
+     "A[1]": 7,
+     "A[2]": 90,
+     "A[3]": 82,
+     "A[4]": 119,
+     "A[5]": 105,
+     "A[6]": 47,
+     "A[7]": 70,
+     "A[8]": 163,
+     "total_distance": 368,
+     "balance": 46,
+     "makespan": 207,
+     "load_balance": 7,
+     "sum_arrival": 683
+    },
+    "reoriented": [
+     1
+    ]
+   },
+   "tie": {
+    "oracle_feasible": true,
+    "oracle_objective": 368.0,
+    "matches_commit": true,
+    "n_optimal": 2,
+    "n_optimal_resolving": 2
+   },
+   "illegal_data_mods": [],
+   "status": "committed",
+   "note": null,
+   "committed_mods": [
+    {
+     "op": "add_soft_constraint",
+     "target": "A[6]",
+     "sense": "<=",
+     "rhs": 47,
+     "penalty": 200
+    }
+   ],
+   "solution_after": {
+    "routes": [
+     [
+      1,
+      7,
+      2,
+      8
+     ],
+     [
+      6,
+      3,
+      5,
+      4
+     ]
+    ]
+   },
+   "verdict": {
+    "resolved": true,
+    "feasible": true,
+    "checker": {
+     "passed": true,
+     "value": 1.0,
+     "threshold": 1.5
+    }
+   },
+   "label_swap_resolved": true,
+   "wall_s": 2.365
+  }
+ ],
+ "outcome": "converged",
+ "converged": true,
+ "converged_at": 1,
+ "final_solution": {
+  "routes": [
+   [
+    1,
+    7,
+    2,
+    8
+   ],
+   [
+    6,
+    3,
+    5,
+    4
+   ]
+  ]
+ },
+ "final_mods": [
+  {
+   "op": "add_soft_constraint",
+   "target": "A[6]",
+   "sense": "<=",
+   "rhs": 47,
+   "penalty": 200
+  }
+ ]
+}

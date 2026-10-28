@@ -1,0 +1,164 @@
+{
+  "judge_model": "qwen3.8-max",
+  "annotator": "weighted_qwen3_8_max",
+  "rows": [
+    {
+      "Stage": "baseline",
+      "LC (%)": 16.2906448739106,
+      "WR (%)": 9.142975032430789,
+      "WR SE (pp)": 2.605629536959872,
+      "LC SE (pp)": 1.2843035731145118,
+      "RM": -3.9737,
+      "Avg length (chars)": 828,
+      "Judged": 100,
+      "Judge requests": 99,
+      "Judge tokens": 100698
+    },
+    {
+      "Stage": "step0",
+      "LC (%)": 21.669629693448343,
+      "WR (%)": 11.22477287559797,
+      "WR SE (pp)": 2.8356661703181585,
+      "LC SE (pp)": 1.5495468502701013,
+      "RM": -2.3567,
+      "Avg length (chars)": 927,
+      "Judged": 100,
+      "Judge requests": 70,
+      "Judge tokens": 72139
+    },
+    {
+      "Stage": "step1",
+      "LC (%)": 16.02308535082823,
+      "WR (%)": 10.09297592682905,
+      "WR SE (pp)": 2.752682935438972,
+      "LC SE (pp)": 1.40649302614569,
+      "RM": -1.3607,
+      "Avg length (chars)": 1240,
+      "Judged": 100,
+      "Judge requests": 73,
+      "Judge tokens": 77981
+    },
+    {
+      "Stage": "step2",
+      "LC (%)": 10.51385086010136,
+      "WR (%)": 8.271668209328379,
+      "WR SE (pp)": 2.5986977557878,
+      "LC SE (pp)": 0.9914892005573548,
+      "RM": -0.8038,
+      "Avg length (chars)": 1511,
+      "Judged": 100,
+      "Judge requests": 56,
+      "Judge tokens": 64487
+    },
+    {
+      "Stage": "bon15",
+      "LC (%)": 24.52792814096748,
+      "WR (%)": 14.015847243744972,
+      "WR SE (pp)": 3.3534455251177904,
+      "LC SE (pp)": 1.6749582911375842,
+      "RM": -1.60832763671875,
+      "Avg length (chars)": 1086,
+      "Judged": 100,
+      "Judge requests": 100,
+      "Judge tokens": 103316
+    }
+  ],
+  "monotonic_baseline_step1_step2": {
+    "WR (%)": false,
+    "LC (%)": false
+  },
+  "paired_comparisons": {
+    "step1 - baseline": {
+      "WR": {
+        "difference_pp": 0.9500008942999996,
+        "paired_se_pp": 2.562117970039062,
+        "exceeds_one_paired_se": false
+      },
+      "LC": {
+        "difference_pp": -0.26755952310000014,
+        "paired_se_pp": 0.12693062635496694,
+        "exceeds_one_paired_se": true
+      }
+    },
+    "step2 - step1": {
+      "WR": {
+        "difference_pp": -1.821307717599999,
+        "paired_se_pp": 1.6432610883565855,
+        "exceeds_one_paired_se": true
+      },
+      "LC": {
+        "difference_pp": -5.509234490200002,
+        "paired_se_pp": 0.4209005585047608,
+        "exceeds_one_paired_se": true
+      }
+    },
+    "step2 - step0": {
+      "WR": {
+        "difference_pp": -2.9531046660999998,
+        "paired_se_pp": 2.0580665415982233,
+        "exceeds_one_paired_se": true
+      },
+      "LC": {
+        "difference_pp": -11.155778833100001,
+        "paired_se_pp": 0.5829080189523393,
+        "exceeds_one_paired_se": true
+      }
+    },
+    "step2 - bon15": {
+      "WR": {
+        "difference_pp": -5.744179034799998,
+        "paired_se_pp": 3.016465387440564,
+        "exceeds_one_paired_se": true
+      },
+      "LC": {
+        "difference_pp": -14.0140772797,
+        "paired_se_pp": 0.7151787390923211,
+        "exceeds_one_paired_se": true
+      }
+    }
+  },
+  "judge_usage": {
+    "baseline": {
+      "successful_api_requests": 99,
+      "prompt_tokens": 100599,
+      "completion_tokens": 99,
+      "total_tokens": 100698,
+      "note": "Actual successful requests. Cached annotations and identical-answer ties need no new request."
+    },
+    "step0": {
+      "successful_api_requests": 70,
+      "prompt_tokens": 72069,
+      "completion_tokens": 70,
+      "total_tokens": 72139,
+      "note": "Actual successful requests. Cached annotations and identical-answer ties need no new request."
+    },
+    "step1": {
+      "successful_api_requests": 73,
+      "prompt_tokens": 77908,
+      "completion_tokens": 73,
+      "total_tokens": 77981,
+      "note": "Actual successful requests. Cached annotations and identical-answer ties need no new request."
+    },
+    "step2": {
+      "successful_api_requests": 56,
+      "prompt_tokens": 64431,
+      "completion_tokens": 56,
+      "total_tokens": 64487,
+      "note": "Actual successful requests. Cached annotations and identical-answer ties need no new request."
+    },
+    "bon15": {
+      "successful_api_requests": 100,
+      "prompt_tokens": 103216,
+      "completion_tokens": 100,
+      "total_tokens": 103316,
+      "note": "Actual successful requests. Cached annotations and identical-answer ties need no new request."
+    }
+  },
+  "usage_totals": {
+    "smoke_requests": 5,
+    "smoke_tokens": 4077,
+    "full_stage_requests": 398,
+    "full_stage_tokens": 418621
+  },
+  "uncertainty_note": "SEs of differences use paired per-instruction scores. LC SEs condition on the fitted GLM; they do not include refitting uncertainty. Exceeding one SE is not a 95% significance test."
+}

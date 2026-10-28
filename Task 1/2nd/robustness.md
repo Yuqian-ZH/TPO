@@ -1,0 +1,29 @@
+# Robustness checks
+
+| Subset                          |   Prompts |    init |   iter1 |   iter2 |
+|:--------------------------------|----------:|--------:|--------:|--------:|
+| All prompts                     |       100 | -4.2648 | -1.9762 | -1.6352 |
+| All 5 stored in every iteration |        45 | -4.6512 | -1.9709 | -1.3439 |
+
+| Metric        | Comparison    |   Mean Δ |   Improved prompts (%) | 95% paired CI     |
+|:--------------|:--------------|---------:|-----------------------:|:------------------|
+| RM            | step2 - step0 |   1.5723 |                86.0000 | [1.2897, 1.8690]  |
+| RM            | step2 - bon15 |   0.8737 |                65.0000 | [0.5104, 1.2482]  |
+| Judge WR (pp) | step2 - step0 |  -0.0269 |                59.0000 | [-3.6056, 3.5165] |
+| Judge WR (pp) | step2 - bon15 |  -2.1123 |                57.0000 | [-7.6704, 3.1355] |
+
+Paired bootstrap: 10,000 resamples, fixed seed 42.
+
+Paired differences in weighted preferences against the same GPT-4 reference. These are changes in reference-relative win scores, not direct step2-versus-control head-to-head win rates.
+
+Step2 is byte-for-byte identical to step0 for **14/100** prompts.
+
+| Iteration   |   Requested |   Stored |   Combined deficit | Missing tags     | Duplicate merges   |
+|:------------|------------:|---------:|-------------------:|:-----------------|:-------------------|
+| init        |         500 |      491 |                  9 | 0                | 9                  |
+| iter1       |         500 |      399 |                101 | Not identifiable | Not identifiable   |
+| iter2       |         500 |      406 |                 94 | Not identifiable | Not identifiable   |
+
+Initial samples bypass response-tag extraction, so their deficit is entirely duplicate merging. Per-round refinement deficits are shown above without assigning tag losses to rounds. Separately saved raw transport responses identify the overall refinement missing-tag and duplicate totals in transport_evidence.
+
+Raw transport evidence: 1000 refinement candidates, 1 missing-tag discards and 194 duplicate merges across both refinement rounds. Full raw responses are in policy_requests.jsonl. TextGrad itself logs only update prompts. No extra generations were run for diagnostics.

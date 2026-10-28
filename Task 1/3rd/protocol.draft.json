@@ -1,0 +1,73 @@
+{
+  "version": "task1_frozen_v1",
+  "main_seed": 7,
+  "slice_seed": 42,
+  "D": 2,
+  "N": 5,
+  "bon_n": 15,
+  "workers": 8,
+  "policy": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "reward_model": "sfairXC/FsfairX-LLaMA3-RM-v0.1",
+  "judge": "qwen3.8-max",
+  "revisions": {
+    "policy": "f2a0b46b0cfda21003c6141b1ff837b7e165524d",
+    "reward_model": "94fad49f1b3227aa8b566f415a335adb68ec544c"
+  },
+  "sampling": {
+    "answer": {
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_tokens": 2048
+    },
+    "critique_gradient": {
+      "temperature": 0.7,
+      "top_p": 0.99,
+      "max_tokens": 8192
+    }
+  },
+  "seed_rule": "int.from_bytes(sha256(f\"task1_frozen_v1|7|{benchmark_id}|{stage}|{iteration}|{request_index}\".encode()).digest()[:4], \"big\") & 0x7fffffff",
+  "judge_settings": {
+    "temperature": 1,
+    "max_tokens": 1,
+    "logprobs": true,
+    "top_logprobs": 5,
+    "enable_thinking": false,
+    "order_randomization_seed": 0
+  },
+  "context": 16384,
+  "retry": {
+    "max_attempts": 3,
+    "wait_seconds": [
+      2,
+      8
+    ],
+    "only": [
+      "connection",
+      "timeout",
+      "429",
+      "500",
+      "502",
+      "503",
+      "504"
+    ],
+    "unchanged_request": true
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 42,
+    "unit": "paired_prompt",
+    "comparisons": [
+      "step1-baseline",
+      "step2-step1",
+      "step2-baseline",
+      "step2-step0",
+      "step2-bon15"
+    ]
+  },
+  "resume": "Persist first successful raw response for every logical request; replay only identical request/config hashes, persist RM calls and per-prompt checkpoints. Never resample completed logical requests.",
+  "stop": "Any unrecoverable request, config/hash mismatch, missing data, model unavailable, or failed preflight: incomplete; never silently exclude prompts.",
+  "selection": "Official cumulative score cache, first maximum for ties, baseline first initial candidate; do not alter official response variable or contexts.",
+  "execution": "3 fixed first prompts preflight, freeze, one 100-prompt TPO and one BoN15 run, fresh judge cache; no score-driven reruns",
+  "cache": "New run only. Keys include full parameters, model, prompts/answers/order. No historical judgments.",
+  "LC": "GPT-4 calibration unvalidated for Qwen; descriptive; conditional fitted-GLM uncertainty only"
+}
